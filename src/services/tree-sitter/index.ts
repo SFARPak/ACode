@@ -400,7 +400,7 @@ async function parseFile(
 		const tree = parser.parse(fileContent)
 
 		// Apply the query to the AST and get the captures
-		const captures = tree ? query.captures(tree.rooNode) : []
+		const captures = tree ? query.captures(tree.rootNode) : []
 
 		// Split the file content into individual lines
 		const lines = fileContent.split("\n")

@@ -60,7 +60,7 @@ export async function writeToFileTool(
 	}
 
 	// Check if file is write-protected
-	const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
+	const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
 
 	// Check if file exists using cached map or fs.access
 	let fileExists: boolean

@@ -164,7 +164,7 @@ async function handleSpecialDirectories(dirPath: string): Promise<[string[], boo
 	const absolutePath = path.resolve(dirPath)
 
 	// Do not allow listing files in root directory
-	const root = process.platform === "win32" ? path.parse(absolutePath).rooPath : "/"
+	const root = process.platform === "win32" ? path.parse(absolutePath).root : "/"
 	const isRoot = arePathsEqual(absolutePath, root)
 	if (isRoot) {
 		return [[root], false]

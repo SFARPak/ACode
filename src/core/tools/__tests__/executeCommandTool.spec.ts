@@ -51,9 +51,9 @@ beforeEach(() => {
 			await cline.say("rooignore_error", ignoredFileAttemptedToAccess)
 			// Call the mocked formatResponse functions with the correct arguments
 			const mockRooIgnoreError = "RooIgnore error"
-			;(formatResponse.acodeIgnoreError as any).mockReturnValue(mockRooIgnoreError)
+			;(formatResponse.rooIgnoreError as any).mockReturnValue(mockRooIgnoreError)
 			;(formatResponse.toolError as any).mockReturnValue("Tool error")
-			formatResponse.acodeIgnoreError(ignoredFileAttemptedToAccess)
+			formatResponse.rooIgnoreError(ignoredFileAttemptedToAccess)
 			formatResponse.toolError(mockRooIgnoreError)
 			pushToolResult("Tool error")
 			return
@@ -250,7 +250,7 @@ describe("executeCommandTool", () => {
 			}
 
 			const mockRooIgnoreError = "RooIgnore error"
-			;(formatResponse.acodeIgnoreError as any).mockReturnValue(mockRooIgnoreError)
+			;(formatResponse.rooIgnoreError as any).mockReturnValue(mockRooIgnoreError)
 			;(formatResponse.toolError as any).mockReturnValue("Tool error")
 
 			// Execute
@@ -266,7 +266,7 @@ describe("executeCommandTool", () => {
 			// Verify
 			expect(validateCommandMock).toHaveBeenCalledWith("cat .env")
 			expect(mockCline.say).toHaveBeenCalledWith("rooignore_error", ".env")
-			expect(formatResponse.acodeIgnoreError).toHaveBeenCalledWith(".env")
+			expect(formatResponse.rooIgnoreError).toHaveBeenCalledWith(".env")
 			expect(formatResponse.toolError).toHaveBeenCalledWith(mockRooIgnoreError)
 			expect(mockPushToolResult).toHaveBeenCalled()
 			expect(mockAskApproval).not.toHaveBeenCalled()

@@ -153,7 +153,7 @@ export class CodeParser implements ICodeParser {
 
 		// We don't need to get the query string from languageQueries since it's already loaded
 		// in the language object
-		const captures = tree ? language.query.captures(tree.rooNode) : []
+		const captures = tree ? language.query.captures(tree.rootNode) : []
 
 		// Check if captures are empty
 		if (captures.length === 0) {

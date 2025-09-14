@@ -126,7 +126,7 @@ export async function searchAndReplaceTool(
 		}
 
 		// Check if file is write-protected
-		const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(validRelPath) || false
+		const isWriteProtected = cline.rooProtectedController?.isWriteProtected(validRelPath) || false
 
 		const absolutePath = path.resolve(cline.cwd, validRelPath)
 		const fileExists = await fileExistsAtPath(absolutePath)

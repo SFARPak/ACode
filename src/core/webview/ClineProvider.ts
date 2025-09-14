@@ -879,7 +879,7 @@ export class ClineProvider
 			consecutiveMistakeLimit: apiConfiguration.consecutiveMistakeLimit,
 			historyItem,
 			experiments,
-			rootTask: historyItem.rooTask,
+			rootTask: historyItem.rootTask,
 			parentTask: historyItem.parentTask,
 			taskNumber: historyItem.number,
 			workspacePath: historyItem.workspace,
@@ -2516,7 +2516,7 @@ export class ClineProvider
 		const { historyItem } = await this.getTaskWithId(task.taskId)
 
 		// Preserve parent and root task information for history item.
-		const rootTask = task.rooTask
+		const rootTask = task.rootTask
 		const parentTask = task.parentTask
 
 		task.abortTask()

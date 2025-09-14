@@ -21,7 +21,7 @@ export class RooIgnoreController {
 	constructor(cwd: string) {
 		this.cwd = cwd
 		this.ignoreInstance = ignore()
-		this.acodeIgnoreContent = undefined
+		this.rooIgnoreContent = undefined
 		// Set up file watcher for .acodeignore
 		this.setupFileWatcher()
 	}
@@ -68,11 +68,11 @@ export class RooIgnoreController {
 			const ignorePath = path.join(this.cwd, ".acodeignore")
 			if (await fileExistsAtPath(ignorePath)) {
 				const content = await fs.readFile(ignorePath, "utf8")
-				this.acodeIgnoreContent = content
+				this.rooIgnoreContent = content
 				this.ignoreInstance.add(content)
 				this.ignoreInstance.add(".acodeignore")
 			} else {
-				this.acodeIgnoreContent = undefined
+				this.rooIgnoreContent = undefined
 			}
 		} catch (error) {
 			// Should never happen: reading file failed even though it exists
@@ -88,7 +88,7 @@ export class RooIgnoreController {
 	 */
 	validateAccess(filePath: string): boolean {
 		// Always allow access if .acodeignore does not exist
-		if (!this.acodeIgnoreContent) {
+		if (!this.rooIgnoreContent) {
 			return true
 		}
 		try {
@@ -122,7 +122,7 @@ export class RooIgnoreController {
 	 */
 	validateCommand(command: string): string | undefined {
 		// Always allow if no .acodeignore exists
-		if (!this.acodeIgnoreContent) {
+		if (!this.rooIgnoreContent) {
 			return undefined
 		}
 
@@ -204,10 +204,10 @@ export class RooIgnoreController {
 	 * @returns Formatted instructions or undefined if .acodeignore doesn't exist
 	 */
 	getInstructions(): string | undefined {
-		if (!this.acodeIgnoreContent) {
+		if (!this.rooIgnoreContent) {
 			return undefined
 		}
 
-		return `# .acodeignore\n\n(The following is provided by a root-level .acodeignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${this.acodeIgnoreContent}\n.acodeignore`
+		return `# .acodeignore\n\n(The following is provided by a root-level .acodeignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${this.rooIgnoreContent}\n.acodeignore`
 	}
 }

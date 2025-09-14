@@ -105,12 +105,13 @@ export class CloudAPI {
 		})
 
 		switch (response.status) {
-			case 401:
+			case 401: {
 				const clerkError = this.extractClerkError(responseBody)
 				if (clerkError) {
 					throw clerkError
 				}
 				throw new AuthenticationError(this.extractErrorMessage(responseBody))
+			}
 			case 404:
 				if (endpoint.includes("/share")) {
 					throw new TaskNotFoundError()
@@ -127,13 +128,18 @@ export class CloudAPI {
 
 	private extractClerkError(responseBody: unknown): ClerkAuthorizationError | null {
 		if (responseBody && typeof responseBody === "object" && "errors" in responseBody) {
-			const errors = (responseBody as any).errors
+			const errors = (responseBody as { errors?: unknown[] }).errors
 			if (Array.isArray(errors) && errors.length > 0) {
 				const error = errors[0]
-				if (error && typeof error === "object" && "code" in error && error.code === "authorization_invalid") {
-					const message = error.message || "Unauthorized request"
-					const longMessage = error.long_message || message
-					const clerkTraceId = (responseBody as any).clerk_trace_id
+				if (
+					error &&
+					typeof error === "object" &&
+					"code" in error &&
+					(error as { code?: string }).code === "authorization_invalid"
+				) {
+					const message = (error as { message?: string }).message || "Unauthorized request"
+					const longMessage = (error as { long_message?: string }).long_message || message
+					const clerkTraceId = (responseBody as { clerk_trace_id?: string }).clerk_trace_id
 					return new ClerkAuthorizationError(`${message}: ${longMessage}`, clerkTraceId)
 				}
 			}
@@ -143,11 +149,11 @@ export class CloudAPI {
 
 	private extractErrorMessage(responseBody: unknown): string {
 		if (responseBody && typeof responseBody === "object" && "errors" in responseBody) {
-			const errors = (responseBody as any).errors
+			const errors = (responseBody as { errors?: unknown[] }).errors
 			if (Array.isArray(errors) && errors.length > 0) {
 				const error = errors[0]
 				if (error && typeof error === "object" && "message" in error) {
-					return error.message
+					return (error as { message?: string }).message || "Authentication required"
 				}
 			}
 		}
