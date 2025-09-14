@@ -4,7 +4,13 @@ import { type AuthService, type ShareVisibility, type ShareResponse, shareRespon
 
 import { getRooCodeApiUrl } from "./config.js"
 import { getUserAgent } from "./utils.js"
-import { AuthenticationError, CloudAPIError, NetworkError, TaskNotFoundError } from "./errors.js"
+import {
+	AuthenticationError,
+	ClerkAuthorizationError,
+	CloudAPIError,
+	NetworkError,
+	TaskNotFoundError,
+} from "./errors.js"
 
 interface CloudAPIRequestOptions extends Omit<RequestInit, "headers"> {
 	timeout?: number
@@ -91,9 +97,20 @@ export class CloudAPI {
 			responseBody = await response.text()
 		}
 
+		// Log detailed error information for troubleshooting
+		this.log(`[CloudAPI] Error response from ${endpoint}:`, {
+			status: response.status,
+			statusText: response.statusText,
+			responseBody,
+		})
+
 		switch (response.status) {
 			case 401:
-				throw new AuthenticationError()
+				const clerkError = this.extractClerkError(responseBody)
+				if (clerkError) {
+					throw clerkError
+				}
+				throw new AuthenticationError(this.extractErrorMessage(responseBody))
 			case 404:
 				if (endpoint.includes("/share")) {
 					throw new TaskNotFoundError()
@@ -106,6 +123,35 @@ export class CloudAPI {
 					responseBody,
 				)
 		}
+	}
+
+	private extractClerkError(responseBody: unknown): ClerkAuthorizationError | null {
+		if (responseBody && typeof responseBody === "object" && "errors" in responseBody) {
+			const errors = (responseBody as any).errors
+			if (Array.isArray(errors) && errors.length > 0) {
+				const error = errors[0]
+				if (error && typeof error === "object" && "code" in error && error.code === "authorization_invalid") {
+					const message = error.message || "Unauthorized request"
+					const longMessage = error.long_message || message
+					const clerkTraceId = (responseBody as any).clerk_trace_id
+					return new ClerkAuthorizationError(`${message}: ${longMessage}`, clerkTraceId)
+				}
+			}
+		}
+		return null
+	}
+
+	private extractErrorMessage(responseBody: unknown): string {
+		if (responseBody && typeof responseBody === "object" && "errors" in responseBody) {
+			const errors = (responseBody as any).errors
+			if (Array.isArray(errors) && errors.length > 0) {
+				const error = errors[0]
+				if (error && typeof error === "object" && "message" in error) {
+					return error.message
+				}
+			}
+		}
+		return "Authentication required"
 	}
 
 	async shareTask(taskId: string, visibility: ShareVisibility = "organization"): Promise<ShareResponse> {

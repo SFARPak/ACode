@@ -6,7 +6,7 @@ import { MarketplaceManager } from "../MarketplaceManager"
 
 // Mock CloudService
 vi.mock("@acode/cloud", () => ({
-	getRooCodeApiUrl: () => "https://test.api.com",
+	getACodeApiUrl: () => "https://test.api.com",
 	CloudService: {
 		hasInstance: vi.fn(),
 		instance: {

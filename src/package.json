@@ -271,6 +271,11 @@
 			],
 			"editor/title": [
 				{
+					"command": "acode.toggleSidebar",
+					"group": "navigation@0",
+					"when": "resourceExtname =~ /\\.(js|ts|jsx|tsx|py|java|c|cpp|h|php|rb|go|rs|swift|kt|scala|clj|hs|ml|fs|vb|cs|fsx|elm|dart|lua|r|jl|sh|bash|zsh|fish|ps1|pl|tcl|lua|coffee|dart|nim)$/"
+				},
+				{
 					"command": "acode.plusButtonClicked",
 					"group": "navigation@1",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"

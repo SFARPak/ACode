@@ -14,7 +14,7 @@ vi.mock("../constants", () => ({
 	DEFAULT_HEADERS: {
 		"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
 		"X-Title": "ACode",
-		"User-Agent": "RooCode/1.0.0",
+		"User-Agent": "ACode/1.0.0",
 	},
 }))
 
@@ -104,7 +104,7 @@ describe("CerebrasHandler", () => {
 						Authorization: "Bearer test-api-key",
 						"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
 						"X-Title": "ACode",
-						"User-Agent": "RooCode/1.0.0",
+						"User-Agent": "ACode/1.0.0",
 					}),
 				}),
 			)

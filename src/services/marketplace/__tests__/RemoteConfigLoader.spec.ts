@@ -10,7 +10,7 @@ const mockedAxios = axios as any
 
 // Mock the cloud config
 vi.mock("@acode/cloud", () => ({
-	getRooCodeApiUrl: () => "https://test.api.com",
+	getACodeApiUrl: () => "https://test.api.com",
 }))
 
 describe("RemoteConfigLoader", () => {
