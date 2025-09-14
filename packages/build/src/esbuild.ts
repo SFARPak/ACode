@@ -1,6 +1,6 @@
 import * as fs from "fs"
 import * as path from "path"
-import { execSync } from "child_process"
+import { execSync, execFileSync } from "child_process"
 
 import { ViewsContainer, Views, Menus, Configuration, contributesSchema } from "./types.js"
 
@@ -47,7 +47,7 @@ function rmDir(dirPath: string, maxRetries: number = 5): void {
 					// Try to clear readonly flags on Windows.
 					if (process.platform === "win32") {
 						try {
-							execSync(`attrib -R "${dirPath}\\*.*" /S /D`, { stdio: "ignore" })
+							execFileSync("attrib", ["-R", `${dirPath}\\*.*`, "/S", "/D"], { stdio: "ignore" })
 						} catch {
 							// Ignore attrib errors.
 						}
