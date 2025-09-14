@@ -51,11 +51,11 @@ export async function writeToFileTool(
 		return
 	}
 
-	const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
+	const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
 
 	if (!accessAllowed) {
 		await cline.say("rooignore_error", relPath)
-		pushToolResult(formatResponse.toolError(formatResponse.acodeIgnoreError(relPath)))
+		pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(relPath)))
 		return
 	}
 

@@ -879,7 +879,7 @@ export class ClineProvider
 			consecutiveMistakeLimit: apiConfiguration.consecutiveMistakeLimit,
 			historyItem,
 			experiments,
-			rootTask: historyItem.acodetTask,
+			rootTask: historyItem.rooTask,
 			parentTask: historyItem.parentTask,
 			taskNumber: historyItem.number,
 			workspacePath: historyItem.workspace,
@@ -2142,7 +2142,7 @@ export class ClineProvider
 				try {
 					const userSettings = CloudService.instance.getUserSettings()
 					const hasOrganization = cloudUserInfo?.organizationId != null
-					return hasOrganization || (userSettings?.features?.acodemoteControlEnabled ?? false)
+					return hasOrganization || (userSettings?.features?.roomoteControlEnabled ?? false)
 				} catch (error) {
 					console.error(
 						`[getState] failed to get featureRoomoteControlEnabled: ${error instanceof Error ? error.message : String(error)}`,
@@ -2516,7 +2516,7 @@ export class ClineProvider
 		const { historyItem } = await this.getTaskWithId(task.taskId)
 
 		// Preserve parent and root task information for history item.
-		const rootTask = task.acodetTask
+		const rootTask = task.rooTask
 		const parentTask = task.parentTask
 
 		task.abortTask()
