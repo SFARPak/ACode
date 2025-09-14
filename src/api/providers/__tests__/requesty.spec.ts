@@ -60,7 +60,7 @@ describe("RequestyHandler", () => {
 			defaultHeaders: {
 				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
 				"X-Title": "ACode",
-				"User-Agent": `RooCode/${Package.version}`,
+				"User-Agent": `ACode/${Package.version}`,
 			},
 		})
 	})
@@ -75,7 +75,7 @@ describe("RequestyHandler", () => {
 			defaultHeaders: {
 				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
 				"X-Title": "ACode",
-				"User-Agent": `RooCode/${Package.version}`,
+				"User-Agent": `ACode/${Package.version}`,
 			},
 		})
 	})

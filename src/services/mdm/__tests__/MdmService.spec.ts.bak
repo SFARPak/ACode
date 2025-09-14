@@ -169,7 +169,7 @@ describe("MdmService", () => {
 
 			await MdmService.createInstance()
 
-			expect(mockFs.existsSync).toHaveBeenCalledWith(path.join("C:\\ProgramData", "RooCode", "mdm.json"))
+			expect(mockFs.existsSync).toHaveBeenCalledWith(path.join("C:\\ProgramData", "ACode", "mdm.json"))
 		})
 
 		it("should use correct path for Windows in development", async () => {
@@ -181,7 +181,7 @@ describe("MdmService", () => {
 
 			await MdmService.createInstance()
 
-			expect(mockFs.existsSync).toHaveBeenCalledWith(path.join("C:\\ProgramData", "RooCode", "mdm.dev.json"))
+			expect(mockFs.existsSync).toHaveBeenCalledWith(path.join("C:\\ProgramData", "ACode", "mdm.dev.json"))
 		})
 
 		it("should use correct path for macOS in production", async () => {
@@ -192,7 +192,7 @@ describe("MdmService", () => {
 
 			await MdmService.createInstance()
 
-			expect(mockFs.existsSync).toHaveBeenCalledWith("/Library/Application Support/RooCode/mdm.json")
+			expect(mockFs.existsSync).toHaveBeenCalledWith("/Library/Application Support/ACode/mdm.json")
 		})
 
 		it("should use correct path for macOS in development", async () => {
@@ -203,7 +203,7 @@ describe("MdmService", () => {
 
 			await MdmService.createInstance()
 
-			expect(mockFs.existsSync).toHaveBeenCalledWith("/Library/Application Support/RooCode/mdm.dev.json")
+			expect(mockFs.existsSync).toHaveBeenCalledWith("/Library/Application Support/ACode/mdm.dev.json")
 		})
 
 		it("should use correct path for Linux in production", async () => {
@@ -236,7 +236,7 @@ describe("MdmService", () => {
 
 			await MdmService.createInstance()
 
-			expect(mockFs.existsSync).toHaveBeenCalledWith("/Library/Application Support/RooCode/mdm.dev.json")
+			expect(mockFs.existsSync).toHaveBeenCalledWith("/Library/Application Support/ACode/mdm.dev.json")
 		})
 	})
 

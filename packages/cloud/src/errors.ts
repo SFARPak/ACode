@@ -40,3 +40,14 @@ export class InvalidClientTokenError extends Error {
 		Object.setPrototypeOf(this, InvalidClientTokenError.prototype)
 	}
 }
+
+export class ClerkAuthorizationError extends AuthenticationError {
+	constructor(
+		message: string,
+		public clerkTraceId?: string,
+	) {
+		super(message)
+		this.name = "ClerkAuthorizationError"
+		Object.setPrototypeOf(this, ClerkAuthorizationError.prototype)
+	}
+}

@@ -248,13 +248,13 @@ export async function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand("acode.toggleSidebar", async () => {
 			// Use the standard VSCode command to toggle the ACode sidebar
-			await vscode.commands.executeCommand("workbench.view.extension.acode.SidebarProvider")
+			await vscode.commands.executeCommand("workbench.view.extension.acode-ActivityBar")
 		}),
 	)
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand("acode.showSidebar", async () => {
-			await vscode.commands.executeCommand("workbench.view.extension.acode.SidebarProvider")
+			await vscode.commands.executeCommand("workbench.view.extension.acode-ActivityBar")
 		}),
 	)
 
@@ -301,7 +301,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	// Allows other extensions to activate once Roo is ready.
 	vscode.commands.executeCommand(`${Package.name}.activationCompleted`)
 
-	// Implements the `RooCodeAPI` interface.
+	// Implements the `ACodeAPI` interface.
 	const socketPath = process.env.ROO_CODE_IPC_SOCKET_PATH
 	const enableLogging = typeof socketPath === "string"
 

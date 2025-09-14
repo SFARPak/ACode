@@ -100,7 +100,7 @@ describe("VercelAiGatewayHandler", () => {
 			defaultHeaders: expect.objectContaining({
 				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
 				"X-Title": "ACode",
-				"User-Agent": expect.stringContaining("RooCode/"),
+				"User-Agent": expect.stringContaining("ACode/"),
 			}),
 		})
 	})

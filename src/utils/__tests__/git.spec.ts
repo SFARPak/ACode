@@ -480,7 +480,7 @@ describe("getGitRepositoryInfo", () => {
  ignorecase = true
  precomposeunicode = true
 [remote "origin"]
- url = https://github.com/RooCodeInc/Roo-Code.git
+ url = https://github.com/ACodeInc/Roo-Code.git
  fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
  remote = origin
@@ -502,8 +502,8 @@ describe("getGitRepositoryInfo", () => {
 		const result = await getGitRepositoryInfo(workspaceRoot)
 
 		expect(result).toEqual({
-			repositoryUrl: "https://github.com/RooCodeInc/Roo-Code.git",
-			repositoryName: "RooCodeInc/Roo-Code",
+			repositoryUrl: "https://github.com/ACodeInc/Roo-Code.git",
+			repositoryName: "ACodeInc/Roo-Code",
 			defaultBranch: "main",
 		})
 
@@ -593,7 +593,7 @@ describe("getGitRepositoryInfo", () => {
 			if (path === configPath) {
 				return Promise.resolve(`
 [remote "origin"]
- url = https://github.com/RooCodeInc/Roo-Code.git
+ url = https://github.com/ACodeInc/Roo-Code.git
 `)
 			} else if (path === headPath) {
 				return Promise.reject(new Error("Failed to read HEAD"))
@@ -604,8 +604,8 @@ describe("getGitRepositoryInfo", () => {
 		const result = await getGitRepositoryInfo(workspaceRoot)
 
 		expect(result).toEqual({
-			repositoryUrl: "https://github.com/RooCodeInc/Roo-Code.git",
-			repositoryName: "RooCodeInc/Roo-Code",
+			repositoryUrl: "https://github.com/ACodeInc/Roo-Code.git",
+			repositoryName: "ACodeInc/Roo-Code",
 		})
 	})
 
@@ -626,7 +626,7 @@ describe("getGitRepositoryInfo", () => {
 	filemode = true
 	bare = false
 [remote "origin"]
-	url = git@github.com:RooCodeInc/Roo-Code.git
+	url = git@github.com:ACodeInc/Roo-Code.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
 	remote = origin
@@ -649,8 +649,8 @@ describe("getGitRepositoryInfo", () => {
 
 		// Verify that the SSH URL was converted to HTTPS
 		expect(result).toEqual({
-			repositoryUrl: "https://github.com/RooCodeInc/Roo-Code.git",
-			repositoryName: "RooCodeInc/Roo-Code",
+			repositoryUrl: "https://github.com/ACodeInc/Roo-Code.git",
+			repositoryName: "ACodeInc/Roo-Code",
 			defaultBranch: "main",
 		})
 	})
@@ -658,31 +658,31 @@ describe("getGitRepositoryInfo", () => {
 
 describe("convertGitUrlToHttps", () => {
 	it("should leave HTTPS URLs unchanged", () => {
-		const url = "https://github.com/RooCodeInc/Roo-Code.git"
+		const url = "https://github.com/ACodeInc/Roo-Code.git"
 		const converted = convertGitUrlToHttps(url)
 
-		expect(converted).toBe("https://github.com/RooCodeInc/Roo-Code.git")
+		expect(converted).toBe("https://github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should convert SSH URLs to HTTPS format", () => {
-		const url = "git@github.com:RooCodeInc/Roo-Code.git"
+		const url = "git@github.com:ACodeInc/Roo-Code.git"
 		const converted = convertGitUrlToHttps(url)
 
-		expect(converted).toBe("https://github.com/RooCodeInc/Roo-Code.git")
+		expect(converted).toBe("https://github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should convert SSH URLs with ssh:// prefix to HTTPS format", () => {
-		const url = "ssh://git@github.com/RooCodeInc/Roo-Code.git"
+		const url = "ssh://git@github.com/ACodeInc/Roo-Code.git"
 		const converted = convertGitUrlToHttps(url)
 
-		expect(converted).toBe("https://github.com/RooCodeInc/Roo-Code.git")
+		expect(converted).toBe("https://github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should handle URLs without git@ prefix", () => {
-		const url = "ssh://github.com/RooCodeInc/Roo-Code.git"
+		const url = "ssh://github.com/ACodeInc/Roo-Code.git"
 		const converted = convertGitUrlToHttps(url)
 
-		expect(converted).toBe("https://github.com/RooCodeInc/Roo-Code.git")
+		expect(converted).toBe("https://github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should handle invalid URLs gracefully", () => {
@@ -695,31 +695,31 @@ describe("convertGitUrlToHttps", () => {
 
 describe("sanitizeGitUrl", () => {
 	it("should sanitize HTTPS URLs with credentials", () => {
-		const url = "https://username:password@github.com/RooCodeInc/Roo-Code.git"
+		const url = "https://username:password@github.com/ACodeInc/Roo-Code.git"
 		const sanitized = sanitizeGitUrl(url)
 
-		expect(sanitized).toBe("https://github.com/RooCodeInc/Roo-Code.git")
+		expect(sanitized).toBe("https://github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should leave SSH URLs unchanged", () => {
-		const url = "git@github.com:RooCodeInc/Roo-Code.git"
+		const url = "git@github.com:ACodeInc/Roo-Code.git"
 		const sanitized = sanitizeGitUrl(url)
 
-		expect(sanitized).toBe("git@github.com:RooCodeInc/Roo-Code.git")
+		expect(sanitized).toBe("git@github.com:ACodeInc/Roo-Code.git")
 	})
 
 	it("should leave SSH URLs with ssh:// prefix unchanged", () => {
-		const url = "ssh://git@github.com/RooCodeInc/Roo-Code.git"
+		const url = "ssh://git@github.com/ACodeInc/Roo-Code.git"
 		const sanitized = sanitizeGitUrl(url)
 
-		expect(sanitized).toBe("ssh://git@github.com/RooCodeInc/Roo-Code.git")
+		expect(sanitized).toBe("ssh://git@github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should remove tokens from other URL formats", () => {
-		const url = "https://oauth2:ghp_abcdef1234567890abcdef1234567890abcdef@github.com/RooCodeInc/Roo-Code.git"
+		const url = "https://oauth2:ghp_abcdef1234567890abcdef1234567890abcdef@github.com/ACodeInc/Roo-Code.git"
 		const sanitized = sanitizeGitUrl(url)
 
-		expect(sanitized).toBe("https://github.com/RooCodeInc/Roo-Code.git")
+		expect(sanitized).toBe("https://github.com/ACodeInc/Roo-Code.git")
 	})
 
 	it("should handle invalid URLs gracefully", () => {
@@ -732,31 +732,31 @@ describe("sanitizeGitUrl", () => {
 
 describe("extractRepositoryName", () => {
 	it("should extract repository name from HTTPS URL", () => {
-		const url = "https://github.com/RooCodeInc/Roo-Code.git"
+		const url = "https://github.com/ACodeInc/Roo-Code.git"
 		const repoName = extractRepositoryName(url)
 
-		expect(repoName).toBe("RooCodeInc/Roo-Code")
+		expect(repoName).toBe("ACodeInc/Roo-Code")
 	})
 
 	it("should extract repository name from HTTPS URL without .git suffix", () => {
-		const url = "https://github.com/RooCodeInc/Roo-Code"
+		const url = "https://github.com/ACodeInc/Roo-Code"
 		const repoName = extractRepositoryName(url)
 
-		expect(repoName).toBe("RooCodeInc/Roo-Code")
+		expect(repoName).toBe("ACodeInc/Roo-Code")
 	})
 
 	it("should extract repository name from SSH URL", () => {
-		const url = "git@github.com:RooCodeInc/Roo-Code.git"
+		const url = "git@github.com:ACodeInc/Roo-Code.git"
 		const repoName = extractRepositoryName(url)
 
-		expect(repoName).toBe("RooCodeInc/Roo-Code")
+		expect(repoName).toBe("ACodeInc/Roo-Code")
 	})
 
 	it("should extract repository name from SSH URL with ssh:// prefix", () => {
-		const url = "ssh://git@github.com/RooCodeInc/Roo-Code.git"
+		const url = "ssh://git@github.com/ACodeInc/Roo-Code.git"
 		const repoName = extractRepositoryName(url)
 
-		expect(repoName).toBe("RooCodeInc/Roo-Code")
+		expect(repoName).toBe("ACodeInc/Roo-Code")
 	})
 
 	it("should return empty string for unrecognized URL formats", () => {
@@ -767,10 +767,10 @@ describe("extractRepositoryName", () => {
 	})
 
 	it("should handle URLs with credentials", () => {
-		const url = "https://username:password@github.com/RooCodeInc/Roo-Code.git"
+		const url = "https://username:password@github.com/ACodeInc/Roo-Code.git"
 		const repoName = extractRepositoryName(url)
 
-		expect(repoName).toBe("RooCodeInc/Roo-Code")
+		expect(repoName).toBe("ACodeInc/Roo-Code")
 	})
 })
 
@@ -807,7 +807,7 @@ describe("getWorkspaceGitInfo", () => {
 		// Mock git config file content
 		const mockConfig = `
 [remote "origin"]
- url = https://github.com/RooCodeInc/Roo-Code.git
+ url = https://github.com/ACodeInc/Roo-Code.git
 [branch "main"]
  remote = origin
  merge = refs/heads/main
@@ -824,8 +824,8 @@ describe("getWorkspaceGitInfo", () => {
 		const result = await getWorkspaceGitInfo()
 
 		expect(result).toEqual({
-			repositoryUrl: "https://github.com/RooCodeInc/Roo-Code.git",
-			repositoryName: "RooCodeInc/Roo-Code",
+			repositoryUrl: "https://github.com/ACodeInc/Roo-Code.git",
+			repositoryName: "ACodeInc/Roo-Code",
 			defaultBranch: "main",
 		})
 
