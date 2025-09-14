@@ -224,7 +224,7 @@ export function getMessagesSinceLastSummary(messages: ApiMessage[]): ApiMessage[
 
 	// Bedrock requires the first message to be a user message.
 	// We preserve the original first message to maintain context.
-	// See https://github.com/RooCodeInc/Roo-Code/issues/4147
+	// See https://github.com/ACodeInc/Roo-Code/issues/4147
 	if (messagesSinceSummary.length > 0 && messagesSinceSummary[0].role !== "user") {
 		// Get the original first message (should always be a user message with the task)
 		const originalFirstMessage = messages[0]

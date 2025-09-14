@@ -329,7 +329,7 @@ vi.mock("@acode/cloud", () => ({
 	BridgeOrchestrator: {
 		isEnabled: vi.fn().mockReturnValue(false),
 	},
-	getRooCodeApiUrl: vi.fn().mockReturnValue("https://app.acodecode.com"),
+	getACodeApiUrl: vi.fn().mockReturnValue("https://app.acodecode.com"),
 }))
 
 afterAll(() => {

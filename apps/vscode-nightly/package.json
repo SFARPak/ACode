@@ -1,6 +1,6 @@
 {
 	"name": "@acode/vscode-nightly",
-	"description": "Nightly build for the Roo Code VSCode extension.",
+	"description": "Nightly build for the ACode VSCode extension.",
 	"private": true,
 	"packageManager": "pnpm@10.8.1",
 	"scripts": {

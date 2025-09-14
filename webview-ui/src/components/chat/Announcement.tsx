@@ -154,15 +154,15 @@ const DiscordLink = () => (
 
 const RedditLink = () => (
 	<VSCodeLink
-		href="https://www.reddit.com/r/RooCode/"
+		href="https://www.reddit.com/r/ACode/"
 		onClick={(e) => {
 			e.preventDefault()
 			window.postMessage(
-				{ type: "action", action: "openExternal", data: { url: "https://www.reddit.com/r/RooCode/" } },
+				{ type: "action", action: "openExternal", data: { url: "https://www.reddit.com/r/ACode/" } },
 				"*",
 			)
 		}}>
-		r/RooCode
+		r/ACode
 	</VSCodeLink>
 )
 

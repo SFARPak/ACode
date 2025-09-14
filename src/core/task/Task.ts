@@ -24,7 +24,7 @@ import {
 	type ToolProgressStatus,
 	type HistoryItem,
 	type CreateTaskOptions,
-	RooCodeEventName,
+	ACodeEventName,
 	TelemetryEventName,
 	TaskStatus,
 	TodoItem,
@@ -386,7 +386,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.messageQueueService = new MessageQueueService()
 
 		this.messageQueueStateChangedHandler = () => {
-			this.emit(RooCodeEventName.TaskUserMessage, this.taskId)
+			this.emit(ACodeEventName.TaskUserMessage, this.taskId)
 			this.providerRef.deref()?.postStateToWebview()
 		}
 
@@ -610,7 +610,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.clineMessages.push(message)
 		const provider = this.providerRef.deref()
 		await provider?.postStateToWebview()
-		this.emit(RooCodeEventName.Message, { action: "created", message })
+		this.emit(ACodeEventName.Message, { action: "created", message })
 		await this.saveClineMessages()
 
 		const shouldCaptureMessage = message.partial !== true && CloudService.isEnabled()
@@ -644,7 +644,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	private async updateClineMessage(message: ClineMessage) {
 		const provider = this.providerRef.deref()
 		await provider?.postMessageToWebview({ type: "messageUpdated", clineMessage: message })
-		this.emit(RooCodeEventName.Message, { action: "updated", message })
+		this.emit(ACodeEventName.Message, { action: "updated", message })
 
 		const shouldCaptureMessage = message.partial !== true && CloudService.isEnabled()
 
@@ -676,7 +676,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 
 			if (hasTokenUsageChanged(tokenUsage, this.tokenUsageSnapshot)) {
-				this.emit(RooCodeEventName.TaskTokenUsageUpdated, this.taskId, tokenUsage)
+				this.emit(ACodeEventName.TaskTokenUsageUpdated, this.taskId, tokenUsage)
 				this.tokenUsageSnapshot = undefined
 				this.tokenUsageSnapshotAt = undefined
 			}
@@ -716,7 +716,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		// simply removes the reference to this instance, but the instance is
 		// still alive until this promise resolves or rejects.)
 		if (this.abort) {
-			throw new Error(`[RooCode#ask] task ${this.taskId}.${this.instanceId} aborted`)
+			throw new Error(`[ACode#ask] task ${this.taskId}.${this.instanceId} aborted`)
 		}
 
 		let askTs: number
@@ -812,7 +812,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 						if (message) {
 							this.interactiveAsk = message
-							this.emit(RooCodeEventName.TaskInteractive, this.taskId)
+							this.emit(ACodeEventName.TaskInteractive, this.taskId)
 						}
 					}, 1_000),
 				)
@@ -823,7 +823,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 						if (message) {
 							this.resumableAsk = message
-							this.emit(RooCodeEventName.TaskResumable, this.taskId)
+							this.emit(ACodeEventName.TaskResumable, this.taskId)
 						}
 					}, 1_000),
 				)
@@ -834,7 +834,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 						if (message) {
 							this.idleAsk = message
-							this.emit(RooCodeEventName.TaskIdle, this.taskId)
+							this.emit(ACodeEventName.TaskIdle, this.taskId)
 						}
 					}, 1_000),
 				)
@@ -884,10 +884,10 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			this.idleAsk = undefined
 			this.resumableAsk = undefined
 			this.interactiveAsk = undefined
-			this.emit(RooCodeEventName.TaskActive, this.taskId)
+			this.emit(ACodeEventName.TaskActive, this.taskId)
 		}
 
-		this.emit(RooCodeEventName.TaskAskResponded)
+		this.emit(ACodeEventName.TaskAskResponded)
 		return result
 	}
 
@@ -959,7 +959,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 					await provider.setProviderProfile(providerProfile)
 				}
 
-				this.emit(RooCodeEventName.TaskUserMessage, this.taskId)
+				this.emit(ACodeEventName.TaskUserMessage, this.taskId)
 
 				provider.postMessageToWebview({ type: "invoke", invoke: "sendMessage", text, images })
 			} else {
@@ -1066,7 +1066,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		contextCondense?: ContextCondense,
 	): Promise<undefined> {
 		if (this.abort) {
-			throw new Error(`[RooCode#say] task ${this.taskId}.${this.instanceId} aborted`)
+			throw new Error(`[ACode#say] task ${this.taskId}.${this.instanceId} aborted`)
 		}
 
 		if (partial !== undefined) {
@@ -1496,7 +1496,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 
 		this.abort = true
-		this.emit(RooCodeEventName.TaskAborted)
+		this.emit(ACodeEventName.TaskAborted)
 
 		try {
 			this.dispose() // Call the centralized dispose method
@@ -1616,8 +1616,8 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			await provider.handleModeSwitch(mode) // Set child's mode.
 			await delay(500) // Allow mode change to take effect.
 
-			this.emit(RooCodeEventName.TaskPaused, this.taskId)
-			this.emit(RooCodeEventName.TaskSpawned, newTask.taskId)
+			this.emit(ACodeEventName.TaskPaused, this.taskId)
+			this.emit(ACodeEventName.TaskSpawned, newTask.taskId)
 		}
 
 		return newTask
@@ -1642,7 +1642,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.isPaused = false
 		this.childTaskId = undefined
 
-		this.emit(RooCodeEventName.TaskUnpaused, this.taskId)
+		this.emit(ACodeEventName.TaskUnpaused, this.taskId)
 
 		// Fake an answer from the subtask that it has completed running and
 		// this is the result of what it has done add the message to the chat
@@ -1676,7 +1676,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		let nextUserContent = userContent
 		let includeFileDetails = true
 
-		this.emit(RooCodeEventName.TaskStarted)
+		this.emit(ACodeEventName.TaskStarted)
 
 		while (!this.abort) {
 			const didEndLoop = await this.recursivelyMakeClineRequests(nextUserContent, includeFileDetails)
@@ -1721,7 +1721,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			const currentIncludeFileDetails = currentItem.includeFileDetails
 
 			if (this.abort) {
-				throw new Error(`[RooCode#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`)
+				throw new Error(`[ACode#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`)
 			}
 
 			if (this.consecutiveMistakeLimit > 0 && this.consecutiveMistakeCount >= this.consecutiveMistakeLimit) {
@@ -2212,9 +2212,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 				// Need to call here in case the stream was aborted.
 				if (this.abort || this.abandoned) {
-					throw new Error(
-						`[RooCode#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`,
-					)
+					throw new Error(`[ACode#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`)
 				}
 
 				this.didCompleteReadingStream = true
@@ -2829,7 +2827,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.toolUsage[toolName].failures++
 
 		if (error) {
-			this.emit(RooCodeEventName.TaskToolFailed, this.taskId, toolName, error)
+			this.emit(ACodeEventName.TaskToolFailed, this.taskId, toolName, error)
 		}
 	}
 

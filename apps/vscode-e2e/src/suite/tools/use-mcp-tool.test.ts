@@ -4,7 +4,7 @@ import * as path from "path"
 import * as os from "os"
 import * as vscode from "vscode"
 
-import { RooCodeEventName, type ClineMessage } from "@acode/types"
+import { ACodeEventName, type ClineMessage } from "@acode/types"
 
 import { waitFor, sleep } from "../utils"
 import { setDefaultSuiteTimeout } from "../test-utils"
@@ -167,7 +167,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.error("Error:", message.text)
 			}
 		}
-		api.on(RooCodeEventName.Message, messageHandler)
+		api.on(ACodeEventName.Message, messageHandler)
 
 		// Listen for task events
 		const taskStartedHandler = (id: string) => {
@@ -176,7 +176,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.log("Task started:", id)
 			}
 		}
-		api.on(RooCodeEventName.TaskStarted, taskStartedHandler)
+		api.on(ACodeEventName.TaskStarted, taskStartedHandler)
 
 		const taskCompletedHandler = (id: string) => {
 			if (id === taskId) {
@@ -184,7 +184,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.log("Task completed:", id)
 			}
 		}
-		api.on(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+		api.on(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		await sleep(2000) // Wait for ACode to fully initialize
 
 		// Trigger MCP server detection by opening and modifying the file
@@ -284,9 +284,9 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 			console.log("Test passed! MCP read_file tool used successfully and task completed")
 		} finally {
 			// Clean up
-			api.off(RooCodeEventName.Message, messageHandler)
-			api.off(RooCodeEventName.TaskStarted, taskStartedHandler)
-			api.off(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+			api.off(ACodeEventName.Message, messageHandler)
+			api.off(ACodeEventName.TaskStarted, taskStartedHandler)
+			api.off(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		}
 	})
 
@@ -344,7 +344,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.error("Error:", message.text)
 			}
 		}
-		api.on(RooCodeEventName.Message, messageHandler)
+		api.on(ACodeEventName.Message, messageHandler)
 
 		// Listen for task completion
 		const taskCompletedHandler = (id: string) => {
@@ -352,7 +352,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				_taskCompleted = true
 			}
 		}
-		api.on(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+		api.on(ACodeEventName.TaskCompleted, taskCompletedHandler)
 
 		let taskId: string
 		try {
@@ -413,8 +413,8 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 			console.log("Test passed! MCP write_file tool used successfully and task completed")
 		} finally {
 			// Clean up
-			api.off(RooCodeEventName.Message, messageHandler)
-			api.off(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+			api.off(ACodeEventName.Message, messageHandler)
+			api.off(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		}
 	})
 
@@ -472,7 +472,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.error("Error:", message.text)
 			}
 		}
-		api.on(RooCodeEventName.Message, messageHandler)
+		api.on(ACodeEventName.Message, messageHandler)
 
 		// Listen for task completion
 		const taskCompletedHandler = (id: string) => {
@@ -480,7 +480,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				_taskCompleted = true
 			}
 		}
-		api.on(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+		api.on(ACodeEventName.TaskCompleted, taskCompletedHandler)
 
 		let taskId: string
 		try {
@@ -552,8 +552,8 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 			console.log("Test passed! MCP list_directory tool used successfully and task completed")
 		} finally {
 			// Clean up
-			api.off(RooCodeEventName.Message, messageHandler)
-			api.off(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+			api.off(ACodeEventName.Message, messageHandler)
+			api.off(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		}
 	})
 
@@ -611,7 +611,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.error("Error:", message.text)
 			}
 		}
-		api.on(RooCodeEventName.Message, messageHandler)
+		api.on(ACodeEventName.Message, messageHandler)
 
 		// Listen for task completion
 		const taskCompletedHandler = (id: string) => {
@@ -619,7 +619,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				_taskCompleted = true
 			}
 		}
-		api.on(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+		api.on(ACodeEventName.TaskCompleted, taskCompletedHandler)
 
 		let taskId: string
 		try {
@@ -691,8 +691,8 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 			console.log("Test passed! MCP directory_tree tool used successfully and task completed")
 		} finally {
 			// Clean up
-			api.off(RooCodeEventName.Message, messageHandler)
-			api.off(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+			api.off(ACodeEventName.Message, messageHandler)
+			api.off(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		}
 	})
 
@@ -730,7 +730,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.log("Attempt completion called:", message.text?.substring(0, 200))
 			}
 		}
-		api.on(RooCodeEventName.Message, messageHandler)
+		api.on(ACodeEventName.Message, messageHandler)
 
 		// Listen for task completion
 		const taskCompletedHandler = (id: string) => {
@@ -738,7 +738,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				_taskCompleted = true
 			}
 		}
-		api.on(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+		api.on(ACodeEventName.TaskCompleted, taskCompletedHandler)
 
 		let taskId: string
 		try {
@@ -762,8 +762,8 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 			console.log("Test passed! MCP error handling verified and task completed")
 		} finally {
 			// Clean up
-			api.off(RooCodeEventName.Message, messageHandler)
-			api.off(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+			api.off(ACodeEventName.Message, messageHandler)
+			api.off(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		}
 	})
 
@@ -832,7 +832,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				console.error("Error:", message.text)
 			}
 		}
-		api.on(RooCodeEventName.Message, messageHandler)
+		api.on(ACodeEventName.Message, messageHandler)
 
 		// Listen for task completion
 		const taskCompletedHandler = (id: string) => {
@@ -840,7 +840,7 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 				_taskCompleted = true
 			}
 		}
-		api.on(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+		api.on(ACodeEventName.TaskCompleted, taskCompletedHandler)
 
 		let taskId: string
 		try {
@@ -921,8 +921,8 @@ suite.skip("ACode use_mcp_tool Tool", function () {
 			console.log("Test passed! MCP message format validation successful and task completed")
 		} finally {
 			// Clean up
-			api.off(RooCodeEventName.Message, messageHandler)
-			api.off(RooCodeEventName.TaskCompleted, taskCompletedHandler)
+			api.off(ACodeEventName.Message, messageHandler)
+			api.off(ACodeEventName.TaskCompleted, taskCompletedHandler)
 		}
 	})
 })

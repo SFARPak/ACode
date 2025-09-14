@@ -276,7 +276,7 @@
 		"feature2": "<bold>원격으로 Roo 확장기능 제어 (Pro):</bold> 채팅 기반 브라우저 인터페이스에서 작업을 시작, 중지, 상호작용하세요.",
 		"learnMore": "제어권을 잡을 준비가 되셨나요? <learnMoreLink>여기서</learnMoreLink> 자세히 알아보세요.",
 		"visitCloudButton": "ACode Cloud 방문",
-		"socialLinks": "<xLink>X</xLink>, <discordLink>Discord</discordLink>, 또는 <redditLink>r/RooCode</redditLink>에서 만나요"
+		"socialLinks": "<xLink>X</xLink>, <discordLink>Discord</discordLink>, 또는 <redditLink>r/ACode</redditLink>에서 만나요"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo가 브라우저를 사용하고 싶어합니다:",

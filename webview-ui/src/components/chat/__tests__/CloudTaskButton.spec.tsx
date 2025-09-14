@@ -21,7 +21,7 @@ vi.mock("react-i18next")
 
 // Mock the cloud config
 vi.mock("@acode/cloud/src/config", () => ({
-	getRooCodeApiUrl: vi.fn(() => "https://app.roocode.com"),
+	getACodeApiUrl: vi.fn(() => "https://app.roocode.com"),
 }))
 
 // Mock the extension state context
@@ -218,17 +218,17 @@ describe("CloudTaskButton", () => {
 		})
 	})
 
-	test("uses correct URL from getRooCodeApiUrl", async () => {
-		// Mock getRooCodeApiUrl to return a custom URL
+	test("uses correct URL from getACodeApiUrl", async () => {
+		// Mock getACodeApiUrl to return a custom URL
 		vi.doMock("@acode/cloud/src/config", () => ({
-			getRooCodeApiUrl: vi.fn(() => "https://custom.roocode.com"),
+			getACodeApiUrl: vi.fn(() => "https://custom.roocode.com"),
 		}))
 
 		// Clear module cache and re-import to get the mocked version
 		vi.resetModules()
 
 		// Since we can't easily test the dynamic import, let's skip this specific test
-		// The functionality is already covered by the main component using getRooCodeApiUrl
+		// The functionality is already covered by the main component using getACodeApiUrl
 		expect(true).toBe(true)
 	})
 })

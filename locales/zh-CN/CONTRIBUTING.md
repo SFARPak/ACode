@@ -11,9 +11,9 @@
 </sub>
 </div>
 
-# 参与 Roo Code 贡献
+# 参与 ACode 贡献
 
-Roo Code 是一个由社区驱动的项目，我们高度重视每一份贡献。为了简化协作流程，我们采用 [Issue-First](#issue-first-方式) 原则，这意味着所有 [Pull Request (PR)](#提交-pull-request) 必须首先关联到 GitHub Issue。请仔细阅读本指南。
+ACode 是一个由社区驱动的项目，我们高度重视每一份贡献。为了简化协作流程，我们采用 [Issue-First](#issue-first-方式) 原则，这意味着所有 [Pull Request (PR)](#提交-pull-request) 必须首先关联到 GitHub Issue。请仔细阅读本指南。
 
 ## 目录
 
@@ -52,10 +52,10 @@ Roo Code 是一个由社区驱动的项目，我们高度重视每一份贡献�
 
 在 PR 中请提及与这些领域的关联。
 
-### 3. 加入 Roo Code 社区
+### 3. 加入 ACode 社区
 
 - **主要方式：** 加入我们的 [Discord](https://discord.gg/roocode) 并私信 **Hannes Rudolph (`hrudolph`)**。
-- **替代方式：** 有经验的贡献者可通过 [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1) 直接参与。
+- **替代方式：** 有经验的贡献者可通过 [GitHub Projects](https://github.com/orgs/ACodeInc/projects/1) 直接参与。
 
 ## 寻找与规划你的贡献
 
@@ -69,7 +69,7 @@ Roo Code 是一个由社区驱动的项目，我们高度重视每一份贡献�
 
 所有贡献必须从 GitHub Issue 开始。
 
-- **检查现有 issue：** 搜索 [GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues)。
+- **检查现有 issue：** 搜索 [GitHub Issues](https://github.com/ACodeInc/Roo-Code/issues)。
 - **创建 issue：** 使用适当模板：
     - **Bug：** "Bug Report" 模板。
     - **功能：** "Detailed Feature Proposal" 模板。开始前需获得批准。
@@ -79,14 +79,14 @@ Roo Code 是一个由社区驱动的项目，我们高度重视每一份贡献�
 
 ### 决定要做什么
 
-- 查看 [GitHub 项目](https://github.com/orgs/RooCodeInc/projects/1) 中未分配的 "Good First Issues"。
-- 文档相关，请访问 [Roo Code Docs](https://github.com/RooCodeInc/Roo-Code-Docs)。
+- 查看 [GitHub 项目](https://github.com/orgs/ACodeInc/projects/1) 中未分配的 "Good First Issues"。
+- 文档相关，请访问 [ACode Docs](https://github.com/ACodeInc/Roo-Code-Docs)。
 
 ### 报告 Bug
 
 - 先检查是否已有相关报告。
-- 使用 ["Bug Report" 模板](https://github.com/RooCodeInc/Roo-Code/issues/new/choose) 创建新 bug 报告。
-- **安全问题：** 通过 [security advisories](https://github.com/RooCodeInc/Roo-Code/security/advisories/new) 私下报告。
+- 使用 ["Bug Report" 模板](https://github.com/ACodeInc/Roo-Code/issues/new/choose) 创建新 bug 报告。
+- **安全问题：** 通过 [security advisories](https://github.com/ACodeInc/Roo-Code/security/advisories/new) 私下报告。
 
 ## 开发与提交流程
 
@@ -135,4 +135,4 @@ npm run install:all
 
 ## 法律声明
 
-提交贡献即表示你同意你的贡献将基于 Apache 2.0 许可证，与 Roo Code 的许可一致。
+提交贡献即表示你同意你的贡献将基于 Apache 2.0 许可证，与 ACode 的许可一致。

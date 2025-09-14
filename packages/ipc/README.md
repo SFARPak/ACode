@@ -1,6 +1,6 @@
 # IPC (Inter-Process Communication)
 
-This package provides IPC functionality for Roo Code, allowing external applications to communicate with the extension through a socket-based interface.
+This package provides IPC functionality for ACode, allowing external applications to communicate with the extension through a socket-based interface.
 
 ## Available Commands
 
@@ -12,7 +12,7 @@ Starts a new task with optional configuration and initial message.
 
 **Parameters:**
 
-- `configuration`: RooCode settings object
+- `configuration`: ACode settings object
 - `text`: Initial task message (string)
 - `images`: Array of image data URIs (optional)
 - `newTab`: Whether to open in a new tab (boolean, optional)
@@ -64,7 +64,7 @@ client.sendCommand({
 	commandName: "StartNewTask",
 	data: {
 		configuration: {
-			/* RooCode settings */
+			/* ACode settings */
 		},
 		text: "Hello, world!",
 		images: [],

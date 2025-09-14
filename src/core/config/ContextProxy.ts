@@ -11,7 +11,7 @@ import {
 	type GlobalSettings,
 	type SecretState,
 	type GlobalState,
-	type RooCodeSettings,
+	type ACodeSettings,
 	providerSettingsSchema,
 	globalSettingsSchema,
 	isSecretStateKey,
@@ -22,7 +22,7 @@ import { logger } from "../../utils/logging"
 
 type GlobalStateKey = keyof GlobalState
 type SecretStateKey = keyof SecretState
-type RooCodeSettingsKey = keyof RooCodeSettings
+type ACodeSettingsKey = keyof ACodeSettings
 
 const PASS_THROUGH_STATE_KEYS = ["taskHistory"]
 
@@ -302,22 +302,22 @@ export class ContextProxy {
 	}
 
 	/**
-	 * RooCodeSettings
+	 * ACodeSettings
 	 */
 
-	public async setValue<K extends RooCodeSettingsKey>(key: K, value: RooCodeSettings[K]) {
+	public async setValue<K extends ACodeSettingsKey>(key: K, value: ACodeSettings[K]) {
 		return isSecretStateKey(key)
 			? this.storeSecret(key as SecretStateKey, value as string)
 			: this.updateGlobalState(key as GlobalStateKey, value)
 	}
 
-	public getValue<K extends RooCodeSettingsKey>(key: K): RooCodeSettings[K] {
+	public getValue<K extends ACodeSettingsKey>(key: K): ACodeSettings[K] {
 		return isSecretStateKey(key)
-			? (this.getSecret(key as SecretStateKey) as RooCodeSettings[K])
-			: (this.getGlobalState(key as GlobalStateKey) as RooCodeSettings[K])
+			? (this.getSecret(key as SecretStateKey) as ACodeSettings[K])
+			: (this.getGlobalState(key as GlobalStateKey) as ACodeSettings[K])
 	}
 
-	public getValues(): RooCodeSettings {
+	public getValues(): ACodeSettings {
 		const globalState = this.getAllGlobalState()
 		const secretState = this.getAllSecretState()
 
@@ -325,8 +325,8 @@ export class ContextProxy {
 		return { ...globalState, ...secretState }
 	}
 
-	public async setValues(values: RooCodeSettings) {
-		const entries = Object.entries(values) as [RooCodeSettingsKey, unknown][]
+	public async setValues(values: ACodeSettings) {
+		const entries = Object.entries(values) as [ACodeSettingsKey, unknown][]
 		await Promise.all(entries.map(([key, value]) => this.setValue(key, value)))
 	}
 

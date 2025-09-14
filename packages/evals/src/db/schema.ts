@@ -1,7 +1,7 @@
 import { pgTable, text, timestamp, integer, real, boolean, jsonb, uniqueIndex } from "drizzle-orm/pg-core"
 import { relations } from "drizzle-orm"
 
-import type { RooCodeSettings, ToolName, ToolUsage } from "@acode/types"
+import type { ACodeSettings, ToolName, ToolUsage } from "@acode/types"
 
 import type { ExerciseLanguage } from "../exercises/index.js"
 
@@ -20,7 +20,7 @@ export const runs = pgTable("runs", {
 	outputPrice: real(),
 	cacheWritesPrice: real(),
 	cacheReadsPrice: real(),
-	settings: jsonb().$type<RooCodeSettings>(),
+	settings: jsonb().$type<ACodeSettings>(),
 	pid: integer(),
 	socketPath: text("socket_path").notNull(),
 	concurrency: integer().default(2).notNull(),

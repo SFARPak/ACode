@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk"
 import * as vscode from "vscode"
 
-import { RooCodeEventName } from "@acode/types"
+import { ACodeEventName } from "@acode/types"
 import { TelemetryService } from "@acode/telemetry"
 
 import { Task } from "../task/Task"
@@ -70,7 +70,7 @@ export async function attemptCompletionTool(
 					await cline.say("completion_result", removeClosingTag("result", result), undefined, false)
 
 					TelemetryService.instance.captureTaskCompleted(cline.taskId)
-					cline.emit(RooCodeEventName.TaskCompleted, cline.taskId, cline.getTokenUsage(), cline.toolUsage)
+					cline.emit(ACodeEventName.TaskCompleted, cline.taskId, cline.getTokenUsage(), cline.toolUsage)
 
 					await cline.ask("command", removeClosingTag("command", command), block.partial).catch(() => {})
 				}
@@ -93,7 +93,7 @@ export async function attemptCompletionTool(
 			// Users must use execute_command tool separately before attempt_completion
 			await cline.say("completion_result", result, undefined, false)
 			TelemetryService.instance.captureTaskCompleted(cline.taskId)
-			cline.emit(RooCodeEventName.TaskCompleted, cline.taskId, cline.getTokenUsage(), cline.toolUsage)
+			cline.emit(ACodeEventName.TaskCompleted, cline.taskId, cline.getTokenUsage(), cline.toolUsage)
 
 			if (cline.parentTask) {
 				const didApprove = await askFinishSubTaskApproval()

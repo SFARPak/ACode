@@ -13,35 +13,35 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
 	{
-		question: "What exactly is Roo Code?",
+		question: "What exactly is ACode?",
 		answer: (
 			<>
-				Roo Code is an open-source, AI-powered coding assistant that runs in VS Code. It goes beyond simple
+				ACode is an open-source, AI-powered coding assistant that runs in VS Code. It goes beyond simple
 				autocompletion by reading and writing across multiple files, executing commands, and adapting to your
 				workflow—like having a whole dev team right inside your editor.
 			</>
 		),
 	},
 	{
-		question: "How does Roo Code differ from Copilot, Cursor, or Windsurf?",
+		question: "How does ACode differ from Copilot, Cursor, or Windsurf?",
 		answer: (
 			<>
-				Roo Code is <strong>open-source and fully customizable</strong>, letting you integrate any AI model you
+				ACode is <strong>open-source and fully customizable</strong>, letting you integrate any AI model you
 				choose (e.g, OpenAI, Anthropic, local LLMs, etc.). It&apos;s built for <strong>multi-file edits</strong>
 				, so it can read, refactor, and update multiple files at once for holistic code changes. Its{" "}
 				<strong>agentic abilities</strong> go beyond a typical AI autocomplete, enabling it to run tests, open a
-				browser, and handle deeper tasks. And you&apos;re always in control: Roo Code is{" "}
+				browser, and handle deeper tasks. And you&apos;re always in control: ACode is{" "}
 				<strong>permission-based</strong>, meaning you can control and approve any file changes or command
 				executions.
 			</>
 		),
 	},
 	{
-		question: "Is Roo Code really free?",
+		question: "Is ACode really free?",
 		answer: (
 			<>
-				Yes! Roo Code is completely free and open-source. You&apos;ll only pay for the AI model usage if you use
-				a paid API (like OpenAI). If you choose free or self-hosted models, there&apos;s no cost at all.
+				Yes! ACode is completely free and open-source. You&apos;ll only pay for the AI model usage if you use a
+				paid API (like OpenAI). If you choose free or self-hosted models, there&apos;s no cost at all.
 			</>
 		),
 	},
@@ -49,31 +49,31 @@ const faqs: FAQItem[] = [
 		question: "Will my code stay private?",
 		answer: (
 			<>
-				Yes. Because Roo Code is an extension in your local VS Code, your code never leaves your machine unless
-				you connect to an external AI API. Even then, you control exactly what is sent to the AI model. You can
-				use tools like .rooignore to exclude sensitive files, and you can also run Roo Code with offline/local
-				models for full privacy.
+				Yes. Because ACode is an extension in your local VS Code, your code never leaves your machine unless you
+				connect to an external AI API. Even then, you control exactly what is sent to the AI model. You can use
+				tools like .rooignore to exclude sensitive files, and you can also run ACode with offline/local models
+				for full privacy.
 			</>
 		),
 	},
 	{
-		question: "Which AI models does Roo Code support?",
+		question: "Which AI models does ACode support?",
 		answer: (
 			<>
-				Roo Code is fully model-agnostic, giving you the flexibility to work with whatever AI models you prefer.
-				It supports OpenAI models (like GPT-4o, GPT-4, and o1), Anthropic&apos;s Claude (including Claude 3.5
+				ACode is fully model-agnostic, giving you the flexibility to work with whatever AI models you prefer. It
+				supports OpenAI models (like GPT-4o, GPT-4, and o1), Anthropic&apos;s Claude (including Claude 3.5
 				Sonnet), Google&apos;s Gemini models, and local LLMs via APIs or specialized plugins. You can even
-				connect any other model that follows Roo Code&apos;s Model Context Protocol (MCP).
+				connect any other model that follows ACode&apos;s Model Context Protocol (MCP).
 			</>
 		),
 	},
 	{
-		question: "Does Roo Code support my programming language?",
+		question: "Does ACode support my programming language?",
 		answer: (
 			<>
-				Likely yes! Roo Code supports a wide range of languages—Python, Java, C#, JavaScript/TypeScript, Go,
-				Rust, etc. Since it leverages the AI model&apos;s understanding, new or lesser-known languages may also
-				work, depending on model support.
+				Likely yes! ACode supports a wide range of languages—Python, Java, C#, JavaScript/TypeScript, Go, Rust,
+				etc. Since it leverages the AI model&apos;s understanding, new or lesser-known languages may also work,
+				depending on model support.
 			</>
 		),
 	},
@@ -81,7 +81,7 @@ const faqs: FAQItem[] = [
 		question: "How do I install and get started?",
 		answer: (
 			<>
-				Install Roo Code from the{" "}
+				Install ACode from the{" "}
 				<a
 					href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"
 					target="_blank"
@@ -105,11 +105,11 @@ const faqs: FAQItem[] = [
 		question: "Can it handle large, enterprise-scale projects?",
 		answer: (
 			<>
-				Absolutely. Roo Code uses efficient strategies (like partial-file analysis, summarization, or
+				Absolutely. ACode uses efficient strategies (like partial-file analysis, summarization, or
 				user-specified context) to handle large codebases. Enterprises especially appreciate the on-prem or
 				self-hosted model option for compliance and security needs.{" "}
 				<Link href="/enterprise" className="text-primary underline-offset-4 hover:underline">
-					Learn more about Roo Code for enterprise.
+					Learn more about ACode for enterprise.
 				</Link>
 			</>
 		),
@@ -118,27 +118,27 @@ const faqs: FAQItem[] = [
 		question: "Is it safe for enterprise use?",
 		answer: (
 			<>
-				Yes. Roo Code was built for enterprise environments. You can self-host AI models or use your own trusted
+				Yes. ACode was built for enterprise environments. You can self-host AI models or use your own trusted
 				provider. All file changes and commands go through permission gating, so nothing runs without your
-				approval. And because Roo Code is fully open-source, it&apos;s auditable—you can review exactly how it
+				approval. And because ACode is fully open-source, it&apos;s auditable—you can review exactly how it
 				works before deploying it.{" "}
 				<a
 					href="https://roocode.com/enterprise"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">
-					Learn more about Roo Code for enterprise.
+					Learn more about ACode for enterprise.
 				</a>
 			</>
 		),
 	},
 	{
-		question: "Can Roo Code run commands and tests automatically?",
+		question: "Can ACode run commands and tests automatically?",
 		answer: (
 			<>
-				Yes! One of Roo Code&apos;s biggest strengths is its ability to execute commands—always optional and
-				fully permission-based. It can run terminal commands like npm install, execute your test suites, and
-				even open a web browser for integration testing when you approve it.
+				Yes! One of ACode&apos;s biggest strengths is its ability to execute commands—always optional and fully
+				permission-based. It can run terminal commands like npm install, execute your test suites, and even open
+				a web browser for integration testing when you approve it.
 			</>
 		),
 	},
@@ -146,19 +146,19 @@ const faqs: FAQItem[] = [
 		question: "What if I just want a casual coding 'vibe'?",
 		answer: (
 			<>
-				Roo Code shines for both serious enterprise development and casual &quot;vibe coding.&quot; You can ask
-				it to quickly prototype ideas, refactor on the fly, or provide design suggestions—without a rigid,
+				ACode shines for both serious enterprise development and casual &quot;vibe coding.&quot; You can ask it
+				to quickly prototype ideas, refactor on the fly, or provide design suggestions—without a rigid,
 				step-by-step process.
 			</>
 		),
 	},
 	{
-		question: "Can I contribute to Roo Code?",
+		question: "Can I contribute to ACode?",
 		answer: (
 			<>
-				Yes, please do! Roo Code is open-source on{" "}
+				Yes, please do! ACode is open-source on{" "}
 				<a
-					href="https://github.com/RooCodeInc/Roo-Code"
+					href="https://github.com/ACodeInc/Roo-Code"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">
@@ -174,7 +174,7 @@ const faqs: FAQItem[] = [
 				</a>{" "}
 				and{" "}
 				<a
-					href="https://reddit.com/r/RooCode"
+					href="https://reddit.com/r/ACode"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">
@@ -206,7 +206,7 @@ const faqs: FAQItem[] = [
 				</a>{" "}
 				and{" "}
 				<a
-					href="https://reddit.com/r/RooCode"
+					href="https://reddit.com/r/ACode"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">
@@ -214,7 +214,7 @@ const faqs: FAQItem[] = [
 				</a>
 				. You can also check out our{" "}
 				<a
-					href="https://www.youtube.com/@RooCodeYT"
+					href="https://www.youtube.com/@ACodeYT"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="text-primary underline-offset-4 hover:underline">
@@ -255,8 +255,7 @@ export function FAQSection() {
 						}}>
 						<h2 className="text-4xl font-bold tracking-tight sm:text-5xl">Frequently Asked Questions</h2>
 						<p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-							Everything you need to know about Roo Code and how it can transform your development
-							workflow.
+							Everything you need to know about ACode and how it can transform your development workflow.
 						</p>
 					</motion.div>
 				</div>
