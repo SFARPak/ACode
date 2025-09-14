@@ -1,20 +1,20 @@
 {
 	"name": "@acode/types",
 	"version": "1.75.0",
-	"description": "TypeScript type definitions for Roo Code.",
+	"description": "TypeScript type definitions for ACode.",
 	"publishConfig": {
 		"access": "public",
 		"name": "@acode/types",
 		"registry": "https://registry.npmjs.org/"
 	},
-	"author": "Roo Code Team",
+	"author": "ACode Team",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/RooCodeInc/Roo-Code.git"
+		"url": "git+https://github.com/ACodeInc/Roo-Code.git"
 	},
 	"bugs": {
-		"url": "https://github.com/RooCodeInc/Roo-Code/issues"
+		"url": "https://github.com/ACodeInc/Roo-Code/issues"
 	},
 	"homepage": "https://roocode.com",
 	"keywords": ["roo", "roo-code", "ai"],

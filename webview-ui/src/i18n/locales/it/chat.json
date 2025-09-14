@@ -276,7 +276,7 @@
 		"feature2": "<bold>Controlla l'estensione Roo da remoto (Pro):</bold> Avvia, ferma e interagisci con le attività da un'interfaccia browser basata su chat.",
 		"learnMore": "Pronto a prendere il controllo? Scopri di più <learnMoreLink>qui</learnMoreLink>.",
 		"visitCloudButton": "Visita ACode Cloud",
-		"socialLinks": "Unisciti a noi su <xLink>X</xLink>, <discordLink>Discord</discordLink>, o <redditLink>r/RooCode</redditLink>"
+		"socialLinks": "Unisciti a noi su <xLink>X</xLink>, <discordLink>Discord</discordLink>, o <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo vuole utilizzare il browser:",

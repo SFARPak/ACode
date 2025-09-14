@@ -8,7 +8,7 @@ import { RefreshTimer } from "../RefreshTimer.js"
 vi.mock("../RefreshTimer")
 
 vi.mock("../config", () => ({
-	getRooCodeApiUrl: vi.fn().mockReturnValue("https://app.roocode.com"),
+	getACodeApiUrl: vi.fn().mockReturnValue("https://app.roocode.com"),
 }))
 
 global.fetch = vi.fn()

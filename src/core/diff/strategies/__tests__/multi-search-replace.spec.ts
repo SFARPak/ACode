@@ -900,12 +900,12 @@ function sum(a, b) {
 
 		it("should match content with smart quotes", async () => {
 			const originalContent =
-				"**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!"
+				"**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/ACode/) or [Discord](https://discord.gg/roocode). Happy coding!"
 			const diffContent = `test.ts
 <<<<<<< SEARCH
-**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!
+**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/ACode/) or [Discord](https://discord.gg/roocode). Happy coding!
 =======
-**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!
+**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/ACode/) or [Discord](https://discord.gg/roocode). Happy coding!
 
 You're still here?
 >>>>>>> REPLACE`
@@ -914,7 +914,7 @@ You're still here?
 			expect(result.success).toBe(true)
 			if (result.success) {
 				expect(result.content).toBe(
-					"**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!\n\nYou're still here?",
+					"**Enjoy ACode!** Whether you keep it on a short leash or let it roam autonomously, we can't wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/ACode/) or [Discord](https://discord.gg/roocode). Happy coding!\n\nYou're still here?",
 				)
 			}
 		})

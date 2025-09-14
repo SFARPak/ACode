@@ -1,5 +1,5 @@
 ---
-description: "Create a new release of the Roo Code extension"
+description: "Create a new release of the ACode extension"
 argument-hint: patch | minor | major
 ---
 

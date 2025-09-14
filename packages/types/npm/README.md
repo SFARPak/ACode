@@ -1,16 +1,16 @@
-# Roo Code API
+# ACode API
 
-The Roo Code extension exposes an API that can be used by other extensions.
+The ACode extension exposes an API that can be used by other extensions.
 To use this API in your extension:
 
 1. Install `@acode/types` with npm, pnpm, or yarn.
-2. Import the `RooCodeAPI` type.
+2. Import the `ACodeAPI` type.
 3. Load the extension API.
 
 ```typescript
-import { RooCodeAPI } from "@acode/types"
+import { ACodeAPI } from "@acode/types"
 
-const extension = vscode.extensions.getExtension<RooCodeAPI>("RooVeterinaryInc.roo-cline")
+const extension = vscode.extensions.getExtension<ACodeAPI>("RooVeterinaryInc.roo-cline")
 
 if (!extension?.isActive) {
 	throw new Error("Extension is not activated")
@@ -23,7 +23,7 @@ if (!api) {
 }
 
 // Start a new task with an initial message.
-await api.startNewTask("Hello, Roo Code API! Let's make a new project...")
+await api.startNewTask("Hello, ACode API! Let's make a new project...")
 
 // Start a new task with an initial message and images.
 await api.startNewTask("Use this design language", ["data:image/webp;base64,..."])

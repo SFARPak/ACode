@@ -35,7 +35,7 @@ vi.mock("vscode", () => ({
 }))
 
 vi.mock("../Config", () => ({
-	getRooCodeApiUrl: () => "https://app.roocode.com",
+	getACodeApiUrl: () => "https://app.roocode.com",
 }))
 
 vi.mock("../utils", () => ({

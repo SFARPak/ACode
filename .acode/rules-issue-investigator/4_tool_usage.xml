@@ -26,7 +26,7 @@
       </best_practices>
       <example><![CDATA[
 <execute_command>
-<command>gh issue view https://github.com/RooCodeInc/Roo-Code/issues/123 --json title,body</command>
+<command>gh issue view https://github.com/ACodeInc/ACode/issues/123 --json title,body</command>
 </execute_command>
       ]]></example>
     </tool>

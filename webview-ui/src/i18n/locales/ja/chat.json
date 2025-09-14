@@ -276,7 +276,7 @@
 		"feature2": "<bold>Roo拡張機能をリモート制御（Pro）：</bold>チャットベースのブラウザインターフェースからタスクを開始、停止、操作。",
 		"learnMore": "制御を取る準備はできましたか？詳細は<learnMoreLink>こちら</learnMoreLink>。",
 		"visitCloudButton": "ACode Cloudを訪問",
-		"socialLinks": "<xLink>X</xLink>、<discordLink>Discord</discordLink>、または<redditLink>r/RooCode</redditLink>でフォローしてください"
+		"socialLinks": "<xLink>X</xLink>、<discordLink>Discord</discordLink>、または<redditLink>r/ACode</redditLink>でフォローしてください"
 	},
 	"browser": {
 		"rooWantsToUse": "Rooはブラウザを使用したい:",

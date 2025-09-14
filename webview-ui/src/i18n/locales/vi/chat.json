@@ -276,7 +276,7 @@
 		"feature2": "<bold>Điều khiển Tiện ích Roo từ xa (Pro):</bold> Bắt đầu, dừng và tương tác với các tác vụ từ giao diện trình duyệt dựa trên chat.",
 		"learnMore": "Sẵn sàng nắm quyền kiểm soát? Tìm hiểu thêm <learnMoreLink>tại đây</learnMoreLink>.",
 		"visitCloudButton": "Truy cập ACode Cloud",
-		"socialLinks": "Tham gia với chúng tôi trên <xLink>X</xLink>, <discordLink>Discord</discordLink>, hoặc <redditLink>r/RooCode</redditLink>"
+		"socialLinks": "Tham gia với chúng tôi trên <xLink>X</xLink>, <discordLink>Discord</discordLink>, hoặc <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo muốn sử dụng trình duyệt:",

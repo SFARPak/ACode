@@ -6,14 +6,14 @@ import * as os from "os"
 import * as vscode from "vscode"
 
 import {
-	type RooCodeAPI,
-	type RooCodeSettings,
-	type RooCodeEvents,
+	type ACodeAPI,
+	type ACodeSettings,
+	type ACodeEvents,
 	type ProviderSettings,
 	type ProviderSettingsEntry,
 	type TaskEvent,
 	type CreateTaskOptions,
-	RooCodeEventName,
+	ACodeEventName,
 	TaskCommandName,
 	isSecretStateKey,
 	IpcOrigin,
@@ -25,7 +25,7 @@ import { Package } from "../shared/package"
 import { ClineProvider } from "../core/webview/ClineProvider"
 import { openClineInNewTab } from "../activate/registerCommands"
 
-export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
+export class API extends EventEmitter<ACodeEvents> implements ACodeAPI {
 	private readonly outputChannel: vscode.OutputChannel
 	private readonly sidebarProvider: ClineProvider
 	private readonly context: vscode.ExtensionContext
@@ -96,11 +96,11 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 		}
 	}
 
-	public override emit<K extends keyof RooCodeEvents>(
+	public override emit<K extends keyof ACodeEvents>(
 		eventName: K,
-		...args: K extends keyof RooCodeEvents ? RooCodeEvents[K] : never
+		...args: K extends keyof ACodeEvents ? ACodeEvents[K] : never
 	) {
-		const data = { eventName: eventName as RooCodeEventName, payload: args } as TaskEvent
+		const data = { eventName: eventName as ACodeEventName, payload: args } as TaskEvent
 		this.ipc?.broadcast({ type: IpcMessageType.TaskEvent, origin: IpcOrigin.Server, data })
 		return super.emit(eventName, ...args)
 	}
@@ -111,7 +111,7 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 		images,
 		newTab,
 	}: {
-		configuration: RooCodeSettings
+		configuration: ACodeSettings
 		text?: string
 		images?: string[]
 		newTab?: boolean
@@ -202,17 +202,17 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 	}
 
 	private registerListeners(provider: ClineProvider) {
-		provider.on(RooCodeEventName.TaskCreated, (task) => {
+		provider.on(ACodeEventName.TaskCreated, (task) => {
 			// Task Lifecycle
 
-			task.on(RooCodeEventName.TaskStarted, async () => {
-				this.emit(RooCodeEventName.TaskStarted, task.taskId)
+			task.on(ACodeEventName.TaskStarted, async () => {
+				this.emit(ACodeEventName.TaskStarted, task.taskId)
 				this.taskMap.set(task.taskId, provider)
 				await this.fileLog(`[${new Date().toISOString()}] taskStarted -> ${task.taskId}\n`)
 			})
 
-			task.on(RooCodeEventName.TaskCompleted, async (_, tokenUsage, toolUsage) => {
-				this.emit(RooCodeEventName.TaskCompleted, task.taskId, tokenUsage, toolUsage, {
+			task.on(ACodeEventName.TaskCompleted, async (_, tokenUsage, toolUsage) => {
+				this.emit(ACodeEventName.TaskCompleted, task.taskId, tokenUsage, toolUsage, {
 					isSubtask: !!task.parentTaskId,
 				})
 
@@ -223,80 +223,80 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 				)
 			})
 
-			task.on(RooCodeEventName.TaskAborted, () => {
-				this.emit(RooCodeEventName.TaskAborted, task.taskId)
+			task.on(ACodeEventName.TaskAborted, () => {
+				this.emit(ACodeEventName.TaskAborted, task.taskId)
 				this.taskMap.delete(task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskFocused, () => {
-				this.emit(RooCodeEventName.TaskFocused, task.taskId)
+			task.on(ACodeEventName.TaskFocused, () => {
+				this.emit(ACodeEventName.TaskFocused, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskUnfocused, () => {
-				this.emit(RooCodeEventName.TaskUnfocused, task.taskId)
+			task.on(ACodeEventName.TaskUnfocused, () => {
+				this.emit(ACodeEventName.TaskUnfocused, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskActive, () => {
-				this.emit(RooCodeEventName.TaskActive, task.taskId)
+			task.on(ACodeEventName.TaskActive, () => {
+				this.emit(ACodeEventName.TaskActive, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskInteractive, () => {
-				this.emit(RooCodeEventName.TaskInteractive, task.taskId)
+			task.on(ACodeEventName.TaskInteractive, () => {
+				this.emit(ACodeEventName.TaskInteractive, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskResumable, () => {
-				this.emit(RooCodeEventName.TaskResumable, task.taskId)
+			task.on(ACodeEventName.TaskResumable, () => {
+				this.emit(ACodeEventName.TaskResumable, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskIdle, () => {
-				this.emit(RooCodeEventName.TaskIdle, task.taskId)
+			task.on(ACodeEventName.TaskIdle, () => {
+				this.emit(ACodeEventName.TaskIdle, task.taskId)
 			})
 
 			// Subtask Lifecycle
 
-			task.on(RooCodeEventName.TaskPaused, () => {
-				this.emit(RooCodeEventName.TaskPaused, task.taskId)
+			task.on(ACodeEventName.TaskPaused, () => {
+				this.emit(ACodeEventName.TaskPaused, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskUnpaused, () => {
-				this.emit(RooCodeEventName.TaskUnpaused, task.taskId)
+			task.on(ACodeEventName.TaskUnpaused, () => {
+				this.emit(ACodeEventName.TaskUnpaused, task.taskId)
 			})
 
-			task.on(RooCodeEventName.TaskSpawned, (childTaskId) => {
-				this.emit(RooCodeEventName.TaskSpawned, task.taskId, childTaskId)
+			task.on(ACodeEventName.TaskSpawned, (childTaskId) => {
+				this.emit(ACodeEventName.TaskSpawned, task.taskId, childTaskId)
 			})
 
 			// Task Execution
 
-			task.on(RooCodeEventName.Message, async (message) => {
-				this.emit(RooCodeEventName.Message, { taskId: task.taskId, ...message })
+			task.on(ACodeEventName.Message, async (message) => {
+				this.emit(ACodeEventName.Message, { taskId: task.taskId, ...message })
 
 				if (message.message.partial !== true) {
 					await this.fileLog(`[${new Date().toISOString()}] ${JSON.stringify(message.message, null, 2)}\n`)
 				}
 			})
 
-			task.on(RooCodeEventName.TaskModeSwitched, (taskId, mode) => {
-				this.emit(RooCodeEventName.TaskModeSwitched, taskId, mode)
+			task.on(ACodeEventName.TaskModeSwitched, (taskId, mode) => {
+				this.emit(ACodeEventName.TaskModeSwitched, taskId, mode)
 			})
 
-			task.on(RooCodeEventName.TaskAskResponded, () => {
-				this.emit(RooCodeEventName.TaskAskResponded, task.taskId)
+			task.on(ACodeEventName.TaskAskResponded, () => {
+				this.emit(ACodeEventName.TaskAskResponded, task.taskId)
 			})
 
 			// Task Analytics
 
-			task.on(RooCodeEventName.TaskToolFailed, (taskId, tool, error) => {
-				this.emit(RooCodeEventName.TaskToolFailed, taskId, tool, error)
+			task.on(ACodeEventName.TaskToolFailed, (taskId, tool, error) => {
+				this.emit(ACodeEventName.TaskToolFailed, taskId, tool, error)
 			})
 
-			task.on(RooCodeEventName.TaskTokenUsageUpdated, (_, usage) => {
-				this.emit(RooCodeEventName.TaskTokenUsageUpdated, task.taskId, usage)
+			task.on(ACodeEventName.TaskTokenUsageUpdated, (_, usage) => {
+				this.emit(ACodeEventName.TaskTokenUsageUpdated, task.taskId, usage)
 			})
 
 			// Let's go!
 
-			this.emit(RooCodeEventName.TaskCreated, task.taskId)
+			this.emit(ACodeEventName.TaskCreated, task.taskId)
 		})
 	}
 
@@ -347,13 +347,13 @@ export class API extends EventEmitter<RooCodeEvents> implements RooCodeAPI {
 
 	// Global Settings Management
 
-	public getConfiguration(): RooCodeSettings {
+	public getConfiguration(): ACodeSettings {
 		return Object.fromEntries(
 			Object.entries(this.sidebarProvider.getValues()).filter(([key]) => !isSecretStateKey(key)),
 		)
 	}
 
-	public async setConfiguration(values: RooCodeSettings) {
+	public async setConfiguration(values: ACodeSettings) {
 		await this.sidebarProvider.contextProxy.setValues(values)
 		await this.sidebarProvider.providerSettingsManager.saveConfig(values.currentApiConfigName || "default", values)
 		await this.sidebarProvider.postStateToWebview()

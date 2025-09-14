@@ -14,6 +14,6 @@ export const rooModels = {
 		inputPrice: 0,
 		outputPrice: 0,
 		description:
-			"A reasoning model that is blazing fast and excels at agentic coding, accessible for free through Roo Code Cloud for a limited time. (Note: the free prompts and completions are logged by xAI and used to improve the model.)",
+			"A reasoning model that is blazing fast and excels at agentic coding, accessible for free through ACode Cloud for a limited time. (Note: the free prompts and completions are logged by xAI and used to improve the model.)",
 	},
 } as const satisfies Record<string, ModelInfo>

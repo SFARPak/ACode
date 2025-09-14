@@ -276,7 +276,7 @@
 		"feature2": "<bold>远程控制 Roo 扩展（Pro）：</bold>通过基于聊天的浏览器界面启动、停止和与任务交互。",
 		"learnMore": "准备掌控一切？在<learnMoreLink>这里</learnMoreLink>了解更多。",
 		"visitCloudButton": "访问 ACode Cloud",
-		"socialLinks": "在 <xLink>X</xLink>、<discordLink>Discord</discordLink> 或 <redditLink>r/RooCode</redditLink> 上关注我们"
+		"socialLinks": "在 <xLink>X</xLink>、<discordLink>Discord</discordLink> 或 <redditLink>r/ACode</redditLink> 上关注我们"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo想使用浏览器:",

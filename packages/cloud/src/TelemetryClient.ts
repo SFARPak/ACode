@@ -10,7 +10,7 @@ import {
 	TelemetryEventSubscription,
 } from "@acode/types"
 
-import { getRooCodeApiUrl } from "./config.js"
+import { getACodeApiUrl } from "./config.js"
 
 abstract class BaseTelemetryClient implements TelemetryClient {
 	protected providerRef: WeakRef<TelemetryPropertiesProvider> | null = null
@@ -108,7 +108,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			return
 		}
 
-		const response = await fetch(`${getRooCodeApiUrl()}/api/${path}`, {
+		const response = await fetch(`${getACodeApiUrl()}/api/${path}`, {
 			...options,
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -200,7 +200,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			}
 
 			// Custom fetch for multipart - don't set Content-Type header (let browser set it)
-			const response = await fetch(`${getRooCodeApiUrl()}/api/events/backfill`, {
+			const response = await fetch(`${getACodeApiUrl()}/api/events/backfill`, {
 				method: "POST",
 				headers: {
 					Authorization: `Bearer ${token}`,

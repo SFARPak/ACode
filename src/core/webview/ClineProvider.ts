@@ -15,7 +15,7 @@ import {
 	type GlobalState,
 	type ProviderName,
 	type ProviderSettings,
-	type RooCodeSettings,
+	type ACodeSettings,
 	type ProviderSettingsEntry,
 	type StaticAppProperties,
 	type DynamicAppProperties,
@@ -32,7 +32,7 @@ import {
 	type CloudUserInfo,
 	type CreateTaskOptions,
 	type TokenUsage,
-	RooCodeEventName,
+	ACodeEventName,
 	requestyDefaultModelId,
 	openRouterDefaultModelId,
 	glamaDefaultModelId,
@@ -42,7 +42,7 @@ import {
 	DEFAULT_MODES,
 } from "@acode/types"
 import { TelemetryService } from "@acode/telemetry"
-import { CloudService, BridgeOrchestrator, getRooCodeApiUrl } from "@acode/cloud"
+import { CloudService, BridgeOrchestrator, getACodeApiUrl } from "@acode/cloud"
 
 import { Package } from "../../shared/package"
 import { findLast } from "../../shared/array"
@@ -190,58 +190,58 @@ export class ClineProvider
 		// Forward <most> task events to the provider.
 		// We do something fairly similar for the IPC-based API.
 		this.taskCreationCallback = (instance: Task) => {
-			this.emit(RooCodeEventName.TaskCreated, instance)
+			this.emit(ACodeEventName.TaskCreated, instance)
 
 			// Create named listener functions so we can remove them later.
-			const onTaskStarted = () => this.emit(RooCodeEventName.TaskStarted, instance.taskId)
+			const onTaskStarted = () => this.emit(ACodeEventName.TaskStarted, instance.taskId)
 			const onTaskCompleted = (taskId: string, tokenUsage: any, toolUsage: any) =>
-				this.emit(RooCodeEventName.TaskCompleted, taskId, tokenUsage, toolUsage)
-			const onTaskAborted = () => this.emit(RooCodeEventName.TaskAborted, instance.taskId)
-			const onTaskFocused = () => this.emit(RooCodeEventName.TaskFocused, instance.taskId)
-			const onTaskUnfocused = () => this.emit(RooCodeEventName.TaskUnfocused, instance.taskId)
-			const onTaskActive = (taskId: string) => this.emit(RooCodeEventName.TaskActive, taskId)
-			const onTaskInteractive = (taskId: string) => this.emit(RooCodeEventName.TaskInteractive, taskId)
-			const onTaskResumable = (taskId: string) => this.emit(RooCodeEventName.TaskResumable, taskId)
-			const onTaskIdle = (taskId: string) => this.emit(RooCodeEventName.TaskIdle, taskId)
-			const onTaskPaused = (taskId: string) => this.emit(RooCodeEventName.TaskPaused, taskId)
-			const onTaskUnpaused = (taskId: string) => this.emit(RooCodeEventName.TaskUnpaused, taskId)
-			const onTaskSpawned = (taskId: string) => this.emit(RooCodeEventName.TaskSpawned, taskId)
-			const onTaskUserMessage = (taskId: string) => this.emit(RooCodeEventName.TaskUserMessage, taskId)
+				this.emit(ACodeEventName.TaskCompleted, taskId, tokenUsage, toolUsage)
+			const onTaskAborted = () => this.emit(ACodeEventName.TaskAborted, instance.taskId)
+			const onTaskFocused = () => this.emit(ACodeEventName.TaskFocused, instance.taskId)
+			const onTaskUnfocused = () => this.emit(ACodeEventName.TaskUnfocused, instance.taskId)
+			const onTaskActive = (taskId: string) => this.emit(ACodeEventName.TaskActive, taskId)
+			const onTaskInteractive = (taskId: string) => this.emit(ACodeEventName.TaskInteractive, taskId)
+			const onTaskResumable = (taskId: string) => this.emit(ACodeEventName.TaskResumable, taskId)
+			const onTaskIdle = (taskId: string) => this.emit(ACodeEventName.TaskIdle, taskId)
+			const onTaskPaused = (taskId: string) => this.emit(ACodeEventName.TaskPaused, taskId)
+			const onTaskUnpaused = (taskId: string) => this.emit(ACodeEventName.TaskUnpaused, taskId)
+			const onTaskSpawned = (taskId: string) => this.emit(ACodeEventName.TaskSpawned, taskId)
+			const onTaskUserMessage = (taskId: string) => this.emit(ACodeEventName.TaskUserMessage, taskId)
 			const onTaskTokenUsageUpdated = (taskId: string, tokenUsage: TokenUsage) =>
-				this.emit(RooCodeEventName.TaskTokenUsageUpdated, taskId, tokenUsage)
+				this.emit(ACodeEventName.TaskTokenUsageUpdated, taskId, tokenUsage)
 
 			// Attach the listeners.
-			instance.on(RooCodeEventName.TaskStarted, onTaskStarted)
-			instance.on(RooCodeEventName.TaskCompleted, onTaskCompleted)
-			instance.on(RooCodeEventName.TaskAborted, onTaskAborted)
-			instance.on(RooCodeEventName.TaskFocused, onTaskFocused)
-			instance.on(RooCodeEventName.TaskUnfocused, onTaskUnfocused)
-			instance.on(RooCodeEventName.TaskActive, onTaskActive)
-			instance.on(RooCodeEventName.TaskInteractive, onTaskInteractive)
-			instance.on(RooCodeEventName.TaskResumable, onTaskResumable)
-			instance.on(RooCodeEventName.TaskIdle, onTaskIdle)
-			instance.on(RooCodeEventName.TaskPaused, onTaskPaused)
-			instance.on(RooCodeEventName.TaskUnpaused, onTaskUnpaused)
-			instance.on(RooCodeEventName.TaskSpawned, onTaskSpawned)
-			instance.on(RooCodeEventName.TaskUserMessage, onTaskUserMessage)
-			instance.on(RooCodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated)
+			instance.on(ACodeEventName.TaskStarted, onTaskStarted)
+			instance.on(ACodeEventName.TaskCompleted, onTaskCompleted)
+			instance.on(ACodeEventName.TaskAborted, onTaskAborted)
+			instance.on(ACodeEventName.TaskFocused, onTaskFocused)
+			instance.on(ACodeEventName.TaskUnfocused, onTaskUnfocused)
+			instance.on(ACodeEventName.TaskActive, onTaskActive)
+			instance.on(ACodeEventName.TaskInteractive, onTaskInteractive)
+			instance.on(ACodeEventName.TaskResumable, onTaskResumable)
+			instance.on(ACodeEventName.TaskIdle, onTaskIdle)
+			instance.on(ACodeEventName.TaskPaused, onTaskPaused)
+			instance.on(ACodeEventName.TaskUnpaused, onTaskUnpaused)
+			instance.on(ACodeEventName.TaskSpawned, onTaskSpawned)
+			instance.on(ACodeEventName.TaskUserMessage, onTaskUserMessage)
+			instance.on(ACodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated)
 
 			// Store the cleanup functions for later removal.
 			this.taskEventListeners.set(instance, [
-				() => instance.off(RooCodeEventName.TaskStarted, onTaskStarted),
-				() => instance.off(RooCodeEventName.TaskCompleted, onTaskCompleted),
-				() => instance.off(RooCodeEventName.TaskAborted, onTaskAborted),
-				() => instance.off(RooCodeEventName.TaskFocused, onTaskFocused),
-				() => instance.off(RooCodeEventName.TaskUnfocused, onTaskUnfocused),
-				() => instance.off(RooCodeEventName.TaskActive, onTaskActive),
-				() => instance.off(RooCodeEventName.TaskInteractive, onTaskInteractive),
-				() => instance.off(RooCodeEventName.TaskResumable, onTaskResumable),
-				() => instance.off(RooCodeEventName.TaskIdle, onTaskIdle),
-				() => instance.off(RooCodeEventName.TaskUserMessage, onTaskUserMessage),
-				() => instance.off(RooCodeEventName.TaskPaused, onTaskPaused),
-				() => instance.off(RooCodeEventName.TaskUnpaused, onTaskUnpaused),
-				() => instance.off(RooCodeEventName.TaskSpawned, onTaskSpawned),
-				() => instance.off(RooCodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated),
+				() => instance.off(ACodeEventName.TaskStarted, onTaskStarted),
+				() => instance.off(ACodeEventName.TaskCompleted, onTaskCompleted),
+				() => instance.off(ACodeEventName.TaskAborted, onTaskAborted),
+				() => instance.off(ACodeEventName.TaskFocused, onTaskFocused),
+				() => instance.off(ACodeEventName.TaskUnfocused, onTaskUnfocused),
+				() => instance.off(ACodeEventName.TaskActive, onTaskActive),
+				() => instance.off(ACodeEventName.TaskInteractive, onTaskInteractive),
+				() => instance.off(ACodeEventName.TaskResumable, onTaskResumable),
+				() => instance.off(ACodeEventName.TaskIdle, onTaskIdle),
+				() => instance.off(ACodeEventName.TaskUserMessage, onTaskUserMessage),
+				() => instance.off(ACodeEventName.TaskPaused, onTaskPaused),
+				() => instance.off(ACodeEventName.TaskUnpaused, onTaskUnpaused),
+				() => instance.off(ACodeEventName.TaskSpawned, onTaskSpawned),
+				() => instance.off(ACodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated),
 			])
 		}
 
@@ -369,7 +369,7 @@ export class ClineProvider
 		// Add this cline instance into the stack that represents the order of
 		// all the called tasks.
 		this.clineStack.push(task)
-		task.emit(RooCodeEventName.TaskFocused)
+		task.emit(ACodeEventName.TaskFocused)
 
 		// Perform special setup provider specific tasks.
 		await this.performPreparationTasks(task)
@@ -411,7 +411,7 @@ export class ClineProvider
 		let task = this.clineStack.pop()
 
 		if (task) {
-			task.emit(RooCodeEventName.TaskUnfocused)
+			task.emit(ACodeEventName.TaskUnfocused)
 
 			try {
 				// Abort the running task and set isAbandoned to true so
@@ -1135,7 +1135,7 @@ export class ClineProvider
 
 		if (task) {
 			TelemetryService.instance.captureModeSwitch(task.taskId, newMode)
-			task.emit(RooCodeEventName.TaskModeSwitched, task.taskId, newMode)
+			task.emit(ACodeEventName.TaskModeSwitched, task.taskId, newMode)
 
 			try {
 				// Update the task history with the new mode first.
@@ -1163,7 +1163,7 @@ export class ClineProvider
 
 		await this.updateGlobalState("mode", newMode)
 
-		this.emit(RooCodeEventName.ModeChanged, newMode)
+		this.emit(ACodeEventName.ModeChanged, newMode)
 
 		// Load the saved API config for the new mode if it exists.
 		const savedConfigId = await this.providerSettingsManager.getModeConfigId(newMode)
@@ -1314,7 +1314,7 @@ export class ClineProvider
 		await this.postStateToWebview()
 
 		if (providerSettings.apiProvider) {
-			this.emit(RooCodeEventName.ProviderProfileChanged, { name, provider: providerSettings.apiProvider })
+			this.emit(ACodeEventName.ProviderProfileChanged, { name, provider: providerSettings.apiProvider })
 		}
 	}
 
@@ -1907,7 +1907,7 @@ export class ClineProvider
 			// undefined means no MDM policy, true means compliant, false means non-compliant
 			mdmCompliant: this.mdmService?.requiresCloudAuth() ? this.checkMdmCompliance() : undefined,
 			profileThresholds: profileThresholds ?? {},
-			cloudApiUrl: getRooCodeApiUrl(),
+			cloudApiUrl: getACodeApiUrl(),
 			hasOpenedModeSelector: this.getGlobalState("hasOpenedModeSelector") ?? false,
 			alwaysAllowFollowupQuestions: alwaysAllowFollowupQuestions ?? false,
 			followupAutoApproveTimeoutMs: followupAutoApproveTimeoutMs ?? 60000,
@@ -2181,11 +2181,11 @@ export class ClineProvider
 		return this.contextProxy.getValue(key)
 	}
 
-	public async setValue<K extends keyof RooCodeSettings>(key: K, value: RooCodeSettings[K]) {
+	public async setValue<K extends keyof ACodeSettings>(key: K, value: ACodeSettings[K]) {
 		await this.contextProxy.setValue(key, value)
 	}
 
-	public getValue<K extends keyof RooCodeSettings>(key: K) {
+	public getValue<K extends keyof ACodeSettings>(key: K) {
 		return this.contextProxy.getValue(key)
 	}
 
@@ -2193,7 +2193,7 @@ export class ClineProvider
 		return this.contextProxy.getValues()
 	}
 
-	public async setValues(values: RooCodeSettings) {
+	public async setValues(values: ACodeSettings) {
 		await this.contextProxy.setValues(values)
 	}
 
@@ -2429,7 +2429,7 @@ export class ClineProvider
 		images?: string[],
 		parentTask?: Task,
 		options: CreateTaskOptions = {},
-		configuration: RooCodeSettings = {},
+		configuration: ACodeSettings = {},
 	): Promise<Task> {
 		if (configuration) {
 			await this.setValues(configuration)

@@ -285,7 +285,7 @@
 		"feature2": "<bold>Control the ACode Extension remotely (Pro):</bold> Start, stop, and interact with tasks from a chat-based browser interface.",
 		"learnMore": "Ready to take control? Learn more <learnMoreLink>here</learnMoreLink>.",
 		"visitCloudButton": "Visit ACode Cloud",
-		"socialLinks": "Join us on <xLink>X</xLink>, <discordLink>Discord</discordLink>, or <redditLink>r/RooCode</redditLink>"
+		"socialLinks": "Join us on <xLink>X</xLink>, <discordLink>Discord</discordLink>, or <redditLink>r/ACode</redditLink>"
 	},
 	"reasoning": {
 		"thinking": "Thinking",

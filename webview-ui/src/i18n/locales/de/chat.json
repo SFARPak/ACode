@@ -276,7 +276,7 @@
 		"feature2": "<bold>Die Roo-Erweiterung fernsteuern (Pro):</bold> Starte, stoppe und interagiere mit Aufgaben über eine chat-basierte Browser-Oberfläche.",
 		"learnMore": "Bereit, die Kontrolle zu übernehmen? Erfahre mehr <learnMoreLink>hier</learnMoreLink>.",
 		"visitCloudButton": "ACode Cloud besuchen",
-		"socialLinks": "Folge uns auf <xLink>X</xLink>, <discordLink>Discord</discordLink> oder <redditLink>r/RooCode</redditLink>"
+		"socialLinks": "Folge uns auf <xLink>X</xLink>, <discordLink>Discord</discordLink> oder <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo möchte den Browser verwenden:",

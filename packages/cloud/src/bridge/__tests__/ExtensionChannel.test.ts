@@ -6,7 +6,7 @@ import {
 	type TaskProviderLike,
 	type TaskProviderEvents,
 	type StaticAppProperties,
-	RooCodeEventName,
+	ACodeEventName,
 	ExtensionBridgeEventName,
 	ExtensionSocketEvents,
 } from "@acode/types"
@@ -105,22 +105,22 @@ describe("ExtensionChannel", () => {
 	describe("Event Listener Management", () => {
 		it("should register event listeners on initialization", () => {
 			// Verify that listeners were registered for all expected events
-			const expectedEvents: RooCodeEventName[] = [
-				RooCodeEventName.TaskCreated,
-				RooCodeEventName.TaskStarted,
-				RooCodeEventName.TaskCompleted,
-				RooCodeEventName.TaskAborted,
-				RooCodeEventName.TaskFocused,
-				RooCodeEventName.TaskUnfocused,
-				RooCodeEventName.TaskActive,
-				RooCodeEventName.TaskInteractive,
-				RooCodeEventName.TaskResumable,
-				RooCodeEventName.TaskIdle,
-				RooCodeEventName.TaskPaused,
-				RooCodeEventName.TaskUnpaused,
-				RooCodeEventName.TaskSpawned,
-				RooCodeEventName.TaskUserMessage,
-				RooCodeEventName.TaskTokenUsageUpdated,
+			const expectedEvents: ACodeEventName[] = [
+				ACodeEventName.TaskCreated,
+				ACodeEventName.TaskStarted,
+				ACodeEventName.TaskCompleted,
+				ACodeEventName.TaskAborted,
+				ACodeEventName.TaskFocused,
+				ACodeEventName.TaskUnfocused,
+				ACodeEventName.TaskActive,
+				ACodeEventName.TaskInteractive,
+				ACodeEventName.TaskResumable,
+				ACodeEventName.TaskIdle,
+				ACodeEventName.TaskPaused,
+				ACodeEventName.TaskUnpaused,
+				ACodeEventName.TaskSpawned,
+				ACodeEventName.TaskUserMessage,
+				ACodeEventName.TaskTokenUsageUpdated,
 			]
 
 			// Check that on() was called for each event
@@ -220,7 +220,7 @@ describe("ExtensionChannel", () => {
 			;(mockSocket.emit as any).mockClear()
 
 			// Get a listener that was registered for TaskStarted
-			const taskStartedListeners = eventListeners.get(RooCodeEventName.TaskStarted)
+			const taskStartedListeners = eventListeners.get(ACodeEventName.TaskStarted)
 			expect(taskStartedListeners).toBeDefined()
 			expect(taskStartedListeners!.size).toBe(1)
 

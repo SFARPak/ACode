@@ -2,7 +2,7 @@ import EventEmitter from "events"
 
 import { z } from "zod"
 
-import { RooCodeEventName } from "./events.js"
+import { ACodeEventName } from "./events.js"
 import { TaskStatus, taskMetadataSchema } from "./task.js"
 import { globalSettingsSchema } from "./global-settings.js"
 import { providerSettingsWithIdSchema } from "./provider-settings.js"
@@ -405,27 +405,27 @@ export type ExtensionInstance = z.infer<typeof extensionInstanceSchema>
  */
 
 export enum ExtensionBridgeEventName {
-	TaskCreated = RooCodeEventName.TaskCreated,
-	TaskStarted = RooCodeEventName.TaskStarted,
-	TaskCompleted = RooCodeEventName.TaskCompleted,
-	TaskAborted = RooCodeEventName.TaskAborted,
-	TaskFocused = RooCodeEventName.TaskFocused,
-	TaskUnfocused = RooCodeEventName.TaskUnfocused,
-	TaskActive = RooCodeEventName.TaskActive,
-	TaskInteractive = RooCodeEventName.TaskInteractive,
-	TaskResumable = RooCodeEventName.TaskResumable,
-	TaskIdle = RooCodeEventName.TaskIdle,
+	TaskCreated = ACodeEventName.TaskCreated,
+	TaskStarted = ACodeEventName.TaskStarted,
+	TaskCompleted = ACodeEventName.TaskCompleted,
+	TaskAborted = ACodeEventName.TaskAborted,
+	TaskFocused = ACodeEventName.TaskFocused,
+	TaskUnfocused = ACodeEventName.TaskUnfocused,
+	TaskActive = ACodeEventName.TaskActive,
+	TaskInteractive = ACodeEventName.TaskInteractive,
+	TaskResumable = ACodeEventName.TaskResumable,
+	TaskIdle = ACodeEventName.TaskIdle,
 
-	TaskPaused = RooCodeEventName.TaskPaused,
-	TaskUnpaused = RooCodeEventName.TaskUnpaused,
-	TaskSpawned = RooCodeEventName.TaskSpawned,
+	TaskPaused = ACodeEventName.TaskPaused,
+	TaskUnpaused = ACodeEventName.TaskUnpaused,
+	TaskSpawned = ACodeEventName.TaskSpawned,
 
-	TaskUserMessage = RooCodeEventName.TaskUserMessage,
+	TaskUserMessage = ACodeEventName.TaskUserMessage,
 
-	TaskTokenUsageUpdated = RooCodeEventName.TaskTokenUsageUpdated,
+	TaskTokenUsageUpdated = ACodeEventName.TaskTokenUsageUpdated,
 
-	ModeChanged = RooCodeEventName.ModeChanged,
-	ProviderProfileChanged = RooCodeEventName.ProviderProfileChanged,
+	ModeChanged = ACodeEventName.ModeChanged,
+	ProviderProfileChanged = ACodeEventName.ProviderProfileChanged,
 
 	InstanceRegistered = "instance_registered",
 	InstanceUnregistered = "instance_unregistered",
@@ -587,9 +587,9 @@ export type ExtensionBridgeCommand = z.infer<typeof extensionBridgeCommandSchema
  */
 
 export enum TaskBridgeEventName {
-	Message = RooCodeEventName.Message,
-	TaskModeSwitched = RooCodeEventName.TaskModeSwitched,
-	TaskInteractive = RooCodeEventName.TaskInteractive,
+	Message = ACodeEventName.Message,
+	TaskModeSwitched = ACodeEventName.TaskModeSwitched,
+	TaskInteractive = ACodeEventName.TaskInteractive,
 }
 
 export const taskBridgeEventSchema = z.discriminatedUnion("type", [

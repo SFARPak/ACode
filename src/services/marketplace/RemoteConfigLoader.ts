@@ -8,7 +8,7 @@ import {
 	modeMarketplaceItemSchema,
 	mcpMarketplaceItemSchema,
 } from "@acode/types"
-import { getRooCodeApiUrl } from "@acode/cloud"
+import { getACodeApiUrl } from "@acode/cloud"
 
 const modeMarketplaceResponse = z.object({
 	items: z.array(modeMarketplaceItemSchema),
@@ -24,7 +24,7 @@ export class RemoteConfigLoader {
 	private cacheDuration = 5 * 60 * 1000 // 5 minutes
 
 	constructor() {
-		this.apiBaseUrl = getRooCodeApiUrl()
+		this.apiBaseUrl = getACodeApiUrl()
 	}
 
 	async loadAllItems(hideMarketplaceMcps = false): Promise<MarketplaceItem[]> {

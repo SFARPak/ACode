@@ -12,14 +12,14 @@
 </div>
 <br>
 <div align="center">
-  <h1>Roo Code</h1>
+  <h1>ACode</h1>
   <p align="center">
-  <img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+  <img src="https://media.githubusercontent.com/media/ACodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
   </p>
   <p>Terhubung dengan developer, berkontribusi ide, dan tetap terdepan dengan tools coding bertenaga AI terbaru.</p>
   
   <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"></a>
-  <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Join%20Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Join Reddit"></a>
+  <a href="https://www.reddit.com/r/ACode/" target="_blank"><img src="https://img.shields.io/badge/Join%20Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Join Reddit"></a>
   
 </div>
 <br>
@@ -28,13 +28,13 @@
 <div align="center">
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Download%20on%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Download on VS Marketplace"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Feature%20Requests-yellow?style=for-the-badge" alt="Feature Requests"></a>
+<a href="https://github.com/ACodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Feature%20Requests-yellow?style=for-the-badge" alt="Feature Requests"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Rate%20%26%20Review-green?style=for-the-badge" alt="Rate & Review"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Documentation-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentation"></a>
 
 </div>
 
-**Roo Code** adalah **agen coding otonom** bertenaga AI yang hidup di editor kamu. Ia dapat:
+**ACode** adalah **agen coding otonom** bertenaga AI yang hidup di editor kamu. Ia dapat:
 
 - Berkomunikasi dalam bahasa alami
 - Membaca dan menulis file langsung di workspace kamu
@@ -43,15 +43,15 @@
 - Terintegrasi dengan API/model yang kompatibel dengan OpenAI atau custom
 - Menyesuaikan "kepribadian" dan kemampuannya melalui **Mode Kustom**
 
-Baik kamu mencari partner coding yang fleksibel, arsitek sistem, atau peran khusus seperti QA engineer atau product manager, Roo Code dapat membantu kamu membangun software dengan lebih efisien.
+Baik kamu mencari partner coding yang fleksibel, arsitek sistem, atau peran khusus seperti QA engineer atau product manager, ACode dapat membantu kamu membangun software dengan lebih efisien.
 
 Lihat [CHANGELOG](../../CHANGELOG.md) untuk update dan perbaikan detail.
 
 ---
 
-## 🎉 Roo Code 3.25 Dirilis
+## 🎉 ACode 3.25 Dirilis
 
-Roo Code 3.25 menghadirkan fitur-fitur baru yang powerful dan peningkatan signifikan untuk meningkatkan workflow development kamu!
+ACode 3.25 menghadirkan fitur-fitur baru yang powerful dan peningkatan signifikan untuk meningkatkan workflow development kamu!
 
 - **Antrian pesan** - Antrikan beberapa pesan saat Roo bekerja, memungkinkan kamu terus merencanakan alur kerja tanpa gangguan.
 - **Perintah slash kustom** - Buat perintah slash yang dipersonalisasi untuk akses cepat ke prompt dan alur kerja yang sering digunakan dengan manajemen UI lengkap.
@@ -59,7 +59,7 @@ Roo Code 3.25 menghadirkan fitur-fitur baru yang powerful dan peningkatan signif
 
 ---
 
-## Apa yang Bisa Dilakukan Roo Code?
+## Apa yang Bisa Dilakukan ACode?
 
 - 🚀 **Generate Code** dari deskripsi bahasa alami
 - 🔧 **Refactor & Debug** kode yang ada
@@ -70,7 +70,7 @@ Roo Code 3.25 menghadirkan fitur-fitur baru yang powerful dan peningkatan signif
 
 ## Mulai Cepat
 
-1. [Install Roo Code](https://docs.roocode.com/getting-started/installing)
+1. [Install ACode](https://docs.roocode.com/getting-started/installing)
 2. [Hubungkan AI Provider Kamu](https://docs.roocode.com/getting-started/connecting-api-provider)
 3. [Coba Tugas Pertama Kamu](https://docs.roocode.com/getting-started/your-first-task)
 
@@ -78,7 +78,7 @@ Roo Code 3.25 menghadirkan fitur-fitur baru yang powerful dan peningkatan signif
 
 ### Multiple Mode
 
-Roo Code beradaptasi dengan kebutuhan kamu dengan [mode](https://docs.roocode.com/basic-usage/using-modes) khusus:
+ACode beradaptasi dengan kebutuhan kamu dengan [mode](https://docs.roocode.com/basic-usage/using-modes) khusus:
 
 - **Code Mode:** Untuk tugas coding umum
 - **Architect Mode:** Untuk perencanaan dan kepemimpinan teknis
@@ -88,18 +88,18 @@ Roo Code beradaptasi dengan kebutuhan kamu dengan [mode](https://docs.roocode.co
 
 ### Tools Pintar
 
-Roo Code dilengkapi dengan [tools](https://docs.roocode.com/basic-usage/how-tools-work) powerful yang dapat:
+ACode dilengkapi dengan [tools](https://docs.roocode.com/basic-usage/how-tools-work) powerful yang dapat:
 
 - Membaca dan menulis file di proyek kamu
 - Menjalankan perintah di terminal VS Code kamu
 - Mengontrol web browser
 - Menggunakan tools eksternal via [MCP (Model Context Protocol)](https://docs.roocode.com/advanced-usage/mcp)
 
-MCP memperluas kemampuan Roo Code dengan memungkinkan kamu menambahkan tools kustom tak terbatas. Integrasikan dengan API eksternal, hubungkan ke database, atau buat tools development khusus - MCP menyediakan framework untuk memperluas fungsionalitas Roo Code sesuai kebutuhan spesifik kamu.
+MCP memperluas kemampuan ACode dengan memungkinkan kamu menambahkan tools kustom tak terbatas. Integrasikan dengan API eksternal, hubungkan ke database, atau buat tools development khusus - MCP menyediakan framework untuk memperluas fungsionalitas ACode sesuai kebutuhan spesifik kamu.
 
 ### Kustomisasi
 
-Buat Roo Code bekerja sesuai cara kamu dengan:
+Buat ACode bekerja sesuai cara kamu dengan:
 
 - [Custom Instructions](https://docs.roocode.com/advanced-usage/custom-instructions) untuk perilaku yang dipersonalisasi
 - [Mode Kustom](https://docs.roocode.com/advanced-usage/custom-modes) untuk tugas khusus
@@ -117,8 +117,8 @@ Buat Roo Code bekerja sesuai cara kamu dengan:
 ### Komunitas
 
 - **Discord:** [Bergabung dengan server Discord kami](https://discord.gg/roocode) untuk bantuan real-time dan diskusi
-- **Reddit:** [Kunjungi subreddit kami](https://www.reddit.com/r/RooCode) untuk berbagi pengalaman dan tips
-- **GitHub:** Laporkan [issues](https://github.com/RooCodeInc/Roo-Code/issues) atau request [fitur](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **Reddit:** [Kunjungi subreddit kami](https://www.reddit.com/r/ACode) untuk berbagi pengalaman dan tips
+- **GitHub:** Laporkan [issues](https://github.com/ACodeInc/Roo-Code/issues) atau request [fitur](https://github.com/ACodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ Buat Roo Code bekerja sesuai cara kamu dengan:
 1. **Clone** repo:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/ACodeInc/Roo-Code.git
 ```
 
 2. **Install dependencies**:
@@ -138,7 +138,7 @@ pnpm install
 
 3. **Jalankan extension**:
 
-Tekan `F5` (atau **Run** → **Start Debugging**) di VSCode untuk membuka window baru dengan Roo Code berjalan.
+Tekan `F5` (atau **Run** → **Start Debugging**) di VSCode untuk membuka window baru dengan ACode berjalan.
 
 Perubahan pada webview akan muncul langsung. Perubahan pada core extension akan memerlukan restart extension host.
 
@@ -160,7 +160,7 @@ Kami menggunakan [changesets](https://github.com/changesets/changesets) untuk ve
 
 ## Disclaimer
 
-**Harap dicatat** bahwa Roo Code, Inc **tidak** membuat representasi atau jaminan apapun mengenai kode, model, atau tools lain yang disediakan atau tersedia dalam hubungannya dengan Roo Code, tools pihak ketiga terkait, atau output yang dihasilkan. Kamu menanggung **semua risiko** yang terkait dengan penggunaan tools atau output tersebut; tools tersebut disediakan atas dasar **"SEBAGAIMANA ADANYA"** dan **"SEBAGAIMANA TERSEDIA"**. Risiko tersebut dapat mencakup, tanpa terbatas pada, pelanggaran kekayaan intelektual, kerentanan atau serangan siber, bias, ketidakakuratan, kesalahan, cacat, virus, downtime, kehilangan properti atau kerusakan, dan/atau cedera pribadi. Kamu bertanggung jawab penuh atas penggunaan tools atau output tersebut (termasuk, tanpa terbatas pada, legalitas, kesesuaian, dan hasilnya).
+**Harap dicatat** bahwa ACode, Inc **tidak** membuat representasi atau jaminan apapun mengenai kode, model, atau tools lain yang disediakan atau tersedia dalam hubungannya dengan ACode, tools pihak ketiga terkait, atau output yang dihasilkan. Kamu menanggung **semua risiko** yang terkait dengan penggunaan tools atau output tersebut; tools tersebut disediakan atas dasar **"SEBAGAIMANA ADANYA"** dan **"SEBAGAIMANA TERSEDIA"**. Risiko tersebut dapat mencakup, tanpa terbatas pada, pelanggaran kekayaan intelektual, kerentanan atau serangan siber, bias, ketidakakuratan, kesalahan, cacat, virus, downtime, kehilangan properti atau kerusakan, dan/atau cedera pribadi. Kamu bertanggung jawab penuh atas penggunaan tools atau output tersebut (termasuk, tanpa terbatas pada, legalitas, kesesuaian, dan hasilnya).
 
 ---
 
@@ -172,7 +172,7 @@ Kami menyukai kontribusi komunitas! Mulai dengan membaca [CONTRIBUTING.md](CONTR
 
 ## Kontributor
 
-Terima kasih kepada semua kontributor kami yang telah membantu membuat Roo Code lebih baik!
+Terima kasih kepada semua kontributor kami yang telah membantu membuat ACode lebih baik!
 
 <!-- START CONTRIBUTORS SECTION - AUTO-GENERATED, DO NOT EDIT MANUALLY -->
 
@@ -222,8 +222,8 @@ Terima kasih kepada semua kontributor kami yang telah membantu membuat Roo Code 
 
 ## License
 
-[Apache 2.0 © 2025 Roo Code, Inc.](./LICENSE)
+[Apache 2.0 © 2025 ACode, Inc.](./LICENSE)
 
 ---
 
-**Nikmati Roo Code!** Baik kamu menggunakannya dengan ketat atau membiarkannya berjalan otonom, kami tidak sabar melihat apa yang kamu bangun. Jika kamu memiliki pertanyaan atau ide fitur, kunjungi [komunitas Reddit](https://www.reddit.com/r/RooCode/) atau [Discord](https://discord.gg/roocode) kami. Selamat coding!
+**Nikmati ACode!** Baik kamu menggunakannya dengan ketat atau membiarkannya berjalan otonom, kami tidak sabar melihat apa yang kamu bangun. Jika kamu memiliki pertanyaan atau ide fitur, kunjungi [komunitas Reddit](https://www.reddit.com/r/ACode/) atau [Discord](https://discord.gg/roocode) kami. Selamat coding!

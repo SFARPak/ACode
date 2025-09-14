@@ -276,7 +276,7 @@
 		"feature2": "<bold>Kontroluj rozszerzenie Roo zdalnie (Pro):</bold> Uruchamiaj, zatrzymuj i wchodź w interakcje z zadaniami z interfejsu przeglądarki opartego na czacie.",
 		"learnMore": "Gotowy przejąć kontrolę? Dowiedz się więcej <learnMoreLink>tutaj</learnMoreLink>.",
 		"visitCloudButton": "Odwiedź ACode Cloud",
-		"socialLinks": "Dołącz do nas na <xLink>X</xLink>, <discordLink>Discord</discordLink>, lub <redditLink>r/RooCode</redditLink>"
+		"socialLinks": "Dołącz do nas na <xLink>X</xLink>, <discordLink>Discord</discordLink>, lub <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo chce użyć przeglądarki:",
