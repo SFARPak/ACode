@@ -21,11 +21,11 @@
 		"sharePublicly": "Share Publicly",
 		"sharePubliclyDescription": "Anyone with the link can access",
 		"connectToCloud": "Connect to Cloud",
-		"connectToCloudDescription": "Sign in to ACode Cloud to share tasks",
+		"connectToCloudDescription": "Sign in to Roo Code Cloud to share tasks",
 		"sharingDisabledByOrganization": "Sharing disabled by organization",
 		"shareSuccessOrganization": "Organization link copied to clipboard",
 		"shareSuccessPublic": "Public link copied to clipboard",
-		"openInCloud": "Open task in ACode Cloud",
+		"openInCloud": "Open task in Roo Code Cloud",
 		"openInCloudIntro": "Keep monitoring or interacting with Roo from anywhere. Scan, click or copy to open."
 	},
 	"unpin": "Unpin",
@@ -280,11 +280,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Released",
-		"description": "Introducing <bold>ACode Cloud:</bold> Bringing the power of Roo beyond the IDE",
+		"description": "Introducing <bold>Roo Code Cloud:</bold> Bringing the power of Roo beyond the IDE",
 		"feature1": "<bold>Track task progress from anywhere (Free):</bold> Get real-time updates on long-running tasks without being stuck in your IDE",
 		"feature2": "<bold>Control the ACode Extension remotely (Pro):</bold> Start, stop, and interact with tasks from a chat-based browser interface.",
 		"learnMore": "Ready to take control? Learn more <learnMoreLink>here</learnMoreLink>.",
-		"visitCloudButton": "Visit ACode Cloud",
+		"visitCloudButton": "Visit Roo Code Cloud",
 		"socialLinks": "Join us on <xLink>X</xLink>, <discordLink>Discord</discordLink>, or <redditLink>r/ACode</redditLink>"
 	},
 	"reasoning": {

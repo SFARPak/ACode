@@ -21,11 +21,11 @@
 		"sharePublicly": "Compartir públicament",
 		"sharePubliclyDescription": "Qualsevol amb l'enllaç pot accedir",
 		"connectToCloud": "Connecta al núvol",
-		"connectToCloudDescription": "Inicia sessió a ACode Cloud per compartir tasques",
+		"connectToCloudDescription": "Inicia sessió a Roo Code Cloud per compartir tasques",
 		"sharingDisabledByOrganization": "Compartició deshabilitada per l'organització",
 		"shareSuccessOrganization": "Enllaç d'organització copiat al porta-retalls",
 		"shareSuccessPublic": "Enllaç públic copiat al porta-retalls",
-		"openInCloud": "Obrir tasca a ACode Cloud",
+		"openInCloud": "Obrir tasca a Roo Code Cloud",
 		"openInCloudIntro": "Continua monitoritzant o interactuant amb Roo des de qualsevol lloc. Escaneja, fes clic o copia per obrir."
 	},
 	"unpin": "Desfixar",
@@ -271,11 +271,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Llançat",
-		"description": "Presentem <bold>ACode Cloud:</bold> Portant el poder de Roo més enllà de l'IDE",
+		"description": "Presentem <bold>Roo Code Cloud:</bold> Portant el poder de Roo més enllà de l'IDE",
 		"feature1": "<bold>Segueix el progrés de les tasques des de qualsevol lloc (Gratuït):</bold> Obté actualitzacions en temps real de tasques de llarga durada sense quedar-te atrapat a la teva IDE",
 		"feature2": "<bold>Controla l'Extensió Roo remotament (Pro):</bold> Inicia, atura i interactua amb tasques des d'una interfície de navegador basada en xat.",
 		"learnMore": "Llest per prendre el control? Aprèn més <learnMoreLink>aquí</learnMoreLink>.",
-		"visitCloudButton": "Visita ACode Cloud",
+		"visitCloudButton": "Visita Roo Code Cloud",
 		"socialLinks": "Uneix-te a nosaltres a <xLink>X</xLink>, <discordLink>Discord</discordLink>, o <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
@@ -354,7 +354,7 @@
 		"ariaLabel": "Versió {{version}} - Feu clic per veure les notes de llançament"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud està evolucionant!",
+		"title": "Roo Code Cloud està evolucionant!",
 		"description": "Executa agents remots al núvol, accedeix a les teves tasques des de qualsevol lloc, col·labora amb altres i molt més.",
 		"joinWaitlist": "Registra't per rebre les últimes actualitzacions."
 	},

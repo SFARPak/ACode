@@ -65,7 +65,7 @@ export default async function Enterprise() {
 						<div className="flex flex-col justify-center space-y-6 sm:space-y-8">
 							<div>
 								<h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-									<span className="block">ACode Cloud for</span>
+									<span className="block">Roo Code Cloud for</span>
 									<AnimatedText className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
 										Enterprise
 									</AnimatedText>
@@ -106,7 +106,7 @@ export default async function Enterprise() {
 							<div className="relative z-10 rounded-lg border border-border bg-card p-6 shadow-lg">
 								<div className="mb-4 flex items-center space-x-2">
 									<Code className="h-6 w-6 text-blue-400" />
-									<h3 className="text-lg font-semibold">ACode Cloud Control-Plane</h3>
+									<h3 className="text-lg font-semibold">Roo Code Cloud Control-Plane</h3>
 								</div>
 								<p className="mb-4 text-sm text-muted-foreground">
 									A unified control system for managing ACode across your organization, with the
@@ -144,8 +144,8 @@ export default async function Enterprise() {
 							Take Control of Your AI Development
 						</h2>
 						<p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-							ACode Cloud provides enterprise-grade control and visibility for ACode deployments, with an
-							extensible architecture for your evolving AI strategy.
+							Roo Code Cloud provides enterprise-grade control and visibility for ACode deployments, with
+							an extensible architecture for your evolving AI strategy.
 						</p>
 					</div>
 
@@ -324,7 +324,7 @@ export default async function Enterprise() {
 					<div className="mb-12 text-center">
 						<h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why You Need a Control-Plane</h2>
 						<p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-							See how ACode Cloud brings enterprise control to AI-powered development.
+							See how Roo Code Cloud brings enterprise control to AI-powered development.
 						</p>
 					</div>
 
@@ -411,7 +411,7 @@ export default async function Enterprise() {
 						</div>
 
 						<div className="rounded-lg border border-border bg-card p-8 shadow-sm">
-							<h3 className="mb-4 text-2xl font-bold text-blue-400">ACode Cloud Control-Plane</h3>
+							<h3 className="mb-4 text-2xl font-bold text-blue-400">Roo Code Cloud Control-Plane</h3>
 							<ul className="space-y-3">
 								<li className="flex items-start">
 									<CheckCircle className="mr-2 mt-0.5 h-5 w-5 text-green-500" />

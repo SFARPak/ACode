@@ -21,11 +21,11 @@
 		"sharePublicly": "Chia sẻ công khai",
 		"sharePubliclyDescription": "Bất kỳ ai có liên kết đều có thể truy cập",
 		"connectToCloud": "Kết nối với Cloud",
-		"connectToCloudDescription": "Đăng nhập vào ACode Cloud để chia sẻ tác vụ",
+		"connectToCloudDescription": "Đăng nhập vào Roo Code Cloud để chia sẻ tác vụ",
 		"sharingDisabledByOrganization": "Chia sẻ bị tổ chức vô hiệu hóa",
 		"shareSuccessOrganization": "Liên kết tổ chức đã được sao chép vào clipboard",
 		"shareSuccessPublic": "Liên kết công khai đã được sao chép vào clipboard",
-		"openInCloud": "Mở tác vụ trong ACode Cloud",
+		"openInCloud": "Mở tác vụ trong Roo Code Cloud",
 		"openInCloudIntro": "Tiếp tục theo dõi hoặc tương tác với Roo từ bất cứ đâu. Quét, nhấp hoặc sao chép để mở."
 	},
 	"unpin": "Bỏ ghim khỏi đầu",
@@ -271,11 +271,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Đã phát hành",
-		"description": "Giới thiệu <bold>ACode Cloud:</bold> Mang sức mạnh của Roo vượt ra ngoài IDE",
+		"description": "Giới thiệu <bold>Roo Code Cloud:</bold> Mang sức mạnh của Roo vượt ra ngoài IDE",
 		"feature1": "<bold>Theo dõi tiến trình tác vụ từ bất kỳ đâu (Miễn phí):</bold> Nhận cập nhật thời gian thực về các tác vụ chạy dài mà không bị mắc kẹt trong IDE của bạn",
 		"feature2": "<bold>Điều khiển Tiện ích Roo từ xa (Pro):</bold> Bắt đầu, dừng và tương tác với các tác vụ từ giao diện trình duyệt dựa trên chat.",
 		"learnMore": "Sẵn sàng nắm quyền kiểm soát? Tìm hiểu thêm <learnMoreLink>tại đây</learnMoreLink>.",
-		"visitCloudButton": "Truy cập ACode Cloud",
+		"visitCloudButton": "Truy cập Roo Code Cloud",
 		"socialLinks": "Tham gia với chúng tôi trên <xLink>X</xLink>, <discordLink>Discord</discordLink>, hoặc <redditLink>r/RooCode</redditLink>"
 	},
 	"browser": {
@@ -354,7 +354,7 @@
 		"ariaLabel": "Phiên bản {{version}} - Nhấp để xem ghi chú phát hành"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud đang phát triển!",
+		"title": "Roo Code Cloud đang phát triển!",
 		"description": "Chạy các agent từ xa trên cloud, truy cập các tác vụ của bạn từ mọi nơi, cộng tác với người khác và nhiều hơn nữa.",
 		"joinWaitlist": "Đăng ký để nhận các cập nhật mới nhất."
 	},

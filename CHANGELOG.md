@@ -4,8 +4,8 @@
 
 ![3.28.1 Release - Kangaroo riding rocket to the clouds](/releases/3.28.1-release.png)
 
-- Announce ACode Cloud!
-- Add cloud task button for opening tasks in ACode Cloud (thanks @app/roomote!)
+- Announce Roo Code Cloud!
+- Add cloud task button for opening tasks in Roo Code Cloud (thanks @app/roomote!)
 - Make Posthog telemetry the default (thanks @mrubens!)
 - Show notification when the checkpoint initialization fails (thanks @app/roomote!)
 - Bust cache in generated image preview (thanks @mrubens!)
@@ -14,9 +14,9 @@
 
 ## [3.28.0] - 2025-09-10
 
-![3.28.0 Release - Continue tasks in ACode Cloud](/releases/3.28.0-release.png)
+![3.28.0 Release - Continue tasks in Roo Code Cloud](/releases/3.28.0-release.png)
 
-- feat: Continue tasks in ACode Cloud (thanks @brunobergher!)
+- feat: Continue tasks in Roo Code Cloud (thanks @brunobergher!)
 - feat: Support connecting to Cloud without redirect handling (thanks @mrubens!)
 - feat: Add toggle to control task syncing to Cloud (thanks @jr!)
 - feat: Add click-to-edit, ESC-to-cancel, and fix padding consistency for chat messages (#7788 by @hannesrudolph, PR by @app/roomote)
@@ -177,11 +177,11 @@
 
 ## [3.25.19] - 2025-08-19
 
-- Fix issue where new users couldn't select the ACode Cloud provider (thanks @daniel-lxs!)
+- Fix issue where new users couldn't select the Roo Code Cloud provider (thanks @daniel-lxs!)
 
 ## [3.25.18] - 2025-08-19
 
-- Add new stealth Sonic model through the ACode Cloud provider
+- Add new stealth Sonic model through the Roo Code Cloud provider
 - Fix: respect enableReasoningEffort setting when determining reasoning usage (#7048 by @ikbencasdoei, PR by @app/roomote)
 - Fix: prevent duplicate LM Studio models with case-insensitive deduplication (#6954 by @fbuechler, PR by @daniel-lxs)
 - Feat: simplify ask_followup_question prompt documentation (thanks @daniel-lxs!)
@@ -396,7 +396,7 @@
 
 ## [3.23.19] - 2025-07-23
 
-- Add ACode Cloud Waitlist CTAs (thanks @brunobergher!)
+- Add Roo Code Cloud Waitlist CTAs (thanks @brunobergher!)
 - Split commands on newlines when evaluating auto-approve
 - Smarter auto-deny of commands
 

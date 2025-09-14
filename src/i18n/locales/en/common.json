@@ -112,7 +112,7 @@
 			"completionError": "Cerebras completion error: {{error}}"
 		},
 		"roo": {
-			"authenticationRequired": "Roo provider requires cloud authentication. Please sign in to ACode Cloud."
+			"authenticationRequired": "Roo provider requires cloud authentication. Please sign in to Roo Code Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API key contains invalid characters."
@@ -195,8 +195,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Your organization requires ACode Cloud authentication. Please sign in to continue.",
-			"organization_mismatch": "You must be authenticated with your organization's ACode Cloud account.",
+			"cloud_auth_required": "Your organization requires Roo Code Cloud authentication. Please sign in to continue.",
+			"organization_mismatch": "You must be authenticated with your organization's Roo Code Cloud account.",
 			"verification_failed": "Unable to verify organization authentication."
 		},
 		"info": {

@@ -91,7 +91,7 @@ vitest.mock("@acode/cloud", () => ({
 vitest.mock("../../../i18n", () => ({
 	t: vitest.fn((key: string) => {
 		if (key === "common:errors.acode.authenticationRequired") {
-			return "Authentication required for ACode Cloud"
+			return "Authentication required for Roo Code Cloud"
 		}
 		return key
 	}),
@@ -282,7 +282,7 @@ describe("RooHandler", () => {
 		it("should handle API errors", async () => {
 			mockCreate.mockRejectedValueOnce(new Error("API Error"))
 			await expect(handler.completePrompt("Test prompt")).rejects.toThrow(
-				"ACode Cloud completion error: API Error",
+				"Roo Code Cloud completion error: API Error",
 			)
 		})
 

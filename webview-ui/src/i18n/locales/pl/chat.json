@@ -21,11 +21,11 @@
 		"sharePublicly": "Udostępnij publicznie",
 		"sharePubliclyDescription": "Każdy z linkiem może uzyskać dostęp",
 		"connectToCloud": "Połącz z chmurą",
-		"connectToCloudDescription": "Zaloguj się do ACode Cloud, aby udostępniać zadania",
+		"connectToCloudDescription": "Zaloguj się do Roo Code Cloud, aby udostępniać zadania",
 		"sharingDisabledByOrganization": "Udostępnianie wyłączone przez organizację",
 		"shareSuccessOrganization": "Link organizacji skopiowany do schowka",
 		"shareSuccessPublic": "Link publiczny skopiowany do schowka",
-		"openInCloud": "Otwórz zadanie w ACode Cloud",
+		"openInCloud": "Otwórz zadanie w Roo Code Cloud",
 		"openInCloudIntro": "Kontynuuj monitorowanie lub interakcję z Roo z dowolnego miejsca. Zeskanuj, kliknij lub skopiuj, aby otworzyć."
 	},
 	"unpin": "Odepnij",
@@ -271,11 +271,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} wydany",
-		"description": "Przedstawiamy <bold>ACode Cloud:</bold> Przenosimy moc Roo poza IDE",
+		"description": "Przedstawiamy <bold>Roo Code Cloud:</bold> Przenosimy moc Roo poza IDE",
 		"feature1": "<bold>Śledź postęp zadań z dowolnego miejsca (Bezpłatnie):</bold> Otrzymuj aktualizacje w czasie rzeczywistym długotrwałych zadań bez utknięcia w IDE",
 		"feature2": "<bold>Kontroluj rozszerzenie Roo zdalnie (Pro):</bold> Uruchamiaj, zatrzymuj i wchodź w interakcje z zadaniami z interfejsu przeglądarki opartego na czacie.",
 		"learnMore": "Gotowy przejąć kontrolę? Dowiedz się więcej <learnMoreLink>tutaj</learnMoreLink>.",
-		"visitCloudButton": "Odwiedź ACode Cloud",
+		"visitCloudButton": "Odwiedź Roo Code Cloud",
 		"socialLinks": "Dołącz do nas na <xLink>X</xLink>, <discordLink>Discord</discordLink>, lub <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
@@ -354,7 +354,7 @@
 		"ariaLabel": "Wersja {{version}} - Kliknij, aby wyświetlić informacje o wydaniu"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud się rozwija!",
+		"title": "Roo Code Cloud się rozwija!",
 		"description": "Uruchamiaj zdalne agenty w chmurze, uzyskuj dostęp do swoich zadań z dowolnego miejsca, współpracuj z innymi i wiele więcej.",
 		"joinWaitlist": "Zarejestruj się, aby otrzymywać najnowsze aktualizacje."
 	},

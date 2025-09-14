@@ -21,11 +21,11 @@
 		"sharePublicly": "Compartilhar publicamente",
 		"sharePubliclyDescription": "Qualquer pessoa com o link pode acessar",
 		"connectToCloud": "Conectar ao Cloud",
-		"connectToCloudDescription": "Entre no ACode Cloud para compartilhar tarefas",
+		"connectToCloudDescription": "Entre no Roo Code Cloud para compartilhar tarefas",
 		"sharingDisabledByOrganization": "Compartilhamento desabilitado pela organização",
 		"shareSuccessOrganization": "Link da organização copiado para a área de transferência",
 		"shareSuccessPublic": "Link público copiado para a área de transferência",
-		"openInCloud": "Abrir tarefa no ACode Cloud",
+		"openInCloud": "Abrir tarefa no Roo Code Cloud",
 		"openInCloudIntro": "Continue monitorando ou interagindo com Roo de qualquer lugar. Escaneie, clique ou copie para abrir."
 	},
 	"unpin": "Desfixar",
@@ -271,11 +271,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Lançado",
-		"description": "Apresentando <bold>ACode Cloud:</bold> Levando o poder do Roo além da IDE",
+		"description": "Apresentando <bold>Roo Code Cloud:</bold> Levando o poder do Roo além da IDE",
 		"feature1": "<bold>Acompanhe o progresso das tarefas de qualquer lugar (Grátis):</bold> Receba atualizações em tempo real de tarefas de longa duração sem ficar preso na sua IDE",
 		"feature2": "<bold>Controle a Extensão Roo remotamente (Pro):</bold> Inicie, pare e interaja com tarefas de uma interface de navegador baseada em chat.",
 		"learnMore": "Pronto para assumir o controle? Saiba mais <learnMoreLink>aqui</learnMoreLink>.",
-		"visitCloudButton": "Visite ACode Cloud",
+		"visitCloudButton": "Visite Roo Code Cloud",
 		"socialLinks": "Junte-se a nós no <xLink>X</xLink>, <discordLink>Discord</discordLink>, ou <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
@@ -354,7 +354,7 @@
 		"ariaLabel": "Versão {{version}} - Clique para ver as notas de lançamento"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud está evoluindo!",
+		"title": "Roo Code Cloud está evoluindo!",
 		"description": "Execute agentes remotos na nuvem, acesse suas tarefas de qualquer lugar, colabore com outros e muito mais.",
 		"joinWaitlist": "Cadastre-se para receber as últimas atualizações."
 	},

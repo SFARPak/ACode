@@ -3,7 +3,7 @@ import { SEO } from "@/lib/seo"
 
 const TITLE = "Terms of Service"
 const DESCRIPTION =
-	"Terms of Service for ACode Cloud. Learn about our service terms, commercial conditions, and legal framework."
+	"Terms of Service for Roo Code Cloud. Learn about our service terms, commercial conditions, and legal framework."
 const PATH = "/terms"
 const OG_IMAGE = SEO.ogImage
 
@@ -44,7 +44,7 @@ export default function Terms() {
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="prose prose-lg mx-auto max-w-4xl dark:prose-invert">
 					<h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-						ACode Cloud Terms of Service
+						Roo Code Cloud Terms of Service
 					</h1>
 					<p className="text-muted-foreground">
 						<em>(Version 1.0 – Effective June 19, 2025)</em>
