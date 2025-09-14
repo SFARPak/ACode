@@ -1081,8 +1081,8 @@ importers:
         specifier: ^0.6.0
         version: 0.6.2
       shell-quote:
-        specifier: ^1.8.2
-        version: 1.8.2
+        specifier: ^1.8.3
+        version: 1.8.3
       shiki:
         specifier: ^3.2.1
         version: 3.4.1
@@ -19183,8 +19183,7 @@ snapshots:
 
   shell-quote@1.8.2: {}
 
-  shell-quote@1.8.3:
-    optional: true
+  shell-quote@1.8.3: {}
 
   shiki@3.4.1:
     dependencies:
