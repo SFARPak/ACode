@@ -1,7 +1,7 @@
 // npx vitest run api/providers/__tests__/roo.spec.ts
 
 import { Anthropic } from "@anthropic-ai/sdk"
-import { rooDefaultModelId, rooModels } from "@roo-code/types"
+import { rooDefaultModelId, rooModels } from "@acode/types"
 
 import { ApiHandlerOptions } from "../../../shared/api"
 
@@ -74,7 +74,7 @@ const mockHasInstance = vitest.fn()
 const mockGetSessionTokenFn = vitest.fn()
 const mockHasInstanceFn = vitest.fn()
 
-vitest.mock("@roo-code/cloud", () => ({
+vitest.mock("@acode/cloud", () => ({
 	CloudService: {
 		hasInstance: () => mockHasInstanceFn(),
 		get instance() {
@@ -90,8 +90,8 @@ vitest.mock("@roo-code/cloud", () => ({
 // Mock i18n
 vitest.mock("../../../i18n", () => ({
 	t: vitest.fn((key: string) => {
-		if (key === "common:errors.roo.authenticationRequired") {
-			return "Authentication required for Roo Code Cloud"
+		if (key === "common:errors.acode.authenticationRequired") {
+			return "Authentication required for ACode Cloud"
 		}
 		return key
 	}),
@@ -99,7 +99,7 @@ vitest.mock("../../../i18n", () => ({
 
 // Import after mocks are set up
 import { RooHandler } from "../roo"
-import { CloudService } from "@roo-code/cloud"
+import { CloudService } from "@acode/cloud"
 
 describe("RooHandler", () => {
 	let handler: RooHandler
@@ -282,7 +282,7 @@ describe("RooHandler", () => {
 		it("should handle API errors", async () => {
 			mockCreate.mockRejectedValueOnce(new Error("API Error"))
 			await expect(handler.completePrompt("Test prompt")).rejects.toThrow(
-				"Roo Code Cloud completion error: API Error",
+				"ACode Cloud completion error: API Error",
 			)
 		})
 

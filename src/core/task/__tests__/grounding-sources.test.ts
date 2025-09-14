@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, beforeAll } from "vitest"
 import type { ClineProvider } from "../../webview/ClineProvider"
-import type { ProviderSettings } from "@roo-code/types"
+import type { ProviderSettings } from "@acode/types"
 
 // Mock vscode module before importing Task
 vi.mock("vscode", () => ({
@@ -60,7 +60,7 @@ vi.mock("../../integrations/terminal/TerminalRegistry", () => ({
 	},
 }))
 
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@acode/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureTaskCreated: vi.fn(),

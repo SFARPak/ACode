@@ -5,7 +5,7 @@ import { fileURLToPath } from "url"
 import process from "node:process"
 import * as console from "node:console"
 
-import { copyPaths, copyWasms, copyLocales, setupLocaleWatcher } from "@roo-code/build"
+import { copyPaths, copyWasms, copyLocales, setupLocaleWatcher } from "@acode/build"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -55,6 +55,7 @@ async function main() {
 							["../.env", ".env", { optional: true }],
 							["node_modules/vscode-material-icons/generated", "assets/vscode-material-icons"],
 							["../webview-ui/audio", "webview-ui/audio"],
+							["../webview-ui/build", "webview-ui/build"],
 						],
 						srcDir,
 						buildDir,

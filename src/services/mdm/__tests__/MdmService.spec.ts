@@ -10,7 +10,7 @@ vi.mock("os", () => ({
 	platform: vi.fn(),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@acode/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn(),
 		instance: {
@@ -20,7 +20,7 @@ vi.mock("@roo-code/cloud", () => ({
 		},
 	},
 	getClerkBaseUrl: vi.fn(),
-	PRODUCTION_CLERK_BASE_URL: "https://clerk.roocode.com",
+	PRODUCTION_CLERK_BASE_URL: "https://clerk.acodecode.com",
 }))
 
 vi.mock("vscode", () => ({
@@ -46,9 +46,9 @@ vi.mock("../../../i18n", () => ({
 	t: vi.fn((key: string) => {
 		const translations: Record<string, string> = {
 			"mdm.errors.cloud_auth_required":
-				"Your organization requires Roo Code Cloud authentication. Please sign in to continue.",
+				"Your organization requires ACode Cloud authentication. Please sign in to continue.",
 			"mdm.errors.organization_mismatch":
-				"You must be authenticated with your organization's Roo Code Cloud account.",
+				"You must be authenticated with your organization's ACode Cloud account.",
 			"mdm.errors.verification_failed": "Unable to verify organization authentication.",
 		}
 		return translations[key] || key
@@ -59,7 +59,7 @@ import * as fs from "fs"
 import * as os from "os"
 import * as vscode from "vscode"
 import { MdmService } from "../MdmService"
-import { CloudService, getClerkBaseUrl, PRODUCTION_CLERK_BASE_URL } from "@roo-code/cloud"
+import { CloudService, getClerkBaseUrl, PRODUCTION_CLERK_BASE_URL } from "@acode/cloud"
 
 const mockFs = fs as any
 const mockOs = os as any
@@ -81,7 +81,7 @@ describe("MdmService", () => {
 		mockOs.platform.mockReturnValue("darwin")
 
 		// Setup default mock for getClerkBaseUrl to return development URL
-		mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.roocode.com")
+		mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.acodecode.com")
 
 		// Setup VSCode mocks
 		const mockConfig = {
@@ -93,7 +93,7 @@ describe("MdmService", () => {
 		// Reset mocks
 		vi.clearAllMocks()
 		// Re-setup the default after clearing
-		mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.roocode.com")
+		mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.acodecode.com")
 	})
 
 	afterEach(() => {
@@ -175,7 +175,7 @@ describe("MdmService", () => {
 		it("should use correct path for Windows in development", async () => {
 			mockOs.platform.mockReturnValue("win32")
 			process.env.PROGRAMDATA = "C:\\ProgramData"
-			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.roocode.com")
+			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.acodecode.com")
 
 			mockFs.existsSync.mockReturnValue(false)
 
@@ -197,7 +197,7 @@ describe("MdmService", () => {
 
 		it("should use correct path for macOS in development", async () => {
 			mockOs.platform.mockReturnValue("darwin")
-			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.roocode.com")
+			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.acodecode.com")
 
 			mockFs.existsSync.mockReturnValue(false)
 
@@ -219,7 +219,7 @@ describe("MdmService", () => {
 
 		it("should use correct path for Linux in development", async () => {
 			mockOs.platform.mockReturnValue("linux")
-			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.roocode.com")
+			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.acodecode.com")
 
 			mockFs.existsSync.mockReturnValue(false)
 
@@ -230,7 +230,7 @@ describe("MdmService", () => {
 
 		it("should default to dev config when NODE_ENV is not set", async () => {
 			mockOs.platform.mockReturnValue("darwin")
-			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.roocode.com")
+			mockGetClerkBaseUrl.mockReturnValue("https://dev.clerk.acodecode.com")
 
 			mockFs.existsSync.mockReturnValue(false)
 
@@ -277,7 +277,7 @@ describe("MdmService", () => {
 
 			expect(compliance.compliant).toBe(false)
 			if (!compliance.compliant) {
-				expect(compliance.reason).toContain("Your organization requires Roo Code Cloud authentication")
+				expect(compliance.reason).toContain("Your organization requires ACode Cloud authentication")
 			}
 		})
 
@@ -300,7 +300,7 @@ describe("MdmService", () => {
 			expect(compliance.compliant).toBe(false)
 			if (!compliance.compliant) {
 				expect(compliance.reason).toContain(
-					"You must be authenticated with your organization's Roo Code Cloud account",
+					"You must be authenticated with your organization's ACode Cloud account",
 				)
 			}
 		})

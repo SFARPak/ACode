@@ -9,8 +9,8 @@ import {
 import { getDefaultModelId, getModelQueryPrefix } from "../../../shared/embeddingModels"
 import { t } from "../../../i18n"
 import { withValidationErrorHandling, HttpError, formatEmbeddingError } from "../shared/validation-helpers"
-import { TelemetryEventName } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+import { TelemetryEventName } from "@acode/types"
+import { TelemetryService } from "@acode/telemetry"
 import { Mutex } from "async-mutex"
 
 interface EmbeddingItem {

@@ -1,9 +1,9 @@
 {
-	"name": "roo-cline",
+	"name": "acode",
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
-	"publisher": "RooVeterinaryInc",
-	"version": "3.28.1",
+	"publisher": "realancerllc",
+	"version": "0.2.0",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -14,13 +14,13 @@
 		"node": "20.19.2"
 	},
 	"author": {
-		"name": "Roo Code"
+		"name": "ACode"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/RooCodeInc/Roo-Code"
+		"url": "https://github.com/SFARPak/ACode.git"
 	},
-	"homepage": "https://github.com/RooCodeInc/Roo-Code",
+	"homepage": "https://github.com/SFARPak/ACode.git",
 	"categories": [
 		"AI",
 		"Chat",
@@ -42,8 +42,7 @@
 		"sonnet",
 		"ai",
 		"llama",
-		"roo code",
-		"roocode"
+		"acode"
 	],
 	"activationEvents": [
 		"onLanguage",
@@ -54,268 +53,288 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "roo-cline-ActivityBar",
+					"id": "acode-ActivityBar",
 					"title": "%views.activitybar.title%",
 					"icon": "assets/icons/icon.svg"
 				}
 			]
 		},
 		"views": {
-			"roo-cline-ActivityBar": [
+			"acode-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "roo-cline.SidebarProvider",
+					"id": "acode.SidebarProvider",
 					"name": "%views.sidebar.name%"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "roo-cline.plusButtonClicked",
+				"command": "acode.plusButtonClicked",
 				"title": "%command.newTask.title%",
 				"icon": "$(add)"
 			},
 			{
-				"command": "roo-cline.promptsButtonClicked",
+				"command": "acode.promptsButtonClicked",
 				"title": "%command.prompts.title%",
 				"icon": "$(organization)"
 			},
 			{
-				"command": "roo-cline.mcpButtonClicked",
+				"command": "acode.mcpButtonClicked",
 				"title": "%command.mcpServers.title%",
 				"icon": "$(server)"
 			},
 			{
-				"command": "roo-cline.historyButtonClicked",
+				"command": "acode.historyButtonClicked",
 				"title": "%command.history.title%",
 				"icon": "$(history)"
 			},
 			{
-				"command": "roo-cline.marketplaceButtonClicked",
+				"command": "acode.marketplaceButtonClicked",
 				"title": "%command.marketplace.title%",
 				"icon": "$(extensions)"
 			},
 			{
-				"command": "roo-cline.popoutButtonClicked",
+				"command": "acode.popoutButtonClicked",
 				"title": "%command.openInEditor.title%",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "roo-cline.cloudButtonClicked",
+				"command": "acode.cloudButtonClicked",
 				"title": "%command.cloud.title%",
 				"icon": "$(cloud)"
 			},
 			{
-				"command": "roo-cline.settingsButtonClicked",
+				"command": "acode.settingsButtonClicked",
 				"title": "%command.settings.title%",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "roo-cline.openInNewTab",
+				"command": "acode.openInNewTab",
 				"title": "%command.openInNewTab.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.explainCode",
+				"command": "acode.explainCode",
 				"title": "%command.explainCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.fixCode",
+				"command": "acode.fixCode",
 				"title": "%command.fixCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.improveCode",
+				"command": "acode.improveCode",
 				"title": "%command.improveCode.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.addToContext",
+				"command": "acode.addToContext",
 				"title": "%command.addToContext.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.newTask",
+				"command": "acode.newTask",
 				"title": "%command.newTask.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.terminalAddToContext",
+				"command": "acode.terminalAddToContext",
 				"title": "%command.terminal.addToContext.title%",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalFixCommand",
+				"command": "acode.terminalFixCommand",
 				"title": "%command.terminal.fixCommand.title%",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.terminalExplainCommand",
+				"command": "acode.terminalExplainCommand",
 				"title": "%command.terminal.explainCommand.title%",
 				"category": "Terminal"
 			},
 			{
-				"command": "roo-cline.setCustomStoragePath",
+				"command": "acode.setCustomStoragePath",
 				"title": "%command.setCustomStoragePath.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.importSettings",
+				"command": "acode.importSettings",
 				"title": "%command.importSettings.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.focusInput",
+				"command": "acode.focusInput",
 				"title": "%command.focusInput.title%",
 				"category": "%configuration.title%"
 			},
 			{
-				"command": "roo-cline.acceptInput",
+				"command": "acode.acceptInput",
 				"title": "%command.acceptInput.title%",
 				"category": "%configuration.title%"
+			},
+			{
+				"command": "acode.toggleSidebar",
+				"title": "Toggle ACode Sidebar",
+				"category": "ACode",
+				"icon": "$(robot)"
+			},
+			{
+				"command": "acode.showSidebar",
+				"title": "Show ACode Sidebar",
+				"category": "ACode"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-					"submenu": "roo-cline.contextMenu",
+					"submenu": "acode.contextMenu",
 					"group": "1"
 				}
 			],
-			"roo-cline.contextMenu": [
+			"acode.contextMenu": [
 				{
-					"command": "roo-cline.addToContext",
+					"command": "acode.addToContext",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "roo-cline.explainCode",
+					"command": "acode.explainCode",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "roo-cline.improveCode",
+					"command": "acode.improveCode",
 					"group": "1_actions@3"
 				}
 			],
 			"terminal/context": [
 				{
-					"submenu": "roo-cline.terminalMenu",
+					"submenu": "acode.terminalMenu",
 					"group": "2"
 				}
 			],
-			"roo-cline.terminalMenu": [
+			"acode.terminalMenu": [
 				{
-					"command": "roo-cline.terminalAddToContext",
+					"command": "acode.terminalAddToContext",
 					"group": "1_actions@1"
 				},
 				{
-					"command": "roo-cline.terminalFixCommand",
+					"command": "acode.terminalFixCommand",
 					"group": "1_actions@2"
 				},
 				{
-					"command": "roo-cline.terminalExplainCommand",
+					"command": "acode.terminalExplainCommand",
 					"group": "1_actions@3"
 				}
 			],
 			"view/title": [
 				{
-					"command": "roo-cline.plusButtonClicked",
+					"command": "acode.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.marketplaceButtonClicked",
+					"command": "acode.marketplaceButtonClicked",
 					"group": "navigation@2",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.settingsButtonClicked",
+					"command": "acode.settingsButtonClicked",
 					"group": "navigation@3",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.cloudButtonClicked",
+					"command": "acode.cloudButtonClicked",
 					"group": "navigation@4",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.historyButtonClicked",
+					"command": "acode.historyButtonClicked",
 					"group": "overflow@1",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.promptsButtonClicked",
+					"command": "acode.promptsButtonClicked",
 					"group": "overflow@2",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.mcpButtonClicked",
+					"command": "acode.mcpButtonClicked",
 					"group": "overflow@3",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.popoutButtonClicked",
+					"command": "acode.popoutButtonClicked",
 					"group": "overflow@4",
-					"when": "view == roo-cline.SidebarProvider"
+					"when": "view == acode.SidebarProvider"
 				}
 			],
 			"editor/title": [
 				{
-					"command": "roo-cline.plusButtonClicked",
+					"command": "acode.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.marketplaceButtonClicked",
+					"command": "acode.marketplaceButtonClicked",
 					"group": "navigation@2",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.settingsButtonClicked",
+					"command": "acode.settingsButtonClicked",
 					"group": "navigation@3",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.cloudButtonClicked",
+					"command": "acode.cloudButtonClicked",
 					"group": "navigation@4",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.historyButtonClicked",
+					"command": "acode.historyButtonClicked",
 					"group": "overflow@1",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.promptsButtonClicked",
+					"command": "acode.promptsButtonClicked",
 					"group": "overflow@2",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.mcpButtonClicked",
+					"command": "acode.mcpButtonClicked",
 					"group": "overflow@3",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "roo-cline.popoutButtonClicked",
+					"command": "acode.popoutButtonClicked",
 					"group": "overflow@4",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
+					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				}
 			]
 		},
 		"submenus": [
 			{
-				"id": "roo-cline.contextMenu",
+				"id": "acode.contextMenu",
 				"label": "%views.contextMenu.label%"
 			},
 			{
-				"id": "roo-cline.terminalMenu",
+				"id": "acode.terminalMenu",
 				"label": "%views.terminalMenu.label%"
+			}
+		],
+		"statusBar": [
+			{
+				"id": "acode-status-bar",
+				"text": "$(robot) ACode",
+				"tooltip": "Toggle ACode Sidebar",
+				"command": "acode.toggleSidebar",
+				"priority": 100
 			}
 		],
 		"configuration": {
 			"title": "%configuration.title%",
 			"properties": {
-				"roo-cline.allowedCommands": {
+				"acode.allowedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -327,7 +346,7 @@
 					],
 					"description": "%commands.allowedCommands.description%"
 				},
-				"roo-cline.deniedCommands": {
+				"acode.deniedCommands": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -335,14 +354,14 @@
 					"default": [],
 					"description": "%commands.deniedCommands.description%"
 				},
-				"roo-cline.commandExecutionTimeout": {
+				"acode.commandExecutionTimeout": {
 					"type": "number",
 					"default": 0,
 					"minimum": 0,
 					"maximum": 600,
 					"description": "%commands.commandExecutionTimeout.description%"
 				},
-				"roo-cline.commandTimeoutAllowlist": {
+				"acode.commandTimeoutAllowlist": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -350,12 +369,12 @@
 					"default": [],
 					"description": "%commands.commandTimeoutAllowlist.description%"
 				},
-				"roo-cline.preventCompletionWithOpenTodos": {
+				"acode.preventCompletionWithOpenTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%commands.preventCompletionWithOpenTodos.description%"
 				},
-				"roo-cline.vsCodeLmModelSelector": {
+				"acode.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {
@@ -369,39 +388,39 @@
 					},
 					"description": "%settings.vsCodeLmModelSelector.description%"
 				},
-				"roo-cline.customStoragePath": {
+				"acode.customStoragePath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.customStoragePath.description%"
 				},
-				"roo-cline.enableCodeActions": {
+				"acode.enableCodeActions": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.enableCodeActions.description%"
 				},
-				"roo-cline.autoImportSettingsPath": {
+				"acode.autoImportSettingsPath": {
 					"type": "string",
 					"default": "",
 					"description": "%settings.autoImportSettingsPath.description%"
 				},
-				"roo-cline.useAgentRules": {
+				"acode.useAgentRules": {
 					"type": "boolean",
 					"default": true,
 					"description": "%settings.useAgentRules.description%"
 				},
-				"roo-cline.apiRequestTimeout": {
+				"acode.apiRequestTimeout": {
 					"type": "number",
 					"default": 600,
 					"minimum": 0,
 					"maximum": 3600,
 					"description": "%settings.apiRequestTimeout.description%"
 				},
-				"roo-cline.newTaskRequireTodos": {
+				"acode.newTaskRequireTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%settings.newTaskRequireTodos.description%"
 				},
-				"roo-cline.codeIndex.embeddingBatchSize": {
+				"acode.codeIndex.embeddingBatchSize": {
 					"type": "number",
 					"default": 60,
 					"minimum": 1,
@@ -418,7 +437,7 @@
 		"test": "vitest run",
 		"format": "prettier --write .",
 		"bundle": "node esbuild.mjs",
-		"vscode:prepublish": "pnpm bundle --production",
+		"vscode:prepublish": "echo 'Skipping bundle - files already in dist'",
 		"vsix": "mkdirp ../bin && vsce package --no-dependencies --out ../bin",
 		"publish:marketplace": "vsce publish --no-dependencies && ovsx publish --no-dependencies",
 		"watch:bundle": "pnpm bundle --watch",
@@ -436,10 +455,10 @@
 		"@mistralai/mistralai": "^1.9.18",
 		"@modelcontextprotocol/sdk": "1.12.0",
 		"@qdrant/js-client-rest": "^1.14.0",
-		"@roo-code/cloud": "workspace:^",
-		"@roo-code/ipc": "workspace:^",
-		"@roo-code/telemetry": "workspace:^",
-		"@roo-code/types": "workspace:^",
+		"@acode/cloud": "workspace:^",
+		"@acode/ipc": "workspace:^",
+		"@acode/telemetry": "workspace:^",
+		"@acode/types": "workspace:^",
 		"@vscode/codicons": "^0.0.36",
 		"async-mutex": "^0.5.0",
 		"axios": "^1.7.4",
@@ -502,9 +521,9 @@
 		"zod": "^3.25.61"
 	},
 	"devDependencies": {
-		"@roo-code/build": "workspace:^",
-		"@roo-code/config-eslint": "workspace:^",
-		"@roo-code/config-typescript": "workspace:^",
+		"@acode/build": "workspace:^",
+		"@acode/config-eslint": "workspace:^",
+		"@acode/config-typescript": "workspace:^",
 		"@types/clone-deep": "^4.0.4",
 		"@types/debug": "^4.1.12",
 		"@types/diff": "^5.2.1",

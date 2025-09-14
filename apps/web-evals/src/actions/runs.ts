@@ -15,7 +15,7 @@ import {
 	deleteRun as _deleteRun,
 	createTask,
 	getExercisesForLanguage,
-} from "@roo-code/evals"
+} from "@acode/evals"
 
 import { CreateRun } from "@/lib/schemas"
 
@@ -63,7 +63,7 @@ export async function createRun({ suite, exercises = [], systemPrompt, timeout, 
 			"-e HOST_EXECUTION_METHOD=docker",
 		]
 
-		const cliCommand = `pnpm --filter @roo-code/evals cli --runId ${run.id}`
+		const cliCommand = `pnpm --filter @acode/evals cli --runId ${run.id}`
 
 		const command = isRunningInDocker
 			? `docker run ${dockerArgs.join(" ")} evals-runner sh -c "${cliCommand}"`
@@ -76,7 +76,7 @@ export async function createRun({ suite, exercises = [], systemPrompt, timeout, 
 			stdio: ["ignore", "pipe", "pipe"],
 		})
 
-		const logStream = fs.createWriteStream("/tmp/roo-code-evals.log", { flags: "a" })
+		const logStream = fs.createWriteStream("/tmp/acode-evals.log", { flags: "a" })
 
 		if (childProcess.stdout) {
 			childProcess.stdout.pipe(logStream)

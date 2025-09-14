@@ -42,13 +42,13 @@ vi.mock("../../../utils/path", () => {
 // Mock fs/promises for RooIgnoreController
 vi.mock("fs/promises", () => ({
 	default: {
-		readFile: vi.fn().mockRejectedValue(new Error("File not found")), // Simulate no .gitignore/.rooignore
+		readFile: vi.fn().mockRejectedValue(new Error("File not found")), // Simulate no .gitignore/.acodeignore
 	},
 }))
 
 // Mock file utils for RooIgnoreController
 vi.mock("../../../utils/fs", () => ({
-	fileExistsAtPath: vi.fn().mockResolvedValue(false), // Simulate no .rooignore file
+	fileExistsAtPath: vi.fn().mockResolvedValue(false), // Simulate no .acodeignore file
 }))
 
 // Mock ignore module
@@ -69,7 +69,7 @@ vi.mock("../state-manager", () => ({
 }))
 
 // Mock TelemetryService
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@acode/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureEvent: vi.fn(),

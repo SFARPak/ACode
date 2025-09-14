@@ -3,12 +3,12 @@
 The Roo Code extension exposes an API that can be used by other extensions.
 To use this API in your extension:
 
-1. Install `@roo-code/types` with npm, pnpm, or yarn.
+1. Install `@acode/types` with npm, pnpm, or yarn.
 2. Import the `RooCodeAPI` type.
 3. Load the extension API.
 
 ```typescript
-import { RooCodeAPI } from "@roo-code/types"
+import { RooCodeAPI } from "@acode/types"
 
 const extension = vscode.extensions.getExtension<RooCodeAPI>("RooVeterinaryInc.roo-cline")
 

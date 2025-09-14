@@ -12,9 +12,9 @@ try {
 	console.warn("Failed to load environment variables:", e)
 }
 
-import type { CloudUserInfo, AuthState } from "@roo-code/types"
-import { CloudService, BridgeOrchestrator } from "@roo-code/cloud"
-import { TelemetryService, PostHogTelemetryClient } from "@roo-code/telemetry"
+import type { CloudUserInfo, AuthState } from "@acode/types"
+import { CloudService, BridgeOrchestrator } from "@acode/cloud"
+import { TelemetryService, PostHogTelemetryClient } from "@acode/telemetry"
 
 import "./utils/path" // Necessary to have access to String.prototype.toPosix.
 import { createOutputChannelLogger, createDualLogger } from "./utils/outputChannelLogger"
@@ -40,6 +40,8 @@ import {
 	CodeActionProvider,
 } from "./activate"
 import { initializeI18n } from "./i18n"
+
+let statusBarItem: vscode.StatusBarItem
 
 /**
  * Built using https://github.com/microsoft/vscode-webview-ui-toolkit
@@ -122,10 +124,10 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	}
 
-	// Initialize the provider *before* the Roo Code Cloud service.
+	// Initialize the provider *before* the ACode Cloud service.
 	const provider = new ClineProvider(context, outputChannel, "sidebar", contextProxy, mdmService)
 
-	// Initialize Roo Code Cloud service.
+	// Initialize ACode Cloud service.
 	const postStateListener = () => ClineProvider.getVisibleInstance()?.postStateToWebview()
 
 	authStateChangedHandler = async (data: { state: AuthState; previousState: AuthState }) => {
@@ -213,6 +215,22 @@ export async function activate(context: vscode.ExtensionContext) {
 		}),
 	)
 
+	// Initialize status bar item
+	statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100)
+	statusBarItem.text = "$(robot) ACode"
+	statusBarItem.tooltip = "Toggle ACode Sidebar"
+	statusBarItem.command = "acode.toggleSidebar"
+	statusBarItem.show()
+	context.subscriptions.push(statusBarItem)
+
+	// Update status bar item when sidebar visibility changes
+	context.subscriptions.push(
+		vscode.window.onDidChangeVisibleTextEditors(() => {
+			// This is a simple way to keep the status bar item visible
+			// More complex logic could be added to show/hide based on sidebar state
+		}),
+	)
+
 	// Auto-import configuration if specified in settings.
 	try {
 		await autoImportSettings(outputChannel, {
@@ -225,6 +243,20 @@ export async function activate(context: vscode.ExtensionContext) {
 			`[AutoImport] Error during auto-import: ${error instanceof Error ? error.message : String(error)}`,
 		)
 	}
+
+	// Register status bar commands
+	context.subscriptions.push(
+		vscode.commands.registerCommand("acode.toggleSidebar", async () => {
+			// Use the standard VSCode command to toggle the ACode sidebar
+			await vscode.commands.executeCommand("workbench.view.extension.acode.SidebarProvider")
+		}),
+	)
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand("acode.showSidebar", async () => {
+			await vscode.commands.executeCommand("workbench.view.extension.acode.SidebarProvider")
+		}),
+	)
 
 	registerCommands({ context, outputChannel, provider })
 
@@ -279,7 +311,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			{ path: context.extensionPath, pattern: "**/*.ts" },
 			{ path: path.join(context.extensionPath, "../packages/types"), pattern: "**/*.ts" },
 			{ path: path.join(context.extensionPath, "../packages/telemetry"), pattern: "**/*.ts" },
-			{ path: path.join(context.extensionPath, "node_modules/@roo-code/cloud"), pattern: "**/*" },
+			{ path: path.join(context.extensionPath, "node_modules/@acode/cloud"), pattern: "**/*" },
 		]
 
 		console.log(

@@ -40,9 +40,9 @@ import {
 	DEFAULT_WRITE_DELAY_MS,
 	ORGANIZATION_ALLOW_ALL,
 	DEFAULT_MODES,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
-import { CloudService, BridgeOrchestrator, getRooCodeApiUrl } from "@roo-code/cloud"
+} from "@acode/types"
+import { TelemetryService } from "@acode/telemetry"
+import { CloudService, BridgeOrchestrator, getRooCodeApiUrl } from "@acode/cloud"
 
 import { Package } from "../../shared/package"
 import { findLast } from "../../shared/array"
@@ -141,7 +141,7 @@ export class ClineProvider
 
 	public isViewLaunched = false
 	public settingsImportedAt?: number
-	public readonly latestAnnouncementId = "sep-2025-roo-code-cloud" // Roo Code Cloud announcement
+	public readonly latestAnnouncementId = "sep-2025-acode-cloud" // ACode Cloud announcement
 	public readonly providerSettingsManager: ProviderSettingsManager
 	public readonly customModesManager: CustomModesManager
 
@@ -245,7 +245,7 @@ export class ClineProvider
 			])
 		}
 
-		// Initialize Roo Code Cloud profile sync.
+		// Initialize ACode Cloud profile sync.
 		if (CloudService.hasInstance()) {
 			this.initializeCloudProfileSync().catch((error) => {
 				this.log(`Failed to initialize cloud profile sync: ${error}`)
@@ -879,7 +879,7 @@ export class ClineProvider
 			consecutiveMistakeLimit: apiConfiguration.consecutiveMistakeLimit,
 			historyItem,
 			experiments,
-			rootTask: historyItem.rootTask,
+			rootTask: historyItem.acodetTask,
 			parentTask: historyItem.parentTask,
 			taskNumber: historyItem.number,
 			workspacePath: historyItem.workspace,
@@ -1028,7 +1028,7 @@ export class ClineProvider
 						window.AUDIO_BASE_URI = "${audioUri}"
 						window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 					</script>
-					<title>Roo Code</title>
+					<title>ACode</title>
 				</head>
 				<body>
 					<div id="root"></div>
@@ -1101,7 +1101,7 @@ export class ClineProvider
 				window.AUDIO_BASE_URI = "${audioUri}"
 				window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 			</script>
-            <title>Roo Code</title>
+            <title>ACode</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -1344,7 +1344,7 @@ export class ClineProvider
 			await fs.mkdir(mcpServersDir, { recursive: true })
 		} catch (error) {
 			// Fallback to a relative path if directory creation fails
-			return path.join(os.homedir(), ".roo-code", "mcp")
+			return path.join(os.homedir(), ".acode", "mcp")
 		}
 		return mcpServersDir
 	}
@@ -2142,7 +2142,7 @@ export class ClineProvider
 				try {
 					const userSettings = CloudService.instance.getUserSettings()
 					const hasOrganization = cloudUserInfo?.organizationId != null
-					return hasOrganization || (userSettings?.features?.roomoteControlEnabled ?? false)
+					return hasOrganization || (userSettings?.features?.acodemoteControlEnabled ?? false)
 				} catch (error) {
 					console.error(
 						`[getState] failed to get featureRoomoteControlEnabled: ${error instanceof Error ? error.message : String(error)}`,
@@ -2516,7 +2516,7 @@ export class ClineProvider
 		const { historyItem } = await this.getTaskWithId(task.taskId)
 
 		// Preserve parent and root task information for history item.
-		const rootTask = task.rootTask
+		const rootTask = task.acodetTask
 		const parentTask = task.parentTask
 
 		task.abortTask()

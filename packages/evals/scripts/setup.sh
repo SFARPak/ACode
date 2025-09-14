@@ -358,7 +358,7 @@ fi
 check_docker_services
 
 echo -n "🗄️ Syncing Roo Code evals database... "
-pnpm --filter @roo-code/evals db:push --force &>/dev/null || exit 1
+pnpm --filter @acode/evals db:push --force &>/dev/null || exit 1
 echo "✅ Done"
 
 if ! grep -q "OPENROUTER_API_KEY" .env.local; then

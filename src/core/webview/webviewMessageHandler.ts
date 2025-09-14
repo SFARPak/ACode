@@ -12,9 +12,9 @@ import {
 	type TelemetrySetting,
 	TelemetryEventName,
 	UserSettingsConfig,
-} from "@roo-code/types"
-import { CloudService } from "@roo-code/cloud"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@acode/types"
+import { CloudService } from "@acode/cloud"
+import { TelemetryService } from "@acode/telemetry"
 
 import { type ApiMessage } from "../task-persistence/apiMessages"
 import { saveTaskMessages } from "../task-persistence"
@@ -1069,7 +1069,7 @@ export const webviewMessageHandler = async (
 			}
 
 			const workspaceFolder = getCurrentCwd()
-			const rooDir = path.join(workspaceFolder, ".roo")
+			const rooDir = path.join(workspaceFolder, ".acode")
 			const mcpPath = path.join(rooDir, "mcp.json")
 
 			try {
@@ -2029,14 +2029,14 @@ export const webviewMessageHandler = async (
 				if (scope === "project") {
 					const workspacePath = getWorkspacePath()
 					if (workspacePath) {
-						rulesFolderPath = path.join(workspacePath, ".roo", `rules-${message.slug}`)
+						rulesFolderPath = path.join(workspacePath, ".acode", `rules-${message.slug}`)
 					} else {
-						rulesFolderPath = path.join(".roo", `rules-${message.slug}`)
+						rulesFolderPath = path.join(".acode", `rules-${message.slug}`)
 					}
 				} else {
 					// Global scope - use OS home directory
 					const homeDir = os.homedir()
-					rulesFolderPath = path.join(homeDir, ".roo", `rules-${message.slug}`)
+					rulesFolderPath = path.join(homeDir, ".acode", `rules-${message.slug}`)
 				}
 
 				// Check if the rules folder exists
@@ -2861,7 +2861,7 @@ export const webviewMessageHandler = async (
 				// Determine the commands directory based on source
 				let commandsDir: string
 				if (source === "global") {
-					const globalConfigDir = path.join(os.homedir(), ".roo")
+					const globalConfigDir = path.join(os.homedir(), ".acode")
 					commandsDir = path.join(globalConfigDir, "commands")
 				} else {
 					if (!vscode.workspace.workspaceFolders?.length) {
@@ -2874,7 +2874,7 @@ export const webviewMessageHandler = async (
 						vscode.window.showErrorMessage(t("common:errors.no_workspace_for_project_command"))
 						break
 					}
-					commandsDir = path.join(workspaceRoot, ".roo", "commands")
+					commandsDir = path.join(workspaceRoot, ".acode", "commands")
 				}
 
 				// Ensure the commands directory exists

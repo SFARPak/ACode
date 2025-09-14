@@ -1,8 +1,8 @@
 import path from "path"
 import fs from "fs/promises"
 
-import { TelemetryService } from "@roo-code/telemetry"
-import { DEFAULT_WRITE_DELAY_MS } from "@roo-code/types"
+import { TelemetryService } from "@acode/telemetry"
+import { DEFAULT_WRITE_DELAY_MS } from "@acode/types"
 
 import { ClineSayTool } from "../../shared/ExtensionMessage"
 import { getReadablePath } from "../../utils/path"
@@ -242,18 +242,18 @@ Original error: ${errorMessage}`
 			const { path: relPath, diff: diffItems } = operation
 
 			// Verify file access is allowed
-			const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
+			const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
 			if (!accessAllowed) {
 				await cline.say("rooignore_error", relPath)
 				updateOperationResult(relPath, {
 					status: "blocked",
-					error: formatResponse.rooIgnoreError(relPath),
+					error: formatResponse.acodeIgnoreError(relPath),
 				})
 				continue
 			}
 
 			// Check if file is write-protected
-			const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
+			const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
 
 			// Verify file exists
 			const absolutePath = path.resolve(cline.cwd, relPath)
@@ -279,7 +279,7 @@ Original error: ${errorMessage}`
 		if (operationsToApprove.length > 1) {
 			// Check if any files are write-protected
 			const hasProtectedFiles = operationsToApprove.some(
-				(opResult) => cline.rooProtectedController?.isWriteProtected(opResult.path) || false,
+				(opResult) => cline.acodeProtectedController?.isWriteProtected(opResult.path) || false,
 			)
 
 			// Prepare batch diff data
@@ -528,7 +528,7 @@ ${errorDetails ? `\nTechnical details:\n${errorDetails}\n` : ""}
 				)
 
 				// For batch operations, we've already gotten approval
-				const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
+				const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
 				const sharedMessageProps: ClineSayTool = {
 					tool: "appliedDiff",
 					path: getReadablePath(cline.cwd, relPath),
@@ -570,7 +570,7 @@ ${errorDetails ? `\nTechnical details:\n${errorDetails}\n` : ""}
 					}
 
 					// Ask for approval (same for both flows)
-					const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
+					const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
 					didApprove = await askApproval("tool", operationMessage, toolProgressStatus, isWriteProtected)
 
 					if (!didApprove) {
