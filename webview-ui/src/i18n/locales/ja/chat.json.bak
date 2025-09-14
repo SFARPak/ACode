@@ -21,11 +21,11 @@
 		"sharePublicly": "公開で共有",
 		"sharePubliclyDescription": "リンクを持つ誰でもアクセスできます",
 		"connectToCloud": "クラウドに接続",
-		"connectToCloudDescription": "タスクを共有するためにACode Cloudにサインイン",
+		"connectToCloudDescription": "タスクを共有するためにRoo Code Cloudにサインイン",
 		"sharingDisabledByOrganization": "組織により共有が無効化されています",
 		"shareSuccessOrganization": "組織リンクをクリップボードにコピーしました",
 		"shareSuccessPublic": "公開リンクをクリップボードにコピーしました",
-		"openInCloud": "ACode Cloudでタスクを開く",
+		"openInCloud": "Roo Code Cloudでタスクを開く",
 		"openInCloudIntro": "どこからでもRooの監視や操作を続けられます。スキャン、クリック、またはコピーして開いてください。"
 	},
 	"unpin": "ピン留めを解除",
@@ -271,11 +271,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} リリース",
-		"description": "<bold>ACode Cloud</bold>のご紹介：RooのパワーをIDEを超えて",
+		"description": "<bold>Roo Code Cloud</bold>のご紹介：RooのパワーをIDEを超えて",
 		"feature1": "<bold>どこからでもタスクの進行状況を追跡（無料）：</bold>IDEに縛られることなく、長時間実行タスクのリアルタイム更新を取得",
 		"feature2": "<bold>Roo拡張機能をリモート制御（Pro）：</bold>チャットベースのブラウザインターフェースからタスクを開始、停止、操作。",
 		"learnMore": "制御を取る準備はできましたか？詳細は<learnMoreLink>こちら</learnMoreLink>。",
-		"visitCloudButton": "ACode Cloudを訪問",
+		"visitCloudButton": "Roo Code Cloudを訪問",
 		"socialLinks": "<xLink>X</xLink>、<discordLink>Discord</discordLink>、または<redditLink>r/RooCode</redditLink>でフォローしてください"
 	},
 	"browser": {
@@ -354,7 +354,7 @@
 		"ariaLabel": "バージョン {{version}} - クリックしてリリースノートを表示"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud が進化中！",
+		"title": "Roo Code Cloud が進化中！",
 		"description": "クラウドでリモートエージェントを実行し、どこからでもタスクにアクセスし、他の人と協力し、その他多くの機能を利用できます。",
 		"joinWaitlist": "最新のアップデートを受け取るためにサインアップしてください。"
 	},

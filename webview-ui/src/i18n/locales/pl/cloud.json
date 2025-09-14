@@ -3,18 +3,18 @@
 	"profilePicture": "Zdjęcie profilowe",
 	"logOut": "Wyloguj",
 	"testApiAuthentication": "Testuj uwierzytelnianie API",
-	"signIn": "Połącz z ACode Cloud",
+	"signIn": "Połącz z Roo Code Cloud",
 	"connect": "Połącz teraz",
-	"cloudBenefitsTitle": "Połącz z ACode Cloud",
+	"cloudBenefitsTitle": "Połącz z Roo Code Cloud",
 	"cloudBenefitWalkaway": "Śledź i kontroluj zadania z dowolnego miejsca za pomocą Roomote Control",
 	"cloudBenefitSharing": "Udostępniaj zadania innym",
 	"cloudBenefitHistory": "Uzyskaj dostęp do historii zadań",
 	"cloudBenefitMetrics": "Uzyskaj całościowy widok zużycia tokenów",
-	"visitCloudWebsite": "Odwiedź ACode Cloud",
+	"visitCloudWebsite": "Odwiedź Roo Code Cloud",
 	"taskSync": "Synchronizacja zadań",
-	"taskSyncDescription": "Synchronizuj swoje zadania, aby przeglądać i udostępniać je w ACode Cloud",
+	"taskSyncDescription": "Synchronizuj swoje zadania, aby przeglądać i udostępniać je w Roo Code Cloud",
 	"remoteControl": "Roomote Control",
-	"remoteControlDescription": "Pozwól kontrolować zadania z ACode Cloud",
+	"remoteControlDescription": "Pozwól kontrolować zadania z Roo Code Cloud",
 	"remoteControlRequiresTaskSync": "Synchronizacja zadań musi być włączona, aby używać Roomote Control",
 	"taskSyncManagedByOrganization": "Synchronizacja zadań jest zarządzana przez Twoją organizację",
 	"usageMetricsAlwaysReported": "Informacje o użyciu modelu są zawsze raportowane po zalogowaniu",
@@ -22,10 +22,10 @@
 	"havingTrouble": "Masz problemy?",
 	"pasteCallbackUrl": "Skopiuj URL redirect z przeglądarki i wklej tutaj:",
 	"startOver": "Zacznij od nowa",
-	"cloudUrlPillLabel": "URL ACode Cloud",
+	"cloudUrlPillLabel": "URL Roo Code Cloud",
 	"upsell": {
-		"autoApprovePowerUser": "Dać Roo trochę niezależności? Kontroluj go z dowolnego miejsca dzięki ACode Cloud. <learnMoreLink>Dowiedz się więcej</learnMoreLink>.",
+		"autoApprovePowerUser": "Dać Roo trochę niezależności? Kontroluj go z dowolnego miejsca dzięki Roo Code Cloud. <learnMoreLink>Dowiedz się więcej</learnMoreLink>.",
 		"longRunningTask": "To może chwilę potrwać. Kontynuuj z dowolnego miejsca dzięki Chmurze.",
-		"taskList": "ACode Cloud jest tutaj: śledź i kontroluj swoje zadania z dowolnego miejsca. <learnMoreLink>Dowiedz się więcej</learnMoreLink>."
+		"taskList": "Roo Code Cloud jest tutaj: śledź i kontroluj swoje zadania z dowolnego miejsca. <learnMoreLink>Dowiedz się więcej</learnMoreLink>."
 	}
 }

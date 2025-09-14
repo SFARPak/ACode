@@ -40,9 +40,9 @@ vi.mock("react-i18next", () => ({
 				"chat:task.sharePublicly": "Share Publicly",
 				"chat:task.sharePubliclyDescription": "Anyone with the link can access",
 				"chat:task.connectToCloud": "Connect to Cloud",
-				"chat:task.connectToCloudDescription": "Sign in to ACode Cloud to share tasks",
+				"chat:task.connectToCloudDescription": "Sign in to Roo Code Cloud to share tasks",
 				"chat:task.sharingDisabledByOrganization": "Sharing disabled by organization",
-				"cloud:cloudBenefitsTitle": "Connect to ACode Cloud",
+				"cloud:cloudBenefitsTitle": "Connect to Roo Code Cloud",
 				"cloud:cloudBenefitHistory": "Access your task history from anywhere",
 				"cloud:cloudBenefitSharing": "Share tasks with your team",
 				"cloud:cloudBenefitMetrics": "Track usage and costs",
@@ -196,7 +196,7 @@ describe("TaskActions", () => {
 			const shareButton = screen.getByTestId("share-button")
 			fireEvent.click(shareButton)
 
-			expect(screen.getByText("Connect to ACode Cloud")).toBeInTheDocument()
+			expect(screen.getByText("Connect to Roo Code Cloud")).toBeInTheDocument()
 			expect(screen.getByText("Connect")).toBeInTheDocument()
 		})
 

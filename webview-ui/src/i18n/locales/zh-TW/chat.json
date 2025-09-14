@@ -21,11 +21,11 @@
 		"sharePublicly": "公開分享",
 		"sharePubliclyDescription": "任何擁有連結的人都可存取",
 		"connectToCloud": "連線至雲端",
-		"connectToCloudDescription": "登入 ACode Cloud 以分享工作",
+		"connectToCloudDescription": "登入 Roo Code Cloud 以分享工作",
 		"sharingDisabledByOrganization": "組織已停用分享功能",
 		"shareSuccessOrganization": "組織連結已複製到剪貼簿",
 		"shareSuccessPublic": "公開連結已複製到剪貼簿",
-		"openInCloud": "在 ACode Cloud 中開啟工作",
+		"openInCloud": "在 Roo Code Cloud 中開啟工作",
 		"openInCloudIntro": "從任何地方繼續監控或與 Roo 互動。掃描、點擊或複製以開啟。"
 	},
 	"unpin": "取消釘選",
@@ -280,11 +280,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} 已發布",
-		"description": "介紹 <bold>ACode Cloud：</bold>將 Roo 的強大功能延伸到 IDE 之外",
+		"description": "介紹 <bold>Roo Code Cloud：</bold>將 Roo 的強大功能延伸到 IDE 之外",
 		"feature1": "<bold>隨時隨地追蹤任務進度（免費）：</bold>取得長時間執行任務的即時更新，無需被困在 IDE 中",
 		"feature2": "<bold>遠端控制 Roo 擴充功能（Pro）：</bold>透過基於聊天的瀏覽器介面啟動、停止並與任務互動。",
 		"learnMore": "準備好掌控一切了嗎？在<learnMoreLink>這裡</learnMoreLink>了解更多。",
-		"visitCloudButton": "造訪 ACode Cloud",
+		"visitCloudButton": "造訪 Roo Code Cloud",
 		"socialLinks": "在 <xLink>X</xLink>、<discordLink>Discord</discordLink> 或 <redditLink>r/ACode</redditLink> 上關注我們"
 	},
 	"reasoning": {
@@ -357,7 +357,7 @@
 		"ariaLabel": "版本 {{version}} - 點選查看發布說明"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud 正在進化！",
+		"title": "Roo Code Cloud 正在進化！",
 		"description": "在雲端執行 Roomote 遠端代理、隨時隨地存取您的工作、與他人協作等等。",
 		"joinWaitlist": "註冊以獲得最新更新。"
 	},

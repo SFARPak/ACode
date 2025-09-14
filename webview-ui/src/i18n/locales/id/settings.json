@@ -392,8 +392,8 @@
 			"instructions": "Selama penggunaan, kotak dialog akan muncul dan pesan saat ini akan disalin ke clipboard secara otomatis. Kamu perlu menempel ini ke versi web AI (seperti ChatGPT atau Claude), lalu salin balasan AI kembali ke kotak dialog dan klik tombol konfirmasi."
 		},
 		"roo": {
-			"authenticatedMessage": "Terautentikasi dengan aman melalui akun ACode Cloud Anda.",
-			"connectButton": "Hubungkan ke ACode Cloud"
+			"authenticatedMessage": "Terautentikasi dengan aman melalui akun Roo Code Cloud Anda.",
+			"connectButton": "Hubungkan ke Roo Code Cloud"
 		},
 		"openRouter": {
 			"providerRouting": {

@@ -112,7 +112,7 @@
 			"completionError": "Cerebras-voltooiingsfout: {{error}}"
 		},
 		"roo": {
-			"authenticationRequired": "Roo provider vereist cloud authenticatie. Log in bij ACode Cloud."
+			"authenticationRequired": "Roo provider vereist cloud authenticatie. Log in bij Roo Code Cloud."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API-sleutel bevat ongeldige karakters."
@@ -206,8 +206,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Je organisatie vereist ACode Cloud-authenticatie. Log in om door te gaan.",
-			"organization_mismatch": "Je moet geauthenticeerd zijn met het ACode Cloud-account van je organisatie.",
+			"cloud_auth_required": "Je organisatie vereist Roo Code Cloud-authenticatie. Log in om door te gaan.",
+			"organization_mismatch": "Je moet geauthenticeerd zijn met het Roo Code Cloud-account van je organisatie.",
 			"manual_url_empty": "Voer een geldige callback-URL in",
 			"manual_url_no_query": "Ongeldige callback-URL: query-parameters ontbreken",
 			"manual_url_missing_params": "Ongeldige callback-URL: vereiste parameters ontbreken (code en state)",

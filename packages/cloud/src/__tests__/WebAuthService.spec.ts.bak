@@ -286,8 +286,8 @@ describe("WebAuthService", () => {
 				throw new Error("Crypto error")
 			})
 
-			await expect(authService.login()).rejects.toThrow("Failed to initiate ACode Cloud authentication")
-			expect(mockLog).toHaveBeenCalledWith("[auth] Error initiating ACode Cloud auth: Error: Crypto error")
+			await expect(authService.login()).rejects.toThrow("Failed to initiate Roo Code Cloud authentication")
+			expect(mockLog).toHaveBeenCalledWith("[auth] Error initiating Roo Code Cloud auth: Error: Crypto error")
 		})
 	})
 
@@ -302,17 +302,17 @@ describe("WebAuthService", () => {
 			vi.mocked(vscode.window.showInformationMessage).mockImplementation(mockShowInfo)
 
 			await authService.handleCallback(null, "state")
-			expect(mockShowInfo).toHaveBeenCalledWith("Invalid ACode Cloud sign in url")
+			expect(mockShowInfo).toHaveBeenCalledWith("Invalid Roo Code Cloud sign in url")
 
 			await authService.handleCallback("code", null)
-			expect(mockShowInfo).toHaveBeenCalledWith("Invalid ACode Cloud sign in url")
+			expect(mockShowInfo).toHaveBeenCalledWith("Invalid Roo Code Cloud sign in url")
 		})
 
 		it("should validate state parameter", async () => {
 			mockContext.globalState.get.mockReturnValue("stored-state")
 
 			await expect(authService.handleCallback("code", "different-state")).rejects.toThrow(
-				"Failed to handle ACode Cloud callback",
+				"Failed to handle Roo Code Cloud callback",
 			)
 			expect(mockLog).toHaveBeenCalledWith("[auth] State mismatch in callback")
 		})
@@ -348,7 +348,7 @@ describe("WebAuthService", () => {
 					organizationId: null,
 				}),
 			)
-			expect(mockShowInfo).toHaveBeenCalledWith("Successfully authenticated with ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Successfully authenticated with Roo Code Cloud")
 		})
 
 		it("should handle Clerk API errors", async () => {
@@ -365,7 +365,7 @@ describe("WebAuthService", () => {
 			authService.on("auth-state-changed", authStateChangedSpy)
 
 			await expect(authService.handleCallback("auth-code", storedState)).rejects.toThrow(
-				"Failed to handle ACode Cloud callback",
+				"Failed to handle Roo Code Cloud callback",
 			)
 			expect(authStateChangedSpy).toHaveBeenCalled()
 		})
@@ -406,7 +406,7 @@ describe("WebAuthService", () => {
 					}),
 				}),
 			)
-			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from Roo Code Cloud")
 		})
 
 		it("should handle logout without credentials", async () => {
@@ -418,7 +418,7 @@ describe("WebAuthService", () => {
 
 			expect(mockContext.secrets.delete).toHaveBeenCalled()
 			expect(mockFetch).not.toHaveBeenCalled()
-			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from Roo Code Cloud")
 		})
 
 		it("should handle Clerk logout errors gracefully", async () => {
@@ -441,7 +441,7 @@ describe("WebAuthService", () => {
 			await authService.logout()
 
 			expect(mockLog).toHaveBeenCalledWith("[auth] Error calling clerkLogout:", expect.any(Error))
-			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from Roo Code Cloud")
 		})
 	})
 
@@ -1018,7 +1018,7 @@ describe("WebAuthService", () => {
 			})
 
 			await expect(authService.handleCallback("auth-code", storedState)).rejects.toThrow(
-				"Failed to handle ACode Cloud callback",
+				"Failed to handle Roo Code Cloud callback",
 			)
 		})
 	})

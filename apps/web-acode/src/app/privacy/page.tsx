@@ -3,7 +3,7 @@ import { SEO } from "@/lib/seo"
 
 const TITLE = "Privacy Policy"
 const DESCRIPTION =
-	"Privacy policy for ACode Cloud and marketing website. Learn how we handle your data and protect your privacy."
+	"Privacy policy for Roo Code Cloud and marketing website. Learn how we handle your data and protect your privacy."
 const PATH = "/privacy"
 const OG_IMAGE = SEO.ogImage
 
@@ -44,7 +44,7 @@ export default function Privacy() {
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="prose prose-lg mx-auto max-w-4xl dark:prose-invert">
 					<h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-						ACode Cloud Privacy Policy
+						Roo Code Cloud Privacy Policy
 					</h1>
 					<p className="text-muted-foreground">Last Updated: August 20, 2025</p>
 
@@ -57,7 +57,7 @@ export default function Privacy() {
 							browse any page under <strong>roocode.com</strong> (the <em>Marketing Site</em>); and/or
 						</li>
 						<li>
-							create an account for, sign in to, or otherwise use <strong>ACode Cloud</strong> at{" "}
+							create an account for, sign in to, or otherwise use <strong>Roo Code Cloud</strong> at{" "}
 							<strong>app.roocode.com</strong> or through the ACode extension while authenticated to that
 							Cloud account (the <em>Cloud Service</em>).
 						</li>
@@ -86,18 +86,18 @@ export default function Privacy() {
 								Your source code does not transit ACode servers unless you explicitly choose ACode as a
 								model provider (proxy mode).
 							</strong>{" "}
-							When ACode Cloud is your model provider, your code briefly transits ACode servers only to
+							When Roo Code Cloud is your model provider, your code briefly transits ACode servers only to
 							forward it to the upstream model, is not stored, and is deleted immediately after
 							forwarding. Otherwise, your code is sent <strong>directly</strong>—via client‑to‑provider
 							TLS—to the model you select. ACode never stores, inspects, or trains on your code.
 						</li>
 						<li>
-							<strong>Prompts and chat snippets are collected by default</strong> in ACode Cloud so you
+							<strong>Prompts and chat snippets are collected by default</strong> in Roo Code Cloud so you
 							can search and re‑use past conversations. Organization admins can disable this collection at
 							any time.
 						</li>
 						<li>
-							We collect only the data needed to operate ACode Cloud, do <strong>not</strong> sell
+							We collect only the data needed to operate Roo Code Cloud, do <strong>not</strong> sell
 							customer data, and do <strong>not</strong> use your content to train models.
 						</li>
 					</ul>
@@ -171,7 +171,7 @@ export default function Privacy() {
 					<h2 className="mt-12 text-2xl font-bold">2. How We Use Information</h2>
 					<ul>
 						<li>
-							<strong>Operate & secure ACode Cloud</strong> (authentication, completions, abuse
+							<strong>Operate & secure Roo Code Cloud</strong> (authentication, completions, abuse
 							prevention)
 						</li>
 						<li>
@@ -217,14 +217,18 @@ export default function Privacy() {
 									<td className="border border-border px-4 py-2 font-medium">
 										Prompts, chat snippets & token counts (Cloud)
 									</td>
-									<td className="border border-border px-4 py-2">ACode Cloud (encrypted at rest)</td>
+									<td className="border border-border px-4 py-2">
+										Roo Code Cloud (encrypted at rest)
+									</td>
 									<td className="border border-border px-4 py-2">Any third‑party</td>
 								</tr>
 								<tr>
 									<td className="border border-border px-4 py-2 font-medium">
 										Workspace Configuration
 									</td>
-									<td className="border border-border px-4 py-2">ACode Cloud (encrypted at rest)</td>
+									<td className="border border-border px-4 py-2">
+										Roo Code Cloud (encrypted at rest)
+									</td>
 									<td className="border border-border px-4 py-2">Any third-party</td>
 								</tr>
 								<tr className="bg-muted/25">
@@ -256,7 +260,7 @@ export default function Privacy() {
 						</li>
 						<li>
 							<strong>Operational Logs & Analytics:</strong> Retained only as needed to operate and secure
-							ACode Cloud.
+							Roo Code Cloud.
 						</li>
 					</ul>
 
@@ -271,7 +275,7 @@ export default function Privacy() {
 						</li>
 						<li>
 							<strong>Delete your Cloud account</strong> at any time from{" "}
-							<strong>Security Settings</strong> inside ACode Cloud.
+							<strong>Security Settings</strong> inside Roo Code Cloud.
 						</li>
 					</ul>
 

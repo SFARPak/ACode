@@ -21,11 +21,11 @@
 		"sharePublicly": "Partager publiquement",
 		"sharePubliclyDescription": "Toute personne avec le lien peut accéder",
 		"connectToCloud": "Se connecter au Cloud",
-		"connectToCloudDescription": "Connecte-toi à ACode Cloud pour partager des tâches",
+		"connectToCloudDescription": "Connecte-toi à Roo Code Cloud pour partager des tâches",
 		"sharingDisabledByOrganization": "Partage désactivé par l'organisation",
 		"shareSuccessOrganization": "Lien d'organisation copié dans le presse-papiers",
 		"shareSuccessPublic": "Lien public copié dans le presse-papiers",
-		"openInCloud": "Ouvrir la tâche dans ACode Cloud",
+		"openInCloud": "Ouvrir la tâche dans Roo Code Cloud",
 		"openInCloudIntro": "Continue à surveiller ou interagir avec Roo depuis n'importe où. Scanne, clique ou copie pour ouvrir."
 	},
 	"unpin": "Désépingler",
@@ -271,11 +271,11 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} est sortie",
-		"description": "Présentation de <bold>ACode Cloud :</bold> Apporter la puissance de Roo au-delà de l'IDE",
+		"description": "Présentation de <bold>Roo Code Cloud :</bold> Apporter la puissance de Roo au-delà de l'IDE",
 		"feature1": "<bold>Suivre le progrès des tâches depuis n'importe où (Gratuit) :</bold> Obtenir des mises à jour en temps réel sur les tâches de longue durée sans être bloqué dans ton IDE",
 		"feature2": "<bold>Contrôler l'extension Roo à distance (Pro) :</bold> Démarre, arrête et interagis avec les tâches depuis une interface de navigateur basée sur le chat.",
 		"learnMore": "Prêt à prendre le contrôle ? En savoir plus <learnMoreLink>ici</learnMoreLink>.",
-		"visitCloudButton": "Visiter ACode Cloud",
+		"visitCloudButton": "Visiter Roo Code Cloud",
 		"socialLinks": "Rejoins-nous sur <xLink>X</xLink>, <discordLink>Discord</discordLink>, ou <redditLink>r/ACode</redditLink>"
 	},
 	"browser": {
@@ -354,7 +354,7 @@
 		"ariaLabel": "Version {{version}} - Cliquez pour voir les notes de version"
 	},
 	"rooCloudCTA": {
-		"title": "ACode Cloud évolue !",
+		"title": "Roo Code Cloud évolue !",
 		"description": "Exécutez des agents distants dans le cloud, accédez à vos tâches de n'importe où, collaborez avec d'autres et bien plus encore.",
 		"joinWaitlist": "Inscrivez-vous pour recevoir les dernières mises à jour."
 	},

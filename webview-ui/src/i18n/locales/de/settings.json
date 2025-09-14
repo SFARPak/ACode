@@ -388,8 +388,8 @@
 			"instructions": "Während der Verwendung wird ein Dialogfeld angezeigt und die aktuelle Nachricht wird automatisch in die Zwischenablage kopiert. Du musst diese in Web-Versionen von KI (wie ChatGPT oder Claude) einfügen, dann die Antwort der KI zurück in das Dialogfeld kopieren und auf die Bestätigungsschaltfläche klicken."
 		},
 		"roo": {
-			"authenticatedMessage": "Sicher authentifiziert über dein ACode Cloud-Konto.",
-			"connectButton": "Mit ACode Cloud verbinden"
+			"authenticatedMessage": "Sicher authentifiziert über dein Roo Code Cloud-Konto.",
+			"connectButton": "Mit Roo Code Cloud verbinden"
 		},
 		"openRouter": {
 			"providerRouting": {

@@ -388,8 +388,8 @@
 			"instructions": "Pendant l'utilisation, une boîte de dialogue apparaîtra et le message actuel sera automatiquement copié dans le presse-papiers. Vous devez le coller dans les versions web de l'IA (comme ChatGPT ou Claude), puis copier la réponse de l'IA dans la boîte de dialogue et cliquer sur le bouton de confirmation."
 		},
 		"roo": {
-			"authenticatedMessage": "Authentifié de manière sécurisée via ton compte ACode Cloud.",
-			"connectButton": "Se connecter à ACode Cloud"
+			"authenticatedMessage": "Authentifié de manière sécurisée via ton compte Roo Code Cloud.",
+			"connectButton": "Se connecter à Roo Code Cloud"
 		},
 		"openRouter": {
 			"providerRouting": {

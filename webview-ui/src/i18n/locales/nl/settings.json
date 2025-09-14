@@ -388,8 +388,8 @@
 			"instructions": "Tijdens gebruik verschijnt een dialoogvenster en wordt het huidige bericht automatisch naar het klembord gekopieerd. Je moet deze plakken in webversies van AI (zoals ChatGPT of Claude), vervolgens het antwoord van de AI terugkopiëren naar het dialoogvenster en op bevestigen klikken."
 		},
 		"roo": {
-			"authenticatedMessage": "Veilig geauthenticeerd via je ACode Cloud-account.",
-			"connectButton": "Verbinden met ACode Cloud"
+			"authenticatedMessage": "Veilig geauthenticeerd via je Roo Code Cloud-account.",
+			"connectButton": "Verbinden met Roo Code Cloud"
 		},
 		"openRouter": {
 			"providerRouting": {
