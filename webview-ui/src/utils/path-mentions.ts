@@ -9,7 +9,7 @@
  * @returns A path with spaces escaped
  */
 export function escapeSpaces(path: string): string {
-	return path.replace(/ /g, "\\ ")
+	return path.replace(/\\/g, "\\\\").replace(/ /g, "\\ ")
 }
 
 /**
