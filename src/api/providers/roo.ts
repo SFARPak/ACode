@@ -1,7 +1,7 @@
 import { Anthropic } from "@anthropic-ai/sdk"
 
-import { rooDefaultModelId, rooModels, type RooModelId } from "@roo-code/types"
-import { CloudService } from "@roo-code/cloud"
+import { rooDefaultModelId, rooModels, type RooModelId } from "@acode/types"
+import { CloudService } from "@acode/cloud"
 
 import type { ApiHandlerOptions } from "../../shared/api"
 import { ApiStream } from "../transform/stream"
@@ -23,8 +23,8 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<RooModelId> {
 		// The provider-proxy server will return 401 if authentication fails.
 		super({
 			...options,
-			providerName: "Roo Code Cloud",
-			baseURL: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy/v1",
+			providerName: "ACode Cloud",
+			baseURL: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.acodecode.com/proxy/v1",
 			apiKey: sessionToken || "unauthenticated", // Use a placeholder if no token
 			defaultProviderModelId: rooDefaultModelId,
 			providerModels: rooModels,

@@ -1,11 +1,11 @@
 // npx vitest services/marketplace/__tests__/MarketplaceManager.spec.ts
 
-import type { MarketplaceItem } from "@roo-code/types"
+import type { MarketplaceItem } from "@acode/types"
 
 import { MarketplaceManager } from "../MarketplaceManager"
 
 // Mock CloudService
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@acode/cloud", () => ({
 	getRooCodeApiUrl: () => "https://test.api.com",
 	CloudService: {
 		hasInstance: vi.fn(),
@@ -189,7 +189,7 @@ describe("MarketplaceManager", () => {
 		})
 
 		it("should return organization MCPs when available", async () => {
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@acode/cloud")
 
 			// Mock CloudService to return organization settings
 			vi.mocked(CloudService.hasInstance).mockReturnValue(true)
@@ -233,7 +233,7 @@ describe("MarketplaceManager", () => {
 		})
 
 		it("should filter out hidden MCPs from marketplace results", async () => {
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@acode/cloud")
 
 			// Mock CloudService to return organization settings with hidden MCPs
 			vi.mocked(CloudService.hasInstance).mockReturnValue(true)
@@ -276,7 +276,7 @@ describe("MarketplaceManager", () => {
 		})
 
 		it("should handle CloudService not being available", async () => {
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@acode/cloud")
 
 			// Mock CloudService to not be available
 			vi.mocked(CloudService.hasInstance).mockReturnValue(false)
@@ -315,14 +315,14 @@ describe("MarketplaceManager", () => {
 
 			// Mock the installer
 			vi.spyOn(manager["installer"], "installItem").mockResolvedValue({
-				filePath: "/test/path/.roomodes",
+				filePath: "/test/path/.acodemodes",
 				line: 5,
 			})
 
 			const result = await manager.installMarketplaceItem(item)
 
 			expect(manager["installer"].installItem).toHaveBeenCalledWith(item, { target: "project" })
-			expect(result).toBe("/test/path/.roomodes")
+			expect(result).toBe("/test/path/.acodemodes")
 		})
 
 		it("should install an MCP item", async () => {
@@ -337,14 +337,14 @@ describe("MarketplaceManager", () => {
 
 			// Mock the installer
 			vi.spyOn(manager["installer"], "installItem").mockResolvedValue({
-				filePath: "/test/path/.roo/mcp.json",
+				filePath: "/test/path/.acode/mcp.json",
 				line: 3,
 			})
 
 			const result = await manager.installMarketplaceItem(item)
 
 			expect(manager["installer"].installItem).toHaveBeenCalledWith(item, { target: "project" })
-			expect(result).toBe("/test/path/.roo/mcp.json")
+			expect(result).toBe("/test/path/.acode/mcp.json")
 		})
 	})
 

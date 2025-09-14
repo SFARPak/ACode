@@ -10,8 +10,8 @@ import {
 	ProviderSettingsEntry,
 	DEFAULT_CONSECUTIVE_MISTAKE_LIMIT,
 	getModelId,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@acode/types"
+import { TelemetryService } from "@acode/telemetry"
 
 import { Mode, modes } from "../../shared/modes"
 

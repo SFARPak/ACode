@@ -1,8 +1,8 @@
 import path from "path"
 import fs from "fs/promises"
 
-import { TelemetryService } from "@roo-code/telemetry"
-import { DEFAULT_WRITE_DELAY_MS } from "@roo-code/types"
+import { TelemetryService } from "@acode/telemetry"
+import { DEFAULT_WRITE_DELAY_MS } from "@acode/types"
 
 import { ClineSayTool } from "../../shared/ExtensionMessage"
 import { getReadablePath } from "../../utils/path"
@@ -68,11 +68,11 @@ export async function applyDiffToolLegacy(
 				return
 			}
 
-			const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
+			const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
 
 			if (!accessAllowed) {
 				await cline.say("rooignore_error", relPath)
-				pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(relPath)))
+				pushToolResult(formatResponse.toolError(formatResponse.acodeIgnoreError(relPath)))
 				return
 			}
 
@@ -151,7 +151,7 @@ export async function applyDiffToolLegacy(
 			)
 
 			// Check if file is write-protected
-			const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
+			const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
 
 			if (isPreventFocusDisruptionEnabled) {
 				// Direct file write without diff view

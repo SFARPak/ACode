@@ -26,8 +26,8 @@ import {
 	MAX_PENDING_BATCHES,
 } from "../constants"
 import { isPathInIgnoredDirectory } from "../../glob/ignore-utils"
-import { TelemetryService } from "@roo-code/telemetry"
-import { TelemetryEventName } from "@roo-code/types"
+import { TelemetryService } from "@acode/telemetry"
+import { TelemetryEventName } from "@acode/types"
 import { sanitizeErrorMessage } from "../shared/validation-helpers"
 import { Package } from "../../../shared/package"
 
@@ -87,7 +87,7 @@ export class DirectoryScanner implements IDirectoryScanner {
 
 		await ignoreController.initialize()
 
-		// Filter paths using .rooignore
+		// Filter paths using .acodeignore
 		const allowedPaths = ignoreController.filterPaths(filePaths)
 
 		// Filter by supported extensions, ignore patterns, and excluded directories

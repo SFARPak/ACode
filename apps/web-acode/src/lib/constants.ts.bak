@@ -1,0 +1,32 @@
+export const EXTERNAL_LINKS = {
+	GITHUB: "https://github.com/ACodeInc/ACode",
+	GITHUB_DISCUSSIONS: "https://github.com/ACodeInc/ACode/discussions",
+	DISCORD: "https://discord.gg/acode",
+	REDDIT: "https://reddit.com/r/ACode",
+	X: "https://x.com/acode",
+	LINKEDIN: "https://www.linkedin.com/company/acode",
+	TIKTOK: "https://www.tiktok.com/@acode",
+	BLUESKY: "https://bsky.app/profile/acode.bsky.social",
+	YOUTUBE: "https://www.youtube.com/@ACodeYT",
+	DOCUMENTATION: "https://docs.acode.com",
+	CAREERS: "https://careers.acode.com",
+	ISSUES: "https://github.com/ACodeInc/ACode/issues",
+	FEATURE_REQUESTS: "https://github.com/ACodeInc/ACode/discussions/categories/feature-requests",
+	COMMUNITY: "https://github.com/ACodeInc/ACode/discussions",
+	CHANGELOG: "https://github.com/ACodeInc/ACode/blob/main/CHANGELOG.md",
+	PRIVACY_POLICY_EXTENSION: "https://github.com/ACodeInc/ACode/blob/main/PRIVACY.md",
+	INTEGRATIONS: "https://docs.acode.com/community",
+	TUTORIALS: "https://docs.acode.com/tutorial-videos",
+	MARKETPLACE: "https://marketplace.visualstudio.com/items?itemName=ACodeInc.acode",
+	SECURITY: "https://trust.acode.com",
+	EVALS: "https://acode.com/evals",
+	BLOG: "https://blog.acode.com",
+	OFFICE_HOURS_PODCAST: "https://www.youtube.com/@ACodeYT/podcasts",
+	FAQ: "https://acode.com/#faq",
+	TESTIMONIALS: "https://acode.com/#testimonials",
+	CLOUD_APP: "https://app.acode.com",
+}
+
+export const INTERNAL_LINKS = {
+	PRIVACY_POLICY_WEBSITE: "/privacy",
+}

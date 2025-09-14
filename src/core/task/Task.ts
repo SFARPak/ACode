@@ -35,9 +35,9 @@ import {
 	isInteractiveAsk,
 	isResumableAsk,
 	QueuedMessage,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
-import { CloudService, BridgeOrchestrator } from "@roo-code/cloud"
+} from "@acode/types"
+import { TelemetryService } from "@acode/telemetry"
+import { CloudService, BridgeOrchestrator } from "@acode/cloud"
 
 // api
 import { ApiHandler, ApiHandlerCreateMessageMetadata, buildApiHandler } from "../../api"
@@ -323,7 +323,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 
 		this.taskId = historyItem ? historyItem.id : crypto.randomUUID()
-		this.rootTaskId = historyItem ? historyItem.rootTaskId : rootTask?.taskId
+		this.acodetTaskId = historyItem ? historyItem.acodetTaskId : rootTask?.taskId
 		this.parentTaskId = historyItem ? historyItem.parentTaskId : parentTask?.taskId
 		this.childTaskId = undefined
 
@@ -340,11 +340,11 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.instanceId = crypto.randomUUID().slice(0, 8)
 		this.taskNumber = -1
 
-		this.rooIgnoreController = new RooIgnoreController(this.cwd)
-		this.rooProtectedController = new RooProtectedController(this.cwd)
+		this.acodeIgnoreController = new RooIgnoreController(this.cwd)
+		this.acodeProtectedController = new RooProtectedController(this.cwd)
 		this.fileContextTracker = new FileContextTracker(provider, this.taskId)
 
-		this.rooIgnoreController.initialize().catch((error) => {
+		this.acodeIgnoreController.initialize().catch((error) => {
 			console.error("Failed to initialize RooIgnoreController:", error)
 		})
 
@@ -666,7 +666,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 			const { historyItem, tokenUsage } = await taskMetadata({
 				taskId: this.taskId,
-				rootTaskId: this.rootTaskId,
+				rootTaskId: this.acodetTaskId,
 				parentTaskId: this.parentTaskId,
 				taskNumber: this.taskNumber,
 				messages: this.clineMessages,
@@ -1572,9 +1572,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 
 		try {
-			if (this.rooIgnoreController) {
-				this.rooIgnoreController.dispose()
-				this.rooIgnoreController = undefined
+			if (this.acodeIgnoreController) {
+				this.acodeIgnoreController.dispose()
+				this.acodeIgnoreController = undefined
 			}
 		} catch (error) {
 			console.error("Error disposing RooIgnoreController:", error)
@@ -1801,7 +1801,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				cwd: this.cwd,
 				urlContentFetcher: this.urlContentFetcher,
 				fileContextTracker: this.fileContextTracker,
-				rooIgnoreController: this.rooIgnoreController,
+				rooIgnoreController: this.acodeIgnoreController,
 				showRooIgnoredFiles,
 				includeDiagnosticMessages,
 				maxDiagnosticMessages,
@@ -2372,7 +2372,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 		}
 
-		const rooIgnoreInstructions = this.rooIgnoreController?.getInstructions()
+		const rooIgnoreInstructions = this.acodeIgnoreController?.getInstructions()
 
 		const state = await this.providerRef.deref()?.getState()
 
