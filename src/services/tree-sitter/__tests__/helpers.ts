@@ -121,6 +121,6 @@ export async function inspectTreeStructure(content: string, language: string = "
 	const tree = parser.parse(content)
 
 	// Print the tree structure
-	debugLog(`TREE STRUCTURE (${language}):\n${tree?.acodetNode.toString()}`)
-	return tree?.acodetNode.toString() || ""
+	debugLog(`TREE STRUCTURE (${language}):\n${tree?.rooNode.toString()}`)
+	return tree?.rooNode.toString() || ""
 }

@@ -58,10 +58,10 @@ export async function generateImageTool(
 	}
 
 	// Validate access permissions
-	const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
+	const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
 	if (!accessAllowed) {
 		await cline.say("rooignore_error", relPath)
-		pushToolResult(formatResponse.toolError(formatResponse.acodeIgnoreError(relPath)))
+		pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(relPath)))
 		return
 	}
 
@@ -81,10 +81,10 @@ export async function generateImageTool(
 		}
 
 		// Validate input image access permissions
-		const inputImageAccessAllowed = cline.acodeIgnoreController?.validateAccess(inputImagePath)
+		const inputImageAccessAllowed = cline.rooIgnoreController?.validateAccess(inputImagePath)
 		if (!inputImageAccessAllowed) {
 			await cline.say("rooignore_error", inputImagePath)
-			pushToolResult(formatResponse.toolError(formatResponse.acodeIgnoreError(inputImagePath)))
+			pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(inputImagePath)))
 			return
 		}
 
@@ -126,7 +126,7 @@ export async function generateImageTool(
 	}
 
 	// Check if file is write-protected
-	const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
+	const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
 
 	// Get OpenRouter API key from global settings (experimental image generation)
 	const openRouterApiKey = state?.openRouterImageApiKey

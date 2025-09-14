@@ -247,10 +247,10 @@ export async function readFileTool(
 
 			// Then check RooIgnore validation
 			if (fileResult.status === "pending") {
-				const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
+				const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
 				if (!accessAllowed) {
 					await cline.say("rooignore_error", relPath)
-					const errorMsg = formatResponse.acodeIgnoreError(relPath)
+					const errorMsg = formatResponse.rooIgnoreError(relPath)
 					updateFileResult(relPath, {
 						status: "blocked",
 						error: errorMsg,
@@ -548,7 +548,7 @@ export async function readFileTool(
 				// Handle definitions-only mode
 				if (maxReadFileLine === 0) {
 					try {
-						const defResult = await parseSourceCodeDefinitionsForFile(fullPath, cline.acodeIgnoreController)
+						const defResult = await parseSourceCodeDefinitionsForFile(fullPath, cline.rooIgnoreController)
 						if (defResult) {
 							let xmlInfo = `<notice>Showing only ${maxReadFileLine} of ${totalLines} total lines. Use line_range if you need to read more lines</notice>\n`
 							updateFileResult(relPath, {
@@ -574,7 +574,7 @@ export async function readFileTool(
 					let xmlInfo = `<content${lineRangeAttr}>\n${content}</content>\n`
 
 					try {
-						const defResult = await parseSourceCodeDefinitionsForFile(fullPath, cline.acodeIgnoreController)
+						const defResult = await parseSourceCodeDefinitionsForFile(fullPath, cline.rooIgnoreController)
 						if (defResult) {
 							xmlInfo += `<list_code_definition_names>${defResult}</list_code_definition_names>\n`
 						}
