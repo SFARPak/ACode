@@ -223,6 +223,14 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	private static lastGlobalApiRequestTime?: number
 	private autoApprovalHandler: AutoApprovalHandler
 
+	// Autonomous processing
+	private autonomousModeEnabled: boolean = true
+	private lastAutonomousDecision: number = 0
+	private autonomousDecisionCooldown: number = 5000 // 5 seconds between autonomous decisions
+	private errorRecoveryAttempts: Map<string, number> = new Map()
+	private maxErrorRecoveryAttempts: number = 3
+	private autonomousOperationStartTime: number = 0
+
 	/**
 	 * Reset the global API request timestamp. This should only be used for testing.
 	 * @internal
@@ -324,7 +332,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 
 		this.taskId = historyItem ? historyItem.id : crypto.randomUUID()
-		this.acodetTaskId = historyItem ? historyItem.acodetTaskId : rootTask?.taskId
+		this.rootTaskId = historyItem ? historyItem.rootTaskId : rootTask?.taskId
 		this.parentTaskId = historyItem ? historyItem.parentTaskId : parentTask?.taskId
 		this.childTaskId = undefined
 
@@ -341,11 +349,11 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.instanceId = crypto.randomUUID().slice(0, 8)
 		this.taskNumber = -1
 
-		this.acodeIgnoreController = new RooIgnoreController(this.cwd)
-		this.acodeProtectedController = new RooProtectedController(this.cwd)
+		this.rooIgnoreController = new RooIgnoreController(this.cwd)
+		this.rooProtectedController = new RooProtectedController(this.cwd)
 		this.fileContextTracker = new FileContextTracker(provider, this.taskId)
 
-		this.acodeIgnoreController.initialize().catch((error) => {
+		this.rooIgnoreController.initialize().catch((error) => {
 			console.error("Failed to initialize RooIgnoreController:", error)
 		})
 
@@ -667,7 +675,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 			const { historyItem, tokenUsage } = await taskMetadata({
 				taskId: this.taskId,
-				rootTaskId: this.acodetTaskId,
+				rootTaskId: this.rootTaskId,
 				parentTaskId: this.parentTaskId,
 				taskNumber: this.taskNumber,
 				messages: this.clineMessages,
@@ -708,6 +716,32 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		progressStatus?: ToolProgressStatus,
 		isProtected?: boolean,
 	): Promise<{ response: ClineAskResponse; text?: string; images?: string[] }> {
+		// Check if this operation can be performed autonomously
+		const operationType = this.getOperationType(type)
+		const riskLevel = this.getRiskLevel(type)
+
+		if (this.canPerformAutonomously(operationType) && !partial) {
+			console.log(`[Task#${this.taskId}] Performing ${operationType} autonomously`)
+
+			// Record the start time for tracking execution time
+			this.autonomousOperationStartTime = Date.now()
+
+			// Perform autonomous action based on ask type
+			const autonomousResult = await this.performAutonomousAction(type, text)
+
+			if (autonomousResult) {
+				// Record successful autonomous operation
+				const executionTime = Date.now() - this.autonomousOperationStartTime
+				this.recordAutonomousOperation(operationType, true, executionTime)
+
+				// Return the autonomous result
+				return autonomousResult
+			} else {
+				// Autonomous action failed, fall back to user interaction
+				const executionTime = Date.now() - this.autonomousOperationStartTime
+				this.recordAutonomousOperation(operationType, false, executionTime)
+			}
+		}
 		// If this Cline instance was aborted by the provider, then the only
 		// thing keeping us alive is a promise still running in the background,
 		// in which case we don't want to send its result to the webview as it
@@ -1577,9 +1611,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 
 		try {
-			if (this.acodeIgnoreController) {
-				this.acodeIgnoreController.dispose()
-				this.acodeIgnoreController = undefined
+			if (this.rooIgnoreController) {
+				this.rooIgnoreController.dispose()
+				this.rooIgnoreController = undefined
 			}
 		} catch (error) {
 			console.error("Error disposing RooIgnoreController:", error)
@@ -1713,7 +1747,9 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		userContent: Anthropic.Messages.ContentBlockParam[],
 		includeFileDetails: boolean = false,
 	): Promise<boolean> {
-		console.log(`[Task#recursivelyMakeClineRequests] Starting request loop for task ${this.taskId}.${this.instanceId}`)
+		console.log(
+			`[Task#recursivelyMakeClineRequests] Starting request loop for task ${this.taskId}.${this.instanceId}`,
+		)
 		interface StackItem {
 			userContent: Anthropic.Messages.ContentBlockParam[]
 			includeFileDetails: boolean
@@ -1807,7 +1843,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				cwd: this.cwd,
 				urlContentFetcher: this.urlContentFetcher,
 				fileContextTracker: this.fileContextTracker,
-				rooIgnoreController: this.acodeIgnoreController,
+				rooIgnoreController: this.rooIgnoreController,
 				showRooIgnoredFiles,
 				includeDiagnosticMessages,
 				maxDiagnosticMessages,
@@ -2378,7 +2414,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 		}
 
-		const rooIgnoreInstructions = this.acodeIgnoreController?.getInstructions()
+		const rooIgnoreInstructions = this.rooIgnoreController?.getInstructions()
 
 		const state = await this.providerRef.deref()?.getState()
 
@@ -2937,5 +2973,392 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		} catch (e) {
 			console.error(`[Task] Queue processing error:`, e)
 		}
+	}
+
+	/**
+	 * Attempt autonomous error recovery for failed operations
+	 */
+	public async attemptAutonomousRecovery(operationType: string, error: Error): Promise<boolean> {
+		const attempts = this.errorRecoveryAttempts.get(operationType) || 0
+
+		if (attempts >= this.maxErrorRecoveryAttempts) {
+			console.log(`[Task#${this.taskId}] Max recovery attempts reached for ${operationType}`)
+			return false
+		}
+
+		this.errorRecoveryAttempts.set(operationType, attempts + 1)
+
+		console.log(
+			`[Task#${this.taskId}] Attempting autonomous recovery for ${operationType} (attempt ${attempts + 1})`,
+		)
+
+		try {
+			// Record the start time for tracking execution time
+			this.autonomousOperationStartTime = Date.now()
+
+			const recoverySuccess = await this.performRecoveryStrategy(operationType, error)
+
+			if (recoverySuccess) {
+				// Record successful autonomous operation
+				const executionTime = Date.now() - this.autonomousOperationStartTime
+				this.autoApprovalHandler.recordAutonomousOperation(`${operationType}_recovery`, true, executionTime)
+				this.errorRecoveryAttempts.delete(operationType) // Reset attempts on success
+				console.log(`[Task#${this.taskId}] Autonomous recovery successful for ${operationType}`)
+				return true
+			} else {
+				// Record failed autonomous operation
+				const executionTime = Date.now() - this.autonomousOperationStartTime
+				this.autoApprovalHandler.recordAutonomousOperation(`${operationType}_recovery`, false, executionTime)
+				console.log(`[Task#${this.taskId}] Autonomous recovery failed for ${operationType}`)
+				return false
+			}
+		} catch (recoveryError) {
+			console.error(`[Task#${this.taskId}] Recovery strategy failed:`, recoveryError)
+			return false
+		}
+	}
+
+	/**
+	 * Perform specific recovery strategies based on operation type and error
+	 */
+	private async performRecoveryStrategy(operationType: string, error: Error): Promise<boolean> {
+		switch (operationType) {
+			case "api_request":
+				return await this.recoverFromApiError(error)
+			case "tool_execution":
+				return await this.recoverFromToolError(error)
+			case "file_operation":
+				return await this.recoverFromFileError(error)
+			case "terminal_command":
+				return await this.recoverFromTerminalError(error)
+			default:
+				console.log(`[Task#${this.taskId}] No specific recovery strategy for ${operationType}`)
+				return false
+		}
+	}
+
+	/**
+	 * Recover from API-related errors
+	 */
+	private async recoverFromApiError(error: Error): Promise<boolean> {
+		const errorMessage = error.message.toLowerCase()
+
+		// Rate limiting - wait and retry
+		if (errorMessage.includes("rate limit") || errorMessage.includes("429")) {
+			console.log(`[Task#${this.taskId}] Rate limit detected, waiting before retry`)
+			await delay(5000) // Wait 5 seconds
+			return true // Signal that recovery was attempted
+		}
+
+		// Context window exceeded - already handled by existing logic
+		if (errorMessage.includes("context window") || errorMessage.includes("token limit")) {
+			console.log(`[Task#${this.taskId}] Context window error - letting existing handler manage`)
+			return true
+		}
+
+		// Network errors - retry with backoff
+		if (errorMessage.includes("network") || errorMessage.includes("timeout")) {
+			console.log(`[Task#${this.taskId}] Network error detected, retrying with backoff`)
+			await delay(2000) // Wait 2 seconds
+			return true
+		}
+
+		return false
+	}
+
+	/**
+	 * Recover from tool execution errors
+	 */
+	private async recoverFromToolError(error: Error): Promise<boolean> {
+		const errorMessage = error.message.toLowerCase()
+
+		// Missing parameters - try to provide defaults or skip
+		if (errorMessage.includes("missing parameter") || errorMessage.includes("required parameter")) {
+			console.log(`[Task#${this.taskId}] Tool parameter error - attempting to continue`)
+			return true
+		}
+
+		// Permission errors - try alternative approach
+		if (errorMessage.includes("permission") || errorMessage.includes("access denied")) {
+			console.log(`[Task#${this.taskId}] Permission error - trying alternative approach`)
+			return true
+		}
+
+		return false
+	}
+
+	/**
+	 * Recover from file operation errors
+	 */
+	private async recoverFromFileError(error: Error): Promise<boolean> {
+		const errorMessage = error.message.toLowerCase()
+
+		// File not found - might be expected in some cases
+		if (errorMessage.includes("file not found") || errorMessage.includes("enoent")) {
+			console.log(`[Task#${this.taskId}] File not found - continuing execution`)
+			return true
+		}
+
+		// Permission errors
+		if (errorMessage.includes("permission") || errorMessage.includes("access denied")) {
+			console.log(`[Task#${this.taskId}] File permission error - trying to continue`)
+			return true
+		}
+
+		return false
+	}
+
+	/**
+	 * Recover from terminal command errors
+	 */
+	private async recoverFromTerminalError(error: Error): Promise<boolean> {
+		const errorMessage = error.message.toLowerCase()
+
+		// Command not found - try alternative commands
+		if (errorMessage.includes("command not found") || errorMessage.includes("not recognized")) {
+			console.log(`[Task#${this.taskId}] Command not found - trying alternatives`)
+			return true
+		}
+
+		// Non-critical errors - continue
+		if (errorMessage.includes("warning") || errorMessage.includes("non-critical")) {
+			console.log(`[Task#${this.taskId}] Non-critical terminal error - continuing`)
+			return true
+		}
+
+		return false
+	}
+
+	/**
+	 * Check if an operation can be performed autonomously based on learned patterns
+	 */
+	public canPerformAutonomously(operationType: string): boolean {
+		// Check cooldown
+		const now = Date.now()
+		if (now - this.lastAutonomousDecision < this.autonomousDecisionCooldown) {
+			return false
+		}
+
+		// Check if autonomous mode is enabled
+		if (!this.autonomousModeEnabled) {
+			return false
+		}
+
+		// Use the auto approval handler's pattern recognition
+		const canPerform = this.autoApprovalHandler.canPerformAutonomously(operationType)
+
+		if (canPerform) {
+			this.lastAutonomousDecision = now
+		}
+
+		return canPerform
+	}
+
+	/**
+	 * Record the result of an autonomous operation
+	 */
+	public recordAutonomousOperation(operationType: string, success: boolean, executionTime?: number): void {
+		const execTime =
+			executionTime || (this.autonomousOperationStartTime ? Date.now() - this.autonomousOperationStartTime : 0)
+		this.autoApprovalHandler.recordAutonomousOperation(operationType, success, execTime)
+	}
+
+	/**
+	 * Enable or disable autonomous mode for this task
+	 */
+	public setAutonomousMode(enabled: boolean): void {
+		this.autonomousModeEnabled = enabled
+		this.autoApprovalHandler.setAutonomousMode(enabled)
+		console.log(`[Task#${this.taskId}] Autonomous mode ${enabled ? "enabled" : "disabled"}`)
+	}
+
+	/**
+	 * Get autonomous operation statistics
+	 */
+	public getAutonomousStats() {
+		return {
+			...this.autoApprovalHandler.getAutonomousStats(),
+			errorRecoveryAttempts: Object.fromEntries(this.errorRecoveryAttempts),
+			autonomousModeEnabled: this.autonomousModeEnabled,
+			lastAutonomousDecision: this.lastAutonomousDecision,
+		}
+	}
+
+	/**
+	 * Reset error recovery attempts for a specific operation
+	 */
+	public resetErrorRecoveryAttempts(operationType: string): void {
+		this.errorRecoveryAttempts.delete(operationType)
+	}
+
+	/**
+	 * Reset all error recovery attempts
+	 */
+	public resetAllErrorRecoveryAttempts(): void {
+		this.errorRecoveryAttempts.clear()
+	}
+
+	/**
+	 * Check if we should ask for user approval based on current state and patterns
+	 */
+	public shouldAskForApproval(operationType: string, riskLevel: "low" | "medium" | "high" = "medium"): boolean {
+		// If autonomous mode is disabled, always ask
+		if (!this.autonomousModeEnabled) {
+			return true
+		}
+
+		// For high-risk operations, always ask unless we have strong positive patterns
+		if (riskLevel === "high") {
+			return !this.canPerformAutonomously(`${operationType}_high_risk`)
+		}
+
+		// For medium-risk operations, ask if we don't have good patterns
+		if (riskLevel === "medium") {
+			return !this.canPerformAutonomously(operationType)
+		}
+
+		// For low-risk operations, rarely ask
+		return false
+	}
+
+	/**
+	 * Get operation type from ask type for autonomous decision making
+	 */
+	private getOperationType(type: ClineAsk): string {
+		switch (type) {
+			case "tool":
+				return "tool_approval"
+			case "command":
+				return "terminal_command"
+			case "browser_action_launch":
+				return "browser_action"
+			case "use_mcp_server":
+				return "mcp_server"
+			case "api_req_failed":
+				return "api_retry"
+			case "mistake_limit_reached":
+				return "mistake_limit"
+			case "auto_approval_max_req_reached":
+				return "approval_limit"
+			default:
+				return "general_ask"
+		}
+	}
+
+	/**
+	 * Get risk level for a given ask type
+	 */
+	private getRiskLevel(type: ClineAsk): "low" | "medium" | "high" {
+		switch (type) {
+			case "tool":
+				// Tool usage can be risky depending on the tool
+				return "medium"
+			case "command":
+				// Terminal commands can be destructive
+				return "high"
+			case "browser_action_launch":
+				// Browser actions are generally safe
+				return "low"
+			case "use_mcp_server":
+				// MCP server usage is generally safe
+				return "low"
+			case "api_req_failed":
+				// API retry is generally safe
+				return "low"
+			case "mistake_limit_reached":
+				// Mistake limit is a safety mechanism
+				return "medium"
+			case "auto_approval_max_req_reached":
+				// Approval limit is a safety mechanism
+				return "high"
+			default:
+				return "medium"
+		}
+	}
+
+	/**
+	 * Perform autonomous action based on ask type
+	 */
+	private async performAutonomousAction(
+		type: ClineAsk,
+		text?: string,
+	): Promise<{ response: ClineAskResponse; text?: string; images?: string[] } | null> {
+		switch (type) {
+			case "tool":
+				// For tool approvals, we can autonomously approve if confidence is high
+				if (this.canPerformAutonomously("tool_approval")) {
+					console.log(`[Task#${this.taskId}] Autonomously approving tool usage`)
+					return { response: "yesButtonClicked" }
+				}
+				break
+
+			case "browser_action_launch":
+				// Browser actions are generally safe to approve autonomously
+				if (this.canPerformAutonomously("browser_action")) {
+					console.log(`[Task#${this.taskId}] Autonomously approving browser action`)
+					return { response: "yesButtonClicked" }
+				}
+				break
+
+			case "use_mcp_server":
+				// MCP server usage is generally safe
+				if (this.canPerformAutonomously("mcp_server")) {
+					console.log(`[Task#${this.taskId}] Autonomously approving MCP server usage`)
+					return { response: "yesButtonClicked" }
+				}
+				break
+
+			case "api_req_failed":
+				// For API failures, we can autonomously retry if it's a recoverable error
+				if (text && this.isRecoverableApiError(text) && this.canPerformAutonomously("api_retry")) {
+					console.log(`[Task#${this.taskId}] Autonomously retrying API request`)
+					return { response: "yesButtonClicked" }
+				}
+				break
+
+			case "mistake_limit_reached":
+				// For mistake limits, we can autonomously continue if patterns show it's safe
+				if (this.canPerformAutonomously("mistake_limit")) {
+					console.log(`[Task#${this.taskId}] Autonomously continuing despite mistake limit`)
+					return { response: "yesButtonClicked" }
+				}
+				break
+
+			default:
+				// For other ask types, don't perform autonomous actions
+				break
+		}
+
+		// Return null if we can't perform the action autonomously
+		return null
+	}
+
+	/**
+	 * Check if an API error is recoverable
+	 */
+	private isRecoverableApiError(errorText: string): boolean {
+		const errorMessage = errorText.toLowerCase()
+
+		// Rate limiting errors are recoverable
+		if (errorMessage.includes("rate limit") || errorMessage.includes("429")) {
+			return true
+		}
+
+		// Network errors are recoverable
+		if (errorMessage.includes("network") || errorMessage.includes("timeout")) {
+			return true
+		}
+
+		// Temporary server errors are recoverable
+		if (errorMessage.includes("500") || errorMessage.includes("502") || errorMessage.includes("503")) {
+			return true
+		}
+
+		// Context window errors are handled separately and are recoverable
+		if (errorMessage.includes("context window") || errorMessage.includes("token limit")) {
+			return true
+		}
+
+		return false
 	}
 }

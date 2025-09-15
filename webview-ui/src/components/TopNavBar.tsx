@@ -10,22 +10,18 @@ interface TopNavBarProps {
 	onTabChange: (tab: Tab) => void
 }
 
-const tabConfig = [
-	{ id: "settings" as Tab, icon: Settings, label: "Settings" },
-]
+const tabConfig = [{ id: "settings" as Tab, icon: Settings, label: "Settings" }]
 
 export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) => {
-
 	return (
 		<div className="glass-nav-bar sticky top-0 z-50 w-full border-b border-white/10 bg-white/5 backdrop-blur-xl backdrop-saturate-150">
-			<div className="flex h-14 items-center justify-between px-4">
+			<div className="flex h-14 items-center justify-between px-2 sm:px-4">
 				{/* Left side icons */}
-				<div className="flex items-center space-x-2">
+				<div className="flex items-center space-x-1 sm:space-x-2">
 					<button
 						className="flex items-center justify-center w-8 h-8 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition-colors"
 						onClick={() => onTabChange("chat" as Tab)}
-						title="New Chat"
-					>
+						title="New Chat">
 						<Sparkles className="h-4 w-4" />
 					</button>
 					<button className="flex items-center justify-center w-8 h-8 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition-colors">
@@ -34,19 +30,24 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) 
 				</div>
 
 				{/* Logo/Brand */}
-				<div className="flex items-center space-x-3">
+				<div className="flex items-center space-x-1 sm:space-x-3">
 					<div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg">
 						<span className="text-sm font-bold text-white">A</span>
 					</div>
 				</div>
 
 				{/* Right side icons */}
-				<div className="flex items-center space-x-2">
+				<div className="flex items-center space-x-1 sm:space-x-2">
 					<button
 						className="flex items-center justify-center w-8 h-8 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-						onClick={() => vscode.postCommand("workbench.action.openSettings", "acode.settings")}
-						title="Extension Settings"
-					>
+						onClick={() =>
+							window.postMessage({
+								type: "action",
+								action: "settingsButtonClicked",
+								values: { section: "general" },
+							})
+						}
+						title="Extension Settings">
 						<Settings className="h-4 w-4" />
 					</button>
 				</div>
@@ -68,8 +69,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) 
 									: "text-white/70 hover:text-white hover:bg-white/15 hover:backdrop-blur-sm"
 							}
 							${activeTab === id ? "glass-active-tab" : "glass-tab"}
-						`}
-					>
+						`}>
 						<Icon className="h-4 w-4" />
 						<span className="text-sm font-medium">{label}</span>
 						{activeTab === id && (
@@ -78,7 +78,6 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) 
 					</Button>
 				))}
 			</nav>
-
 		</div>
 	)
 }
