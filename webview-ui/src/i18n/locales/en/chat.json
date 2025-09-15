@@ -26,7 +26,7 @@
 		"shareSuccessOrganization": "Organization link copied to clipboard",
 		"shareSuccessPublic": "Public link copied to clipboard",
 		"openInCloud": "Open task in ACode Cloud",
-		"openInCloudIntro": "Keep monitoring or interacting with Roo from anywhere. Scan, click or copy to open."
+		"openInCloudIntro": "Keep monitoring or interacting with ACode from anywhere. Scan, click or copy to open."
 	},
 	"unpin": "Unpin",
 	"pin": "Pin",
@@ -123,7 +123,7 @@
 		"title": "Modes",
 		"marketplace": "Mode Marketplace",
 		"settings": "Mode Settings",
-		"description": "Specialized personas that tailor Roo's behavior.",
+		"description": "Specialized personas that tailor ACode's behavior.",
 		"searchPlaceholder": "Search modes...",
 		"noResults": "No results found"
 	},
@@ -172,50 +172,50 @@
 		"tokens": "tokens"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo wants to fetch detailed instructions to assist with the current task"
+		"wantsToFetch": "ACode wants to fetch detailed instructions to assist with the current task"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo wants to read this file:",
-		"wantsToReadMultiple": "Roo wants to read multiple files:",
-		"wantsToReadAndXMore": "Roo wants to read this file and {{count}} more:",
-		"wantsToReadOutsideWorkspace": "Roo wants to read this file outside of the workspace:",
-		"didRead": "Roo read this file:",
-		"wantsToEdit": "Roo wants to edit this file:",
-		"wantsToEditOutsideWorkspace": "Roo wants to edit this file outside of the workspace:",
-		"wantsToEditProtected": "Roo wants to edit a protected configuration file:",
-		"wantsToApplyBatchChanges": "Roo wants to apply changes to multiple files:",
-		"wantsToGenerateImage": "Roo wants to generate an image:",
-		"wantsToGenerateImageOutsideWorkspace": "Roo wants to generate an image outside of the workspace:",
-		"wantsToGenerateImageProtected": "Roo wants to generate an image in a protected location:",
-		"didGenerateImage": "Roo generated an image:",
-		"wantsToCreate": "Roo wants to create a new file:",
-		"wantsToSearchReplace": "Roo wants to search and replace in this file:",
-		"didSearchReplace": "Roo performed search and replace on this file:",
-		"wantsToInsert": "Roo wants to insert content into this file:",
-		"wantsToInsertWithLineNumber": "Roo wants to insert content into this file at line {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Roo wants to append content to the end of this file:"
+		"wantsToRead": "ACode wants to read this file:",
+		"wantsToReadMultiple": "ACode wants to read multiple files:",
+		"wantsToReadAndXMore": "ACode wants to read this file and {{count}} more:",
+		"wantsToReadOutsideWorkspace": "ACode wants to read this file outside of the workspace:",
+		"didRead": "ACode read this file:",
+		"wantsToEdit": "ACode wants to edit this file:",
+		"wantsToEditOutsideWorkspace": "ACode wants to edit this file outside of the workspace:",
+		"wantsToEditProtected": "ACode wants to edit a protected configuration file:",
+		"wantsToApplyBatchChanges": "ACode wants to apply changes to multiple files:",
+		"wantsToGenerateImage": "ACode wants to generate an image:",
+		"wantsToGenerateImageOutsideWorkspace": "ACode wants to generate an image outside of the workspace:",
+		"wantsToGenerateImageProtected": "ACode wants to generate an image in a protected location:",
+		"didGenerateImage": "ACode generated an image:",
+		"wantsToCreate": "ACode wants to create a new file:",
+		"wantsToSearchReplace": "ACode wants to search and replace in this file:",
+		"didSearchReplace": "ACode performed search and replace on this file:",
+		"wantsToInsert": "ACode wants to insert content into this file:",
+		"wantsToInsertWithLineNumber": "ACode wants to insert content into this file at line {{lineNumber}}:",
+		"wantsToInsertAtEnd": "ACode wants to append content to the end of this file:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo wants to view the top level files in this directory:",
-		"didViewTopLevel": "Roo viewed the top level files in this directory:",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo wants to view the top level files in this directory (outside workspace):",
-		"didViewTopLevelOutsideWorkspace": "Roo viewed the top level files in this directory (outside workspace):",
-		"wantsToViewRecursive": "Roo wants to recursively view all files in this directory:",
-		"didViewRecursive": "Roo recursively viewed all files in this directory:",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo wants to recursively view all files in this directory (outside workspace):",
-		"didViewRecursiveOutsideWorkspace": "Roo recursively viewed all files in this directory (outside workspace):",
-		"wantsToViewDefinitions": "Roo wants to view source code definition names used in this directory:",
-		"didViewDefinitions": "Roo viewed source code definition names used in this directory:",
-		"wantsToViewDefinitionsOutsideWorkspace": "Roo wants to view source code definition names used in this directory (outside workspace):",
-		"didViewDefinitionsOutsideWorkspace": "Roo viewed source code definition names used in this directory (outside workspace):",
-		"wantsToSearch": "Roo wants to search this directory for <code>{{regex}}</code>:",
-		"didSearch": "Roo searched this directory for <code>{{regex}}</code>:",
-		"wantsToSearchOutsideWorkspace": "Roo wants to search this directory (outside workspace) for <code>{{regex}}</code>:",
-		"didSearchOutsideWorkspace": "Roo searched this directory (outside workspace) for <code>{{regex}}</code>:"
+		"wantsToViewTopLevel": "ACode wants to view the top level files in this directory:",
+		"didViewTopLevel": "ACode viewed the top level files in this directory:",
+		"wantsToViewTopLevelOutsideWorkspace": "ACode wants to view the top level files in this directory (outside workspace):",
+		"didViewTopLevelOutsideWorkspace": "ACode viewed the top level files in this directory (outside workspace):",
+		"wantsToViewRecursive": "ACode wants to recursively view all files in this directory:",
+		"didViewRecursive": "ACode recursively viewed all files in this directory:",
+		"wantsToViewRecursiveOutsideWorkspace": "ACode wants to recursively view all files in this directory (outside workspace):",
+		"didViewRecursiveOutsideWorkspace": "ACode recursively viewed all files in this directory (outside workspace):",
+		"wantsToViewDefinitions": "ACode wants to view source code definition names used in this directory:",
+		"didViewDefinitions": "ACode viewed source code definition names used in this directory:",
+		"wantsToViewDefinitionsOutsideWorkspace": "ACode wants to view source code definition names used in this directory (outside workspace):",
+		"didViewDefinitionsOutsideWorkspace": "ACode viewed source code definition names used in this directory (outside workspace):",
+		"wantsToSearch": "ACode wants to search this directory for <code>{{regex}}</code>:",
+		"didSearch": "ACode searched this directory for <code>{{regex}}</code>:",
+		"wantsToSearchOutsideWorkspace": "ACode wants to search this directory (outside workspace) for <code>{{regex}}</code>:",
+		"didSearchOutsideWorkspace": "ACode searched this directory (outside workspace) for <code>{{regex}}</code>:"
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo wants to search the codebase for <code>{{query}}</code>:",
-		"wantsToSearchWithPath": "Roo wants to search the codebase for <code>{{query}}</code> in <code>{{path}}</code>:",
+		"wantsToSearch": "ACode wants to search the codebase for <code>{{query}}</code>:",
+		"wantsToSearchWithPath": "ACode wants to search the codebase for <code>{{query}}</code> in <code>{{path}}</code>:",
 		"didSearch_one": "Found 1 result",
 		"didSearch_other": "Found {{count}} results",
 		"resultTooltip": "Similarity score: {{score}} (click to open file)"
@@ -240,18 +240,18 @@
 	"response": "Response",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Roo wants to use a tool on the {{serverName}} MCP server:",
-		"wantsToAccessResource": "Roo wants to access a resource on the {{serverName}} MCP server:"
+		"wantsToUseTool": "ACode wants to use a tool on the {{serverName}} MCP server:",
+		"wantsToAccessResource": "ACode wants to access a resource on the {{serverName}} MCP server:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo wants to switch to {{mode}} mode",
-		"wantsToSwitchWithReason": "Roo wants to switch to {{mode}} mode because: {{reason}}",
-		"didSwitch": "Roo switched to {{mode}} mode",
-		"didSwitchWithReason": "Roo switched to {{mode}} mode because: {{reason}}"
+		"wantsToSwitch": "ACode wants to switch to {{mode}} mode",
+		"wantsToSwitchWithReason": "ACode wants to switch to {{mode}} mode because: {{reason}}",
+		"didSwitch": "ACode switched to {{mode}} mode",
+		"didSwitchWithReason": "ACode switched to {{mode}} mode because: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo wants to create a new subtask in {{mode}} mode:",
-		"wantsToFinish": "Roo wants to finish this subtask",
+		"wantsToCreate": "ACode wants to create a new subtask in {{mode}} mode:",
+		"wantsToFinish": "ACode wants to finish this subtask",
 		"newTaskContent": "Subtask Instructions",
 		"completionContent": "Subtask Completed",
 		"resultContent": "Subtask Results",
@@ -259,14 +259,14 @@
 		"completionInstructions": "Subtask completed! You can review the results and suggest any corrections or next steps. If everything looks good, confirm to return the result to the parent task."
 	},
 	"questions": {
-		"hasQuestion": "Roo has a question:"
+		"hasQuestion": "ACode has a question:"
 	},
 	"taskCompleted": "Task Completed",
 	"error": "Error",
 	"diffError": {
 		"title": "Edit Unsuccessful"
 	},
-	"troubleMessage": "Roo is having trouble...",
+	"troubleMessage": "ACode is having trouble...",
 	"powershell": {
 		"issues": "It seems like you're having Windows PowerShell issues, please see this"
 	},
@@ -280,9 +280,9 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Released",
-		"description": "Introducing <bold>ACode Cloud:</bold> Bringing the power of Roo beyond the IDE",
+		"description": "Introducing <bold>ACode Cloud:</bold> Bringing the power of ACode beyond the IDE",
 		"feature1": "<bold>Track task progress from anywhere (Free):</bold> Get real-time updates on long-running tasks without being stuck in your IDE",
-		"feature2": "<bold>Control the Roo Extension remotely (Pro):</bold> Start, stop, and interact with tasks from a chat-based browser interface.",
+		"feature2": "<bold>Control the ACode Extension remotely (Pro):</bold> Start, stop, and interact with tasks from a chat-based browser interface.",
 		"learnMore": "Ready to take control? Learn more <learnMoreLink>here</learnMoreLink>.",
 		"visitCloudButton": "Visit ACode Cloud",
 		"socialLinks": "Join us on <xLink>X</xLink>, <discordLink>Discord</discordLink>, or <redditLink>r/RooCode</redditLink>"
@@ -297,7 +297,7 @@
 		"countdownDisplay": "{{count}}s"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo wants to use the browser:",
+		"rooWantsToUse": "ACode wants to use the browser:",
 		"consoleLogs": "Console Logs",
 		"noNewLogs": "(No new logs)",
 		"screenshot": "Browser screenshot",
@@ -337,12 +337,12 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Auto-Approved Request Limit Reached",
-			"description": "Roo has reached the auto-approved limit of {{count}} API request(s). Would you like to reset the count and proceed with the task?",
+			"description": "ACode has reached the auto-approved limit of {{count}} API request(s). Would you like to reset the count and proceed with the task?",
 			"button": "Reset and Continue"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "Auto-Approved Cost Limit Reached",
-			"description": "Roo has reached the auto-approved cost limit of ${{count}}. Would you like to reset the cost and proceed with the task?",
+			"description": "ACode has reached the auto-approved cost limit of ${{count}}. Would you like to reset the cost and proceed with the task?",
 			"button": "Reset and Continue"
 		}
 	},
@@ -379,8 +379,8 @@
 		}
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo wants to run a slash command:",
-		"didRun": "Roo ran a slash command:"
+		"wantsToRun": "ACode wants to run a slash command:",
+		"didRun": "ACode ran a slash command:"
 	},
 	"queuedMessages": {
 		"title": "Queued Messages:",

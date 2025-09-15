@@ -62,10 +62,12 @@ let userInfoHandler: ((data: { userInfo: CloudUserInfo }) => Promise<void>) | un
 // This method is called when your extension is activated.
 // Your extension is activated the very first time the command is executed.
 export async function activate(context: vscode.ExtensionContext) {
+	console.log("ACode: Activating extension...")
 	extensionContext = context
 	outputChannel = vscode.window.createOutputChannel(Package.outputChannel)
 	context.subscriptions.push(outputChannel)
 	outputChannel.appendLine(`${Package.name} extension activated - ${JSON.stringify(Package)}`)
+	console.log("ACode: Extension activated and output channel created.")
 
 	// Migrate old settings to new
 	await migrateSettings(context, outputChannel)
@@ -259,6 +261,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	)
 
 	registerCommands({ context, outputChannel, provider })
+	console.log("ACode: Commands registered.")
 
 	/**
 	 * We use the text document content provider API to show the left side for diff
@@ -362,6 +365,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated.
 export async function deactivate() {
+	console.log("ACode: Deactivating extension...")
 	outputChannel.appendLine(`${Package.name} extension deactivated`)
 
 	if (cloudService && CloudService.hasInstance()) {

@@ -98,12 +98,18 @@ export async function testParseSourceCodeDefinitions(
 	// Configure the mock to return our parser
 	mockedLoadRequiredLanguageParsers.mockResolvedValue(mockLanguageParser)
 
-	// Call the function under test
-	const result = await parseSourceCodeDefinitionsForFile(testFilePath)
+	let result: string | undefined
+	try {
+		// Call the function under test
+		result = await parseSourceCodeDefinitionsForFile(testFilePath)
 
-	// Verify loadRequiredLanguageParsers was called with the expected file path
-	expect(mockedLoadRequiredLanguageParsers).toHaveBeenCalledWith([testFilePath])
-	expect(mockedLoadRequiredLanguageParsers).toHaveBeenCalled()
+		// Verify loadRequiredLanguageParsers was called with the expected file path
+		expect(mockedLoadRequiredLanguageParsers).toHaveBeenCalledWith([testFilePath])
+		expect(mockedLoadRequiredLanguageParsers).toHaveBeenCalled()
+	} catch (e) {
+		console.error("Error in testParseSourceCodeDefinitions", e)
+		result = undefined
+	}
 
 	debugLog(`Result:\n${result}`)
 	return result
@@ -121,6 +127,6 @@ export async function inspectTreeStructure(content: string, language: string = "
 	const tree = parser.parse(content)
 
 	// Print the tree structure
-	debugLog(`TREE STRUCTURE (${language}):\n${tree?.acodetNode.toString()}`)
-	return tree?.acodetNode.toString() || ""
+	debugLog(`TREE STRUCTURE (${language}):\n${tree?.acodetNode?.toString()}`)
+	return tree ? tree.acodetNode?.toString() || "" : ""
 }

@@ -26,7 +26,7 @@
 		"shareSuccessOrganization": "Tautan organisasi disalin ke clipboard",
 		"shareSuccessPublic": "Tautan publik disalin ke clipboard",
 		"openInCloud": "Buka tugas di ACode Cloud",
-		"openInCloudIntro": "Terus pantau atau berinteraksi dengan Roo dari mana saja. Pindai, klik atau salin untuk membuka."
+		"openInCloudIntro": "Terus pantau atau berinteraksi dengan ACode dari mana saja. Pindai, klik atau salin untuk membuka."
 	},
 	"history": {
 		"title": "Riwayat"
@@ -127,7 +127,7 @@
 		"title": "Mode",
 		"marketplace": "Marketplace Mode",
 		"settings": "Pengaturan Mode",
-		"description": "Persona khusus yang menyesuaikan perilaku Roo.",
+		"description": "Persona khusus yang menyesuaikan perilaku ACode.",
 		"searchPlaceholder": "Cari mode...",
 		"noResults": "Tidak ada hasil yang ditemukan"
 	},
@@ -175,50 +175,50 @@
 		"tokens": "token"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo ingin mengambil instruksi detail untuk membantu tugas saat ini"
+		"wantsToFetch": "ACode ingin mengambil instruksi detail untuk membantu tugas saat ini"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo ingin membaca file ini:",
-		"wantsToReadMultiple": "Roo ingin membaca beberapa file:",
-		"wantsToReadAndXMore": "Roo ingin membaca file ini dan {{count}} lainnya:",
-		"wantsToReadOutsideWorkspace": "Roo ingin membaca file ini di luar workspace:",
-		"didRead": "Roo membaca file ini:",
-		"wantsToEdit": "Roo ingin mengedit file ini:",
-		"wantsToEditOutsideWorkspace": "Roo ingin mengedit file ini di luar workspace:",
-		"wantsToEditProtected": "Roo ingin mengedit file konfigurasi yang dilindungi:",
-		"wantsToApplyBatchChanges": "Roo ingin menerapkan perubahan ke beberapa file:",
-		"wantsToGenerateImage": "Roo ingin menghasilkan gambar:",
-		"wantsToGenerateImageOutsideWorkspace": "Roo ingin menghasilkan gambar di luar workspace:",
-		"wantsToGenerateImageProtected": "Roo ingin menghasilkan gambar di lokasi yang dilindungi:",
-		"didGenerateImage": "Roo telah menghasilkan gambar:",
-		"wantsToCreate": "Roo ingin membuat file baru:",
-		"wantsToSearchReplace": "Roo ingin mencari dan mengganti di file ini:",
-		"didSearchReplace": "Roo melakukan pencarian dan penggantian pada file ini:",
-		"wantsToInsert": "Roo ingin menyisipkan konten ke file ini:",
-		"wantsToInsertWithLineNumber": "Roo ingin menyisipkan konten ke file ini di baris {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Roo ingin menambahkan konten ke akhir file ini:"
+		"wantsToRead": "ACode ingin membaca file ini:",
+		"wantsToReadMultiple": "ACode ingin membaca beberapa file:",
+		"wantsToReadAndXMore": "ACode ingin membaca file ini dan {{count}} lainnya:",
+		"wantsToReadOutsideWorkspace": "ACode ingin membaca file ini di luar workspace:",
+		"didRead": "ACode membaca file ini:",
+		"wantsToEdit": "ACode ingin mengedit file ini:",
+		"wantsToEditOutsideWorkspace": "ACode ingin mengedit file ini di luar workspace:",
+		"wantsToEditProtected": "ACode ingin mengedit file konfigurasi yang dilindungi:",
+		"wantsToApplyBatchChanges": "ACode ingin menerapkan perubahan ke beberapa file:",
+		"wantsToGenerateImage": "ACode ingin menghasilkan gambar:",
+		"wantsToGenerateImageOutsideWorkspace": "ACode ingin menghasilkan gambar di luar workspace:",
+		"wantsToGenerateImageProtected": "ACode ingin menghasilkan gambar di lokasi yang dilindungi:",
+		"didGenerateImage": "ACode telah menghasilkan gambar:",
+		"wantsToCreate": "ACode ingin membuat file baru:",
+		"wantsToSearchReplace": "ACode ingin mencari dan mengganti di file ini:",
+		"didSearchReplace": "ACode melakukan pencarian dan penggantian pada file ini:",
+		"wantsToInsert": "ACode ingin menyisipkan konten ke file ini:",
+		"wantsToInsertWithLineNumber": "ACode ingin menyisipkan konten ke file ini di baris {{lineNumber}}:",
+		"wantsToInsertAtEnd": "ACode ingin menambahkan konten ke akhir file ini:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo ingin melihat file tingkat atas di direktori ini:",
-		"didViewTopLevel": "Roo melihat file tingkat atas di direktori ini:",
-		"wantsToViewRecursive": "Roo ingin melihat semua file secara rekursif di direktori ini:",
-		"didViewRecursive": "Roo melihat semua file secara rekursif di direktori ini:",
-		"wantsToViewDefinitions": "Roo ingin melihat nama definisi source code yang digunakan di direktori ini:",
-		"didViewDefinitions": "Roo melihat nama definisi source code yang digunakan di direktori ini:",
-		"wantsToSearch": "Roo ingin mencari direktori ini untuk <code>{{regex}}</code>:",
-		"didSearch": "Roo mencari direktori ini untuk <code>{{regex}}</code>:",
-		"wantsToSearchOutsideWorkspace": "Roo ingin mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
-		"didSearchOutsideWorkspace": "Roo mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo ingin melihat file tingkat atas di direktori ini (di luar workspace):",
-		"didViewTopLevelOutsideWorkspace": "Roo melihat file tingkat atas di direktori ini (di luar workspace):",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo ingin melihat semua file secara rekursif di direktori ini (di luar workspace):",
-		"didViewRecursiveOutsideWorkspace": "Roo melihat semua file secara rekursif di direktori ini (di luar workspace):",
-		"wantsToViewDefinitionsOutsideWorkspace": "Roo ingin melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):",
-		"didViewDefinitionsOutsideWorkspace": "Roo melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):"
+		"wantsToViewTopLevel": "ACode ingin melihat file tingkat atas di direktori ini:",
+		"didViewTopLevel": "ACode melihat file tingkat atas di direktori ini:",
+		"wantsToViewRecursive": "ACode ingin melihat semua file secara rekursif di direktori ini:",
+		"didViewRecursive": "ACode melihat semua file secara rekursif di direktori ini:",
+		"wantsToViewDefinitions": "ACode ingin melihat nama definisi source code yang digunakan di direktori ini:",
+		"didViewDefinitions": "ACode melihat nama definisi source code yang digunakan di direktori ini:",
+		"wantsToSearch": "ACode ingin mencari direktori ini untuk <code>{{regex}}</code>:",
+		"didSearch": "ACode mencari direktori ini untuk <code>{{regex}}</code>:",
+		"wantsToSearchOutsideWorkspace": "ACode ingin mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
+		"didSearchOutsideWorkspace": "ACode mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
+		"wantsToViewTopLevelOutsideWorkspace": "ACode ingin melihat file tingkat atas di direktori ini (di luar workspace):",
+		"didViewTopLevelOutsideWorkspace": "ACode melihat file tingkat atas di direktori ini (di luar workspace):",
+		"wantsToViewRecursiveOutsideWorkspace": "ACode ingin melihat semua file secara rekursif di direktori ini (di luar workspace):",
+		"didViewRecursiveOutsideWorkspace": "ACode melihat semua file secara rekursif di direktori ini (di luar workspace):",
+		"wantsToViewDefinitionsOutsideWorkspace": "ACode ingin melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):",
+		"didViewDefinitionsOutsideWorkspace": "ACode melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):"
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo ingin mencari codebase untuk <code>{{query}}</code>:",
-		"wantsToSearchWithPath": "Roo ingin mencari codebase untuk <code>{{query}}</code> di <code>{{path}}</code>:",
+		"wantsToSearch": "ACode ingin mencari codebase untuk <code>{{query}}</code>:",
+		"wantsToSearchWithPath": "ACode ingin mencari codebase untuk <code>{{query}}</code> di <code>{{path}}</code>:",
 		"didSearch_one": "Ditemukan 1 hasil",
 		"didSearch_other": "Ditemukan {{count}} hasil",
 		"resultTooltip": "Skor kemiripan: {{score}} (klik untuk membuka file)"
@@ -243,18 +243,18 @@
 	"response": "Respons",
 	"arguments": "Argumen",
 	"mcp": {
-		"wantsToUseTool": "Roo ingin menggunakan tool di server MCP {{serverName}}:",
-		"wantsToAccessResource": "Roo ingin mengakses resource di server MCP {{serverName}}:"
+		"wantsToUseTool": "ACode ingin menggunakan tool di server MCP {{serverName}}:",
+		"wantsToAccessResource": "ACode ingin mengakses resource di server MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo ingin beralih ke mode {{mode}}",
-		"wantsToSwitchWithReason": "Roo ingin beralih ke mode {{mode}} karena: {{reason}}",
-		"didSwitch": "Roo beralih ke mode {{mode}}",
-		"didSwitchWithReason": "Roo beralih ke mode {{mode}} karena: {{reason}}"
+		"wantsToSwitch": "ACode ingin beralih ke mode {{mode}}",
+		"wantsToSwitchWithReason": "ACode ingin beralih ke mode {{mode}} karena: {{reason}}",
+		"didSwitch": "ACode beralih ke mode {{mode}}",
+		"didSwitchWithReason": "ACode beralih ke mode {{mode}} karena: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo ingin membuat subtugas baru dalam mode {{mode}}:",
-		"wantsToFinish": "Roo ingin menyelesaikan subtugas ini",
+		"wantsToCreate": "ACode ingin membuat subtugas baru dalam mode {{mode}}:",
+		"wantsToFinish": "ACode ingin menyelesaikan subtugas ini",
 		"newTaskContent": "Instruksi Subtugas",
 		"completionContent": "Subtugas Selesai",
 		"resultContent": "Hasil Subtugas",
@@ -262,14 +262,14 @@
 		"completionInstructions": "Subtugas selesai! Kamu bisa meninjau hasilnya dan menyarankan koreksi atau langkah selanjutnya. Jika semuanya terlihat baik, konfirmasi untuk mengembalikan hasil ke tugas induk."
 	},
 	"questions": {
-		"hasQuestion": "Roo punya pertanyaan:"
+		"hasQuestion": "ACode punya pertanyaan:"
 	},
 	"taskCompleted": "Tugas Selesai",
 	"error": "Error",
 	"diffError": {
 		"title": "Edit Tidak Berhasil"
 	},
-	"troubleMessage": "Roo mengalami masalah...",
+	"troubleMessage": "ACode mengalami masalah...",
 	"powershell": {
 		"issues": "Sepertinya kamu mengalami masalah Windows PowerShell, silakan lihat ini"
 	},
@@ -283,9 +283,9 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Dirilis",
-		"description": "Memperkenalkan <bold>ACode Cloud:</bold> Membawa kekuatan Roo melampaui IDE",
+		"description": "Memperkenalkan <bold>ACode Cloud:</bold> Membawa kekuatan ACode melampaui IDE",
 		"feature1": "<bold>Lacak kemajuan tugas dari mana saja (Gratis):</bold> Dapatkan pembaruan real-time tentang tugas yang berjalan lama tanpa terjebak di IDE Anda",
-		"feature2": "<bold>Kontrol Ekstensi Roo dari jarak jauh (Pro):</bold> Mulai, hentikan, dan berinteraksi dengan tugas dari antarmuka browser berbasis chat.",
+		"feature2": "<bold>Kontrol Ekstensi ACode dari jarak jauh (Pro):</bold> Mulai, hentikan, dan berinteraksi dengan tugas dari antarmuka browser berbasis chat.",
 		"learnMore": "Siap mengambil kontrol? Pelajari lebih lanjut <learnMoreLink>di sini</learnMoreLink>.",
 		"visitCloudButton": "Kunjungi ACode Cloud",
 		"socialLinks": "Bergabunglah dengan kami di <xLink>X</xLink>, <discordLink>Discord</discordLink>, atau <redditLink>r/RooCode</redditLink>"
@@ -300,7 +300,7 @@
 		"countdownDisplay": "{{count}}dtk"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo ingin menggunakan browser:",
+		"rooWantsToUse": "ACode ingin menggunakan browser:",
 		"consoleLogs": "Log Konsol",
 		"noNewLogs": "(Tidak ada log baru)",
 		"screenshot": "Screenshot browser",
@@ -340,11 +340,11 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Batas Permintaan yang Disetujui Otomatis Tercapai",
-			"description": "Roo telah mencapai batas {{count}} permintaan API yang disetujui otomatis. Apakah kamu ingin mengatur ulang hitungan dan melanjutkan tugas?",
+			"description": "ACode telah mencapai batas {{count}} permintaan API yang disetujui otomatis. Apakah kamu ingin mengatur ulang hitungan dan melanjutkan tugas?",
 			"button": "Atur Ulang dan Lanjutkan"
 		},
 		"autoApprovedCostLimitReached": {
-			"description": "Roo telah mencapai batas biaya yang disetujui secara otomatis sebesar ${{count}}. Apakah Anda ingin mengatur ulang biaya dan melanjutkan tugas ini?",
+			"description": "ACode telah mencapai batas biaya yang disetujui secara otomatis sebesar ${{count}}. Apakah Anda ingin mengatur ulang biaya dan melanjutkan tugas ini?",
 			"button": "Reset dan Lanjutkan",
 			"title": "Batas Biaya Otomatis-Disetujui Tercapai"
 		}
@@ -394,7 +394,7 @@
 		"clickToEdit": "Klik untuk mengedit pesan"
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo ingin menjalankan perintah slash:",
-		"didRun": "Roo telah menjalankan perintah slash:"
+		"wantsToRun": "ACode ingin menjalankan perintah slash:",
+		"didRun": "ACode telah menjalankan perintah slash:"
 	}
 }

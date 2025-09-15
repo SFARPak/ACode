@@ -12,6 +12,11 @@ import { TelemetryEventName } from "@acode/types"
 import { initializeSourceMaps, exposeSourceMapsForDebugging } from "./utils/sourceMapInitializer"
 import { ExtensionStateContextProvider, useExtensionState } from "./context/ExtensionStateContext"
 import ChatView, { ChatViewRef } from "./components/chat/ChatView"
+import ArchitectView from "./components/architect/ArchitectView"
+import CodeView from "./components/code/CodeView"
+import DebugView from "./components/debug/DebugView"
+import OrchestrateView from "./components/orchestrate/OrchestrateView"
+import TestView from "./components/test/TestView"
 import HistoryView from "./components/history/HistoryView"
 import SettingsView, { SettingsViewRef } from "./components/settings/SettingsView"
 import WelcomeView from "./components/welcome/WelcomeView"
@@ -26,8 +31,10 @@ import { CloudView } from "./components/cloud/CloudView"
 import { useAddNonInteractiveClickListener } from "./components/ui/hooks/useNonInteractiveClick"
 import { TooltipProvider } from "./components/ui/tooltip"
 import { STANDARD_TOOLTIP_DELAY } from "./components/ui/standard-tooltip"
+import { TopNavBar } from "./components/TopNavBar"
+import { ModeTabBar } from "./components/ModeTabBar"
 
-type Tab = "settings" | "history" | "mcp" | "modes" | "chat" | "marketplace" | "cloud"
+import { Tab } from "./types/app"
 
 interface HumanRelayDialogState {
 	isOpen: boolean
@@ -56,13 +63,17 @@ const MemoizedCheckpointRestoreDialog = React.memo(CheckpointRestoreDialog)
 const MemoizedHumanRelayDialog = React.memo(HumanRelayDialog)
 
 const tabsByMessageAction: Partial<Record<NonNullable<ExtensionMessage["action"]>, Tab>> = {
-	chatButtonClicked: "chat",
 	settingsButtonClicked: "settings",
 	promptsButtonClicked: "modes",
 	mcpButtonClicked: "mcp",
 	historyButtonClicked: "history",
 	marketplaceButtonClicked: "marketplace",
 	cloudButtonClicked: "cloud",
+	architectButtonClicked: "architect",
+	codeButtonClicked: "code",
+	debugButtonClicked: "debug",
+	orchestrateButtonClicked: "orchestrate",
+	testButtonClicked: "test",
 }
 
 const App = () => {
@@ -84,7 +95,7 @@ const App = () => {
 	const marketplaceStateManager = useMemo(() => new MarketplaceViewStateManager(), [])
 
 	const [showAnnouncement, setShowAnnouncement] = useState(false)
-	const [tab, setTab] = useState<Tab>("chat")
+	const [tab, setTab] = useState<Tab>("chat") // Set initial tab to "chat"
 
 	const [humanRelayDialogState, setHumanRelayDialogState] = useState<HumanRelayDialogState>({
 		isOpen: false,
@@ -192,11 +203,11 @@ const App = () => {
 	useEvent("message", onMessage)
 
 	useEffect(() => {
-		if (shouldShowAnnouncement && tab === "chat") {
+		if (shouldShowAnnouncement) {
 			setShowAnnouncement(true)
 			vscode.postMessage({ type: "didShowAnnouncement" })
 		}
-	}, [shouldShowAnnouncement, tab])
+	}, [shouldShowAnnouncement])
 
 	useEffect(() => {
 		if (didHydrateState) {
@@ -241,39 +252,106 @@ const App = () => {
 		return null
 	}
 
-	// Do not conditionally load ChatView, it's expensive and there's state we
-	// don't want to lose (user input, disableInput, askResponse promise, etc.)
-	return showWelcome ? (
-		<WelcomeView />
-	) : (
-		<>
-			{tab === "modes" && <ModesView onDone={() => switchTab("chat")} />}
-			{tab === "mcp" && <McpView onDone={() => switchTab("chat")} />}
-			{tab === "history" && <HistoryView onDone={() => switchTab("chat")} />}
-			{tab === "settings" && (
-				<SettingsView ref={settingsRef} onDone={() => setTab("chat")} targetSection={currentSection} />
-			)}
-			{tab === "marketplace" && (
-				<MarketplaceView
-					stateManager={marketplaceStateManager}
-					onDone={() => switchTab("chat")}
-					targetTab={currentMarketplaceTab as "mcp" | "mode" | undefined}
-				/>
-			)}
-			{tab === "cloud" && (
-				<CloudView
-					userInfo={cloudUserInfo}
-					isAuthenticated={cloudIsAuthenticated}
-					cloudApiUrl={cloudApiUrl}
-					onDone={() => switchTab("chat")}
-				/>
-			)}
-			<ChatView
-				ref={chatViewRef}
-				isHidden={tab !== "chat"}
-				showAnnouncement={showAnnouncement}
-				hideAnnouncement={() => setShowAnnouncement(false)}
-			/>
+	// Show welcome screen if needed
+	if (showWelcome) {
+		return <WelcomeView />
+	}
+
+	return (
+		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+			{/* Top Navigation Bar (includes header icons, tabs, and recent tasks) */}
+			<TopNavBar activeTab={tab} onTabChange={switchTab} />
+			<ModeTabBar activeTab={tab} onTabChange={switchTab} />
+
+			{/* Main Content Area */}
+			<div className="glass-content glass-scrollable">
+				<div className="container mx-auto px-4 py-6">
+					{/* Chat View is always rendered, its visibility is controlled by the isHidden prop */}
+					<ChatView
+						ref={chatViewRef}
+						isHidden={tab !== "chat"}
+						showAnnouncement={showAnnouncement}
+						hideAnnouncement={() => setShowAnnouncement(false)}
+					/>
+
+					{tab === "architect" && (
+						<div className="glass-animate-fade-in">
+							<ArchitectView />
+						</div>
+					)}
+
+					{tab === "code" && (
+						<div className="glass-animate-fade-in">
+							<CodeView />
+						</div>
+					)}
+
+					{tab === "debug" && (
+						<div className="glass-animate-fade-in">
+							<DebugView />
+						</div>
+					)}
+
+					{tab === "orchestrate" && (
+						<div className="glass-animate-fade-in">
+							<OrchestrateView />
+						</div>
+					)}
+
+					{tab === "test" && (
+						<div className="glass-animate-fade-in">
+							<TestView />
+						</div>
+					)}
+
+					{tab === "modes" && (
+						<div className="glass-animate-fade-in">
+							<ModesView onDone={() => switchTab("chat")} />
+						</div>
+					)}
+
+					{tab === "history" && (
+						<div className="glass-animate-fade-in">
+							<HistoryView onDone={() => switchTab("chat")} />
+						</div>
+					)}
+
+					{tab === "settings" && (
+						<div className="glass-animate-fade-in">
+							<SettingsView ref={settingsRef} onDone={() => setTab("chat")} targetSection={currentSection} />
+						</div>
+					)}
+
+					{tab === "marketplace" && (
+						<div className="glass-animate-fade-in">
+							<MarketplaceView
+								stateManager={marketplaceStateManager}
+								onDone={() => switchTab("chat")}
+								targetTab={currentMarketplaceTab as "mcp" | "mode" | undefined}
+							/>
+						</div>
+					)}
+
+					{tab === "cloud" && (
+						<div className="glass-animate-fade-in">
+							<CloudView
+								userInfo={cloudUserInfo}
+								isAuthenticated={cloudIsAuthenticated}
+								cloudApiUrl={cloudApiUrl}
+								onDone={() => switchTab("modes")}
+							/>
+						</div>
+					)}
+
+					{tab === "mcp" && (
+						<div className="glass-animate-fade-in">
+							<McpView onDone={() => switchTab("chat")} />
+						</div>
+					)}
+				</div>
+			</div>
+
+			{/* Dialogs */}
 			<MemoizedHumanRelayDialog
 				isOpen={humanRelayDialogState.isOpen}
 				requestId={humanRelayDialogState.requestId}
@@ -282,6 +360,7 @@ const App = () => {
 				onSubmit={(requestId, text) => vscode.postMessage({ type: "humanRelayResponse", requestId, text })}
 				onCancel={(requestId) => vscode.postMessage({ type: "humanRelayCancel", requestId })}
 			/>
+
 			{deleteMessageDialogState.hasCheckpoint ? (
 				<MemoizedCheckpointRestoreDialog
 					open={deleteMessageDialogState.isOpen}
@@ -310,6 +389,7 @@ const App = () => {
 					}}
 				/>
 			)}
+
 			{editMessageDialogState.hasCheckpoint ? (
 				<MemoizedCheckpointRestoreDialog
 					open={editMessageDialogState.isOpen}
@@ -328,20 +408,20 @@ const App = () => {
 				/>
 			) : (
 				<MemoizedEditMessageDialog
-					open={editMessageDialogState.isOpen}
-					onOpenChange={(open: boolean) => setEditMessageDialogState((prev) => ({ ...prev, isOpen: open }))}
-					onConfirm={() => {
-						vscode.postMessage({
-							type: "editMessageConfirm",
-							messageTs: editMessageDialogState.messageTs,
-							text: editMessageDialogState.text,
-							images: editMessageDialogState.images,
-						})
-						setEditMessageDialogState((prev) => ({ ...prev, isOpen: false }))
-					}}
-				/>
+				open={editMessageDialogState.isOpen}
+				onOpenChange={(open: boolean) => setEditMessageDialogState((prev) => ({ ...prev, isOpen: open }))}
+				onConfirm={() => {
+					vscode.postMessage({
+						type: "editMessageConfirm",
+						messageTs: editMessageDialogState.messageTs,
+						text: editMessageDialogState.text,
+						images: editMessageDialogState.images,
+					})
+					setEditMessageDialogState((prev) => ({ ...prev, isOpen: false }))
+				}}
+			/>
 			)}
-		</>
+		</div>
 	)
 }
 
@@ -359,6 +439,6 @@ const AppWithProviders = () => (
 			</TranslationProvider>
 		</ExtensionStateContextProvider>
 	</ErrorBoundary>
-)
+);
 
 export default AppWithProviders

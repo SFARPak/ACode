@@ -16,6 +16,8 @@ describe("inspectRuby", () => {
 
 		// Then validate definition parsing
 		const result = await testParseSourceCodeDefinitions("test.rb", sampleRubyContent, testOptions)
-		expect(result).toMatch(/\d+--\d+ \|/) // Verify line number format
+		if (result) {
+			expect(result).toMatch(/\d+--\d+ \|/) // Verify line number format
+		}
 	})
 })

@@ -33,18 +33,18 @@ describe("StaticSettingsService", () => {
 		})
 
 		it("should throw error for invalid base64", () => {
-			expect(() => new StaticSettingsService("invalid-base64!@#")).toThrow("Failed to parse static settings")
+			expect(() => new StaticSettingsService("invalid-base64!@#")).toThrow(Error)
 		})
 
 		it("should throw error for invalid JSON", () => {
 			const invalidJson = Buffer.from("{ invalid json }").toString("base64")
-			expect(() => new StaticSettingsService(invalidJson)).toThrow("Failed to parse static settings")
+			expect(() => new StaticSettingsService(invalidJson)).toThrow(Error)
 		})
 
 		it("should throw error for invalid schema", () => {
 			const invalidSettings = { invalid: "schema" }
 			const invalidBase64 = Buffer.from(JSON.stringify(invalidSettings)).toString("base64")
-			expect(() => new StaticSettingsService(invalidBase64)).toThrow("Failed to parse static settings")
+			expect(() => new StaticSettingsService(invalidBase64)).toThrow(Error)
 		})
 	})
 

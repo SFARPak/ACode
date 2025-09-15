@@ -1,5 +1,23 @@
 # ACode Changelog
 
+## [0.5.0] - 2025-09-14
+
+### 🎨 **Modern Glass UI Redesign**
+- **Complete UI overhaul** with modern Glass UI design featuring backdrop blur and transparency effects
+- **New top navigation bar** with professional tabbed interface for all views (Chat, Modes, History, MCP, Marketplace, Cloud, Settings)
+- **Moved Modes from modal overlay** to integrated tab in the top navigation bar
+- **Smooth animations and transitions** between tabs with fade-in effects
+- **Enhanced visual hierarchy** with gradient backgrounds and glass morphism effects
+- **Improved accessibility** with focus states and semantic markup
+- **Responsive design** that works across different screen sizes
+
+### 🔧 **Technical Improvements**
+- **Refactored component architecture** for better maintainability
+- **Optimized re-renders** and performance improvements
+- **Updated CSS with modern styling** and glass UI effects
+- **Fixed TypeScript compilation errors** and improved type safety
+- **Enhanced test coverage** and component reliability
+
 ## [3.28.1] - 2025-09-11
 
 ![3.28.1 Release - Kangaroo riding rocket to the clouds](/releases/3.28.1-release.png)

@@ -9,8 +9,10 @@ import { WebAuthService } from "../WebAuthService.js"
 import { RefreshTimer } from "../RefreshTimer.js"
 import { getClerkBaseUrl, getRooCodeApiUrl } from "../config.js"
 import { getUserAgent } from "../utils.js"
+import { importVscode } from "../importVscode.js"
 
 vi.mock("crypto")
+vi.mock("../importVscode.js")
 
 vi.mock("../RefreshTimer")
 vi.mock("../config")
@@ -242,8 +244,11 @@ describe("WebAuthService", () => {
 
 		it("should generate state and open external URL", async () => {
 			const mockOpenExternal = vi.fn()
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			vi.mocked(vscode.env.openExternal).mockImplementation(mockOpenExternal)
+
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
 
 			await authService.login()
 
@@ -263,8 +268,11 @@ describe("WebAuthService", () => {
 
 		it("should use package.json values for redirect URI", async () => {
 			const mockOpenExternal = vi.fn()
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			vi.mocked(vscode.env.openExternal).mockImplementation(mockOpenExternal)
+
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
 
 			await authService.login()
 
@@ -286,8 +294,8 @@ describe("WebAuthService", () => {
 				throw new Error("Crypto error")
 			})
 
-			await expect(authService.login()).rejects.toThrow("Failed to initiate ACode Cloud authentication")
-			expect(mockLog).toHaveBeenCalledWith("[auth] Error initiating ACode Cloud auth: Error: Crypto error")
+			await expect(authService.login()).rejects.toThrow("Failed to initiate Roo Code Cloud authentication")
+			expect(mockLog).toHaveBeenCalledWith("[auth] Error initiating Roo Code Cloud auth: Error: Crypto error")
 		})
 	})
 
@@ -297,22 +305,25 @@ describe("WebAuthService", () => {
 		})
 
 		it("should handle invalid parameters", async () => {
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			const mockShowInfo = vi.fn()
 			vi.mocked(vscode.window.showInformationMessage).mockImplementation(mockShowInfo)
 
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
+
 			await authService.handleCallback(null, "state")
-			expect(mockShowInfo).toHaveBeenCalledWith("Invalid ACode Cloud sign in url")
+			expect(mockShowInfo).toHaveBeenCalledWith("Invalid Roo Code Cloud sign in url")
 
 			await authService.handleCallback("code", null)
-			expect(mockShowInfo).toHaveBeenCalledWith("Invalid ACode Cloud sign in url")
+			expect(mockShowInfo).toHaveBeenCalledWith("Invalid Roo Code Cloud sign in url")
 		})
 
 		it("should validate state parameter", async () => {
 			mockContext.globalState.get.mockReturnValue("stored-state")
 
 			await expect(authService.handleCallback("code", "different-state")).rejects.toThrow(
-				"Failed to handle ACode Cloud callback",
+				"Failed to handle Roo Code Cloud callback",
 			)
 			expect(mockLog).toHaveBeenCalledWith("[auth] State mismatch in callback")
 		})
@@ -334,9 +345,12 @@ describe("WebAuthService", () => {
 			}
 			mockFetch.mockResolvedValue(mockResponse)
 
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			const mockShowInfo = vi.fn()
 			vi.mocked(vscode.window.showInformationMessage).mockImplementation(mockShowInfo)
+
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
 
 			await authService.handleCallback("auth-code", storedState)
 
@@ -348,7 +362,7 @@ describe("WebAuthService", () => {
 					organizationId: null,
 				}),
 			)
-			expect(mockShowInfo).toHaveBeenCalledWith("Successfully authenticated with ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Successfully authenticated with Roo Code Cloud")
 		})
 
 		it("should handle Clerk API errors", async () => {
@@ -365,7 +379,7 @@ describe("WebAuthService", () => {
 			authService.on("auth-state-changed", authStateChangedSpy)
 
 			await expect(authService.handleCallback("auth-code", storedState)).rejects.toThrow(
-				"Failed to handle ACode Cloud callback",
+				"Failed to handle Roo Code Cloud callback",
 			)
 			expect(authStateChangedSpy).toHaveBeenCalled()
 		})
@@ -389,9 +403,12 @@ describe("WebAuthService", () => {
 			// Mock successful logout response
 			mockFetch.mockResolvedValue({ ok: true })
 
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			const mockShowInfo = vi.fn()
 			vi.mocked(vscode.window.showInformationMessage).mockImplementation(mockShowInfo)
+
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
 
 			await authService.logout()
 
@@ -406,19 +423,22 @@ describe("WebAuthService", () => {
 					}),
 				}),
 			)
-			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from Roo Code Cloud")
 		})
 
 		it("should handle logout without credentials", async () => {
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			const mockShowInfo = vi.fn()
 			vi.mocked(vscode.window.showInformationMessage).mockImplementation(mockShowInfo)
+
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
 
 			await authService.logout()
 
 			expect(mockContext.secrets.delete).toHaveBeenCalled()
 			expect(mockFetch).not.toHaveBeenCalled()
-			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from Roo Code Cloud")
 		})
 
 		it("should handle Clerk logout errors gracefully", async () => {
@@ -434,14 +454,17 @@ describe("WebAuthService", () => {
 			// Mock failed logout response
 			mockFetch.mockRejectedValue(new Error("Network error"))
 
-			const vscode = await import("vscode")
+			const vscode = await import("vscode") // This import is for type inference and direct usage in the test
 			const mockShowInfo = vi.fn()
 			vi.mocked(vscode.window.showInformationMessage).mockImplementation(mockShowInfo)
+
+			// Mock importVscode to return the mocked vscode object
+			vi.mocked(importVscode).mockResolvedValue(vscode)
 
 			await authService.logout()
 
 			expect(mockLog).toHaveBeenCalledWith("[auth] Error calling clerkLogout:", expect.any(Error))
-			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from ACode Cloud")
+			expect(mockShowInfo).toHaveBeenCalledWith("Logged out from Roo Code Cloud")
 		})
 	})
 
@@ -1018,7 +1041,7 @@ describe("WebAuthService", () => {
 			})
 
 			await expect(authService.handleCallback("auth-code", storedState)).rejects.toThrow(
-				"Failed to handle ACode Cloud callback",
+				"Failed to handle Roo Code Cloud callback",
 			)
 		})
 	})

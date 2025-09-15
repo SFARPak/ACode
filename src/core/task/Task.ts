@@ -317,6 +317,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		workspacePath,
 	}: TaskOptions) {
 		super()
+		console.log(`[Task#constructor] Initializing task ${historyItem ? historyItem.id : "new"}`)
 
 		if (startTask && !task && !images && !historyItem) {
 			throw new Error("Either historyItem or task/images must be provided")
@@ -1187,6 +1188,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	// Start / Resume / Abort / Dispose
 
 	private async startTask(task?: string, images?: string[]): Promise<void> {
+		console.log(`[Task#startTask] Starting task ${this.taskId}.${this.instanceId}`)
 		if (this.enableBridge) {
 			try {
 				await BridgeOrchestrator.subscribeToTask(this)
@@ -1228,6 +1230,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	}
 
 	private async resumeTaskFromHistory() {
+		console.log(`[Task#resumeTaskFromHistory] Resuming task ${this.taskId}.${this.instanceId}`)
 		if (this.enableBridge) {
 			try {
 				await BridgeOrchestrator.subscribeToTask(this)
@@ -1488,6 +1491,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	}
 
 	public async abortTask(isAbandoned = false) {
+		console.log(`[Task#abortTask] Aborting task ${this.taskId}.${this.instanceId}, abandoned: ${isAbandoned}`)
 		// Aborting task
 
 		// Will stop any autonomously running promises.
@@ -1514,6 +1518,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	}
 
 	public dispose(): void {
+		console.log(`[Task#dispose] Disposing task ${this.taskId}.${this.instanceId}`)
 		console.log(`[Task#dispose] disposing task ${this.taskId}.${this.instanceId}`)
 
 		// Dispose message queue and remove event listeners.
@@ -1708,6 +1713,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		userContent: Anthropic.Messages.ContentBlockParam[],
 		includeFileDetails: boolean = false,
 	): Promise<boolean> {
+		console.log(`[Task#recursivelyMakeClineRequests] Starting request loop for task ${this.taskId}.${this.instanceId}`)
 		interface StackItem {
 			userContent: Anthropic.Messages.ContentBlockParam[]
 			includeFileDetails: boolean

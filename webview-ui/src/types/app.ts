@@ -1,0 +1,1 @@
+export type Tab = "chat" | "settings" | "history" | "mcp" | "modes" | "architect" | "code" | "debug" | "orchestrate" | "test" | "marketplace" | "cloud"

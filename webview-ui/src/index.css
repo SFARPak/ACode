@@ -490,3 +490,132 @@ input[cmdk-input]:focus {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
 }
+
+/* Modern Glass UI Styles */
+.glass-nav-bar {
+	background: rgba(255, 255, 255, 0.02); /* Slightly less transparent */
+	backdrop-filter: blur(30px) saturate(200%); /* More blur and saturation */
+	-webkit-backdrop-filter: blur(30px) saturate(200%);
+	border: 1px solid rgba(255, 255, 255, 0.1); /* Slightly more visible border */
+	box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+}
+
+.glass-tab {
+	background: transparent;
+	border: 1px solid transparent;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-tab:hover {
+	background: rgba(255, 255, 255, 0.05); /* More transparent on hover */
+	border: 1px solid rgba(255, 255, 255, 0.12); /* Lighter border on hover */
+	backdrop-filter: blur(15px) saturate(160%); /* Slightly more blur and saturation on hover */
+	-webkit-backdrop-filter: blur(15px) saturate(160%);
+	box-shadow: 0 3px 18px rgba(0, 0, 0, 0.12); /* Softer shadow on hover */
+}
+
+.glass-active-tab {
+	background: rgba(255, 255, 255, 0.1); /* More transparent for active tab */
+	border: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border for active tab */
+	backdrop-filter: blur(18px) saturate(170%); /* Slightly more blur and saturation for active tab */
+	-webkit-backdrop-filter: blur(18px) saturate(170%);
+	box-shadow:
+		0 6px 28px rgba(0, 0, 0, 0.18),
+		inset 0 1px 0 rgba(255, 255, 255, 0.08); /* Softer shadow for active tab */
+}
+
+/* Content area with glass morphism */
+.glass-content {
+	background: rgba(255, 255, 255, 0.01); /* Slightly less transparent */
+	backdrop-filter: blur(15px) saturate(140%); /* More blur and saturation */
+	-webkit-backdrop-filter: blur(15px) saturate(140%);
+	border: 1px solid rgba(255, 255, 255, 0.05); /* Slightly more visible border */
+	min-height: calc(100vh - 3.5rem);
+}
+
+/* Tab content transitions */
+.tab-content-enter {
+	opacity: 0;
+	transform: translateY(10px);
+}
+
+.tab-content-enter-active {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.tab-content-exit {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.tab-content-exit-active {
+	opacity: 0;
+	transform: translateY(-10px);
+	transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+}
+
+/* Enhanced scrollbar for glass theme */
+.glass-scrollable::-webkit-scrollbar {
+	width: 8px;
+}
+
+.glass-scrollable::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.02);
+	border-radius: 4px;
+}
+
+.glass-scrollable::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 4px;
+	transition: background 0.3s ease;
+}
+
+.glass-scrollable::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+/* Focus styles for accessibility */
+.glass-focus:focus-visible {
+	outline: 2px solid rgba(59, 130, 246, 0.8);
+	outline-offset: 2px;
+	border-radius: 6px;
+}
+
+/* Smooth animations */
+@keyframes glass-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(20px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.glass-animate-fade-in {
+	animation: glass-fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading shimmer effect */
+@keyframes glass-shimmer {
+	0% {
+		background-position: -200px 0;
+	}
+	100% {
+		background-position: calc(200px + 100%) 0;
+	}
+}
+
+.glass-loading {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0.02) 0px,
+		rgba(255, 255, 255, 0.08) 40px,
+		rgba(255, 255, 255, 0.02) 80px
+	);
+	background-size: 200px;
+	animation: glass-shimmer 1.5s infinite linear;
+}

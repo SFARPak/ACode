@@ -26,7 +26,7 @@
 		"shareSuccessOrganization": "Enllaç d'organització copiat al porta-retalls",
 		"shareSuccessPublic": "Enllaç públic copiat al porta-retalls",
 		"openInCloud": "Obrir tasca a ACode Cloud",
-		"openInCloudIntro": "Continua monitoritzant o interactuant amb Roo des de qualsevol lloc. Escaneja, fes clic o copia per obrir."
+		"openInCloudIntro": "Continua monitoritzant o interactuant amb ACode des de qualsevol lloc. Escaneja, fes clic o copia per obrir."
 	},
 	"unpin": "Desfixar",
 	"pin": "Fixar",
@@ -86,7 +86,7 @@
 	},
 	"scrollToBottom": "Desplaça't al final del xat",
 	"about": "Genera, refactoritza i depura codi amb l'ajuda de la IA. Consulta la nostra <DocsLink>documentació</DocsLink> per obtenir més informació.",
-	"onboarding": "<strong> La vostra llista de tasques en aquest espai de treball està buida. </strong> Comença escrivint una tasca a continuació. \nNo esteu segur per on començar? \nMés informació sobre què pot fer Roo als documents.",
+	"onboarding": "<strong> La vostra llista de tasques en aquest espai de treball està buida. </strong> Comença escrivint una tasca a continuació. \nNo esteu segur per on començar? \nMés informació sobre què pot fer ACode als documents.",
 	"rooTips": {
 		"boomerangTasks": {
 			"title": "Orquestració de Tasques",
@@ -121,7 +121,7 @@
 		"title": "Modes",
 		"marketplace": "Marketplace de Modes",
 		"settings": "Configuració de Modes",
-		"description": "Personalitats especialitzades que adapten el comportament de Roo.",
+		"description": "Personalitats especialitzades que adapten el comportament de ACode.",
 		"searchPlaceholder": "Cerca modes...",
 		"noResults": "No s'han trobat resultats"
 	},
@@ -135,7 +135,7 @@
 	"diffError": {
 		"title": "Edició fallida"
 	},
-	"troubleMessage": "Roo està tenint problemes...",
+	"troubleMessage": "ACode està tenint problemes...",
 	"apiRequest": {
 		"title": "Sol·licitud API",
 		"failed": "Sol·licitud API ha fallat",
@@ -160,46 +160,46 @@
 		"current": "Actual"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo vol obtenir instruccions detallades per ajudar amb la tasca actual."
+		"wantsToFetch": "ACode vol obtenir instruccions detallades per ajudar amb la tasca actual."
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo vol llegir aquest fitxer:",
-		"wantsToReadOutsideWorkspace": "Roo vol llegir aquest fitxer fora de l'espai de treball:",
-		"didRead": "Roo ha llegit aquest fitxer:",
-		"wantsToEdit": "Roo vol editar aquest fitxer:",
-		"wantsToEditOutsideWorkspace": "Roo vol editar aquest fitxer fora de l'espai de treball:",
-		"wantsToEditProtected": "Roo vol editar un fitxer de configuració protegit:",
-		"wantsToCreate": "Roo vol crear un nou fitxer:",
-		"wantsToSearchReplace": "Roo vol realitzar cerca i substitució en aquest fitxer:",
-		"didSearchReplace": "Roo ha realitzat cerca i substitució en aquest fitxer:",
-		"wantsToInsert": "Roo vol inserir contingut en aquest fitxer:",
-		"wantsToInsertWithLineNumber": "Roo vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
-		"wantsToInsertAtEnd": "Roo vol afegir contingut al final d'aquest fitxer:",
-		"wantsToReadAndXMore": "En Roo vol llegir aquest fitxer i {{count}} més:",
-		"wantsToReadMultiple": "Roo vol llegir diversos fitxers:",
-		"wantsToApplyBatchChanges": "Roo vol aplicar canvis a múltiples fitxers:",
-		"wantsToGenerateImage": "Roo vol generar una imatge:",
-		"wantsToGenerateImageOutsideWorkspace": "Roo vol generar una imatge fora de l'espai de treball:",
-		"wantsToGenerateImageProtected": "Roo vol generar una imatge en una ubicació protegida:",
-		"didGenerateImage": "Roo ha generat una imatge:"
+		"wantsToRead": "ACode vol llegir aquest fitxer:",
+		"wantsToReadOutsideWorkspace": "ACode vol llegir aquest fitxer fora de l'espai de treball:",
+		"didRead": "ACode ha llegit aquest fitxer:",
+		"wantsToEdit": "ACode vol editar aquest fitxer:",
+		"wantsToEditOutsideWorkspace": "ACode vol editar aquest fitxer fora de l'espai de treball:",
+		"wantsToEditProtected": "ACode vol editar un fitxer de configuració protegit:",
+		"wantsToCreate": "ACode vol crear un nou fitxer:",
+		"wantsToSearchReplace": "ACode vol realitzar cerca i substitució en aquest fitxer:",
+		"didSearchReplace": "ACode ha realitzat cerca i substitució en aquest fitxer:",
+		"wantsToInsert": "ACode vol inserir contingut en aquest fitxer:",
+		"wantsToInsertWithLineNumber": "ACode vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
+		"wantsToInsertAtEnd": "ACode vol afegir contingut al final d'aquest fitxer:",
+		"wantsToReadAndXMore": "En ACode vol llegir aquest fitxer i {{count}} més:",
+		"wantsToReadMultiple": "ACode vol llegir diversos fitxers:",
+		"wantsToApplyBatchChanges": "ACode vol aplicar canvis a múltiples fitxers:",
+		"wantsToGenerateImage": "ACode vol generar una imatge:",
+		"wantsToGenerateImageOutsideWorkspace": "ACode vol generar una imatge fora de l'espai de treball:",
+		"wantsToGenerateImageProtected": "ACode vol generar una imatge en una ubicació protegida:",
+		"didGenerateImage": "ACode ha generat una imatge:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo vol veure els fitxers de nivell superior en aquest directori:",
-		"didViewTopLevel": "Roo ha vist els fitxers de nivell superior en aquest directori:",
-		"wantsToViewRecursive": "Roo vol veure recursivament tots els fitxers en aquest directori:",
-		"didViewRecursive": "Roo ha vist recursivament tots els fitxers en aquest directori:",
-		"wantsToViewDefinitions": "Roo vol veure noms de definicions de codi font utilitzats en aquest directori:",
-		"didViewDefinitions": "Roo ha vist noms de definicions de codi font utilitzats en aquest directori:",
-		"wantsToSearch": "Roo vol cercar en aquest directori <code>{{regex}}</code>:",
-		"didSearch": "Roo ha cercat en aquest directori <code>{{regex}}</code>:",
-		"wantsToSearchOutsideWorkspace": "Roo vol cercar en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
-		"didSearchOutsideWorkspace": "Roo ha cercat en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo vol veure els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
-		"didViewTopLevelOutsideWorkspace": "Roo ha vist els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo vol veure recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
-		"didViewRecursiveOutsideWorkspace": "Roo ha vist recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
-		"wantsToViewDefinitionsOutsideWorkspace": "Roo vol veure noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):",
-		"didViewDefinitionsOutsideWorkspace": "Roo ha vist noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):"
+		"wantsToViewTopLevel": "ACode vol veure els fitxers de nivell superior en aquest directori:",
+		"didViewTopLevel": "ACode ha vist els fitxers de nivell superior en aquest directori:",
+		"wantsToViewRecursive": "ACode vol veure recursivament tots els fitxers en aquest directori:",
+		"didViewRecursive": "ACode ha vist recursivament tots els fitxers en aquest directori:",
+		"wantsToViewDefinitions": "ACode vol veure noms de definicions de codi font utilitzats en aquest directori:",
+		"didViewDefinitions": "ACode ha vist noms de definicions de codi font utilitzats en aquest directori:",
+		"wantsToSearch": "ACode vol cercar en aquest directori <code>{{regex}}</code>:",
+		"didSearch": "ACode ha cercat en aquest directori <code>{{regex}}</code>:",
+		"wantsToSearchOutsideWorkspace": "ACode vol cercar en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
+		"didSearchOutsideWorkspace": "ACode ha cercat en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
+		"wantsToViewTopLevelOutsideWorkspace": "ACode vol veure els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
+		"didViewTopLevelOutsideWorkspace": "ACode ha vist els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
+		"wantsToViewRecursiveOutsideWorkspace": "ACode vol veure recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
+		"didViewRecursiveOutsideWorkspace": "ACode ha vist recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
+		"wantsToViewDefinitionsOutsideWorkspace": "ACode vol veure noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):",
+		"didViewDefinitionsOutsideWorkspace": "ACode ha vist noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):"
 	},
 	"commandOutput": "Sortida de l'ordre",
 	"commandExecution": {
@@ -221,18 +221,18 @@
 	"response": "Resposta",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Roo vol utilitzar una eina al servidor MCP {{serverName}}:",
-		"wantsToAccessResource": "Roo vol accedir a un recurs al servidor MCP {{serverName}}:"
+		"wantsToUseTool": "ACode vol utilitzar una eina al servidor MCP {{serverName}}:",
+		"wantsToAccessResource": "ACode vol accedir a un recurs al servidor MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo vol canviar a mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
-		"didSwitch": "Roo ha canviat a mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
+		"wantsToSwitch": "ACode vol canviar a mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "ACode vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
+		"didSwitch": "ACode ha canviat a mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "ACode ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo vol crear una nova subtasca en mode <code>{{mode}}</code>:",
-		"wantsToFinish": "Roo vol finalitzar aquesta subtasca",
+		"wantsToCreate": "ACode vol crear una nova subtasca en mode <code>{{mode}}</code>:",
+		"wantsToFinish": "ACode vol finalitzar aquesta subtasca",
 		"newTaskContent": "Instruccions de la subtasca",
 		"completionContent": "Subtasca completada",
 		"resultContent": "Resultats de la subtasca",
@@ -240,7 +240,7 @@
 		"completionInstructions": "Subtasca completada! Pots revisar els resultats i suggerir correccions o següents passos. Si tot sembla correcte, confirma per tornar el resultat a la tasca principal."
 	},
 	"questions": {
-		"hasQuestion": "Roo té una pregunta:"
+		"hasQuestion": "ACode té una pregunta:"
 	},
 	"taskCompleted": "Tasca completada",
 	"powershell": {
@@ -271,15 +271,15 @@
 	},
 	"announcement": {
 		"title": "🎉 ACode {{version}} Llançat",
-		"description": "Presentem <bold>ACode Cloud:</bold> Portant el poder de Roo més enllà de l'IDE",
+		"description": "Presentem <bold>ACode Cloud:</bold> Portant el poder de ACode més enllà de l'IDE",
 		"feature1": "<bold>Segueix el progrés de les tasques des de qualsevol lloc (Gratuït):</bold> Obté actualitzacions en temps real de tasques de llarga durada sense quedar-te atrapat a la teva IDE",
-		"feature2": "<bold>Controla l'Extensió Roo remotament (Pro):</bold> Inicia, atura i interactua amb tasques des d'una interfície de navegador basada en xat.",
+		"feature2": "<bold>Controla l'Extensió ACode remotament (Pro):</bold> Inicia, atura i interactua amb tasques des d'una interfície de navegador basada en xat.",
 		"learnMore": "Llest per prendre el control? Aprèn més <learnMoreLink>aquí</learnMoreLink>.",
 		"visitCloudButton": "Visita ACode Cloud",
 		"socialLinks": "Uneix-te a nosaltres a <xLink>X</xLink>, <discordLink>Discord</discordLink>, o <redditLink>r/RooCode</redditLink>"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo vol utilitzar el navegador:",
+		"rooWantsToUse": "ACode vol utilitzar el navegador:",
 		"consoleLogs": "Registres de consola",
 		"noNewLogs": "(Cap registre nou)",
 		"screenshot": "Captura de pantalla del navegador",
@@ -319,18 +319,18 @@
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "S'ha arribat al límit de sol·licituds aprovades automàticament",
-			"description": "Roo ha arribat al límit aprovat automàticament de {{count}} sol·licitud(s) d'API. Vols reiniciar el comptador i continuar amb la tasca?",
+			"description": "ACode ha arribat al límit aprovat automàticament de {{count}} sol·licitud(s) d'API. Vols reiniciar el comptador i continuar amb la tasca?",
 			"button": "Reiniciar i continuar"
 		},
 		"autoApprovedCostLimitReached": {
 			"title": "S'ha arribat al límit de cost d'aprovació automàtica",
 			"button": "Restableix i continua",
-			"description": "Roo ha arribat al límit de cost aprovat automàticament de ${{count}}. Vols restablir el cost i continuar amb la tasca?"
+			"description": "ACode ha arribat al límit de cost aprovat automàticament de ${{count}}. Vols restablir el cost i continuar amb la tasca?"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo vol cercar a la base de codi <code>{{query}}</code>:",
-		"wantsToSearchWithPath": "Roo vol cercar a la base de codi <code>{{query}}</code> a <code>{{path}}</code>:",
+		"wantsToSearch": "ACode vol cercar a la base de codi <code>{{query}}</code>:",
+		"wantsToSearchWithPath": "ACode vol cercar a la base de codi <code>{{query}}</code> a <code>{{path}}</code>:",
 		"didSearch_one": "S'ha trobat 1 resultat",
 		"didSearch_other": "S'han trobat {{count}} resultats",
 		"resultTooltip": "Puntuació de similitud: {{score}} (fes clic per obrir el fitxer)"
@@ -388,7 +388,7 @@
 		"clickToEdit": "Feu clic per editar el missatge"
 	},
 	"slashCommand": {
-		"wantsToRun": "Roo vol executar una comanda slash:",
-		"didRun": "Roo ha executat una comanda slash:"
+		"wantsToRun": "ACode vol executar una comanda slash:",
+		"didRun": "ACode ha executat una comanda slash:"
 	}
 }

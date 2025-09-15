@@ -74,54 +74,60 @@ export const registerCommands = (options: RegisterCommandOptions) => {
 
 const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOptions): Record<CommandId, any> => ({
 	activationCompleted: () => {},
-	cloudButtonClicked: () => {
+	architectButtonClicked: () => {
 		const visibleProvider = getVisibleProviderOrLog(outputChannel)
 
 		if (!visibleProvider) {
 			return
 		}
 
-		TelemetryService.instance.captureTitleButtonClicked("cloud")
+		TelemetryService.instance.captureTitleButtonClicked("architect")
 
-		visibleProvider.postMessageToWebview({ type: "action", action: "cloudButtonClicked" })
+		visibleProvider.postMessageToWebview({ type: "action", action: "architectButtonClicked" })
 	},
-	plusButtonClicked: async () => {
+	codeButtonClicked: () => {
 		const visibleProvider = getVisibleProviderOrLog(outputChannel)
 
 		if (!visibleProvider) {
 			return
 		}
 
-		TelemetryService.instance.captureTitleButtonClicked("plus")
+		TelemetryService.instance.captureTitleButtonClicked("code")
 
-		await visibleProvider.removeClineFromStack()
-		await visibleProvider.refreshWorkspace()
-		await visibleProvider.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
-		// Send focusInput action immediately after chatButtonClicked
-		// This ensures the focus happens after the view has switched
-		await visibleProvider.postMessageToWebview({ type: "action", action: "focusInput" })
+		visibleProvider.postMessageToWebview({ type: "action", action: "codeButtonClicked" })
 	},
-	mcpButtonClicked: () => {
+	debugButtonClicked: () => {
 		const visibleProvider = getVisibleProviderOrLog(outputChannel)
 
 		if (!visibleProvider) {
 			return
 		}
 
-		TelemetryService.instance.captureTitleButtonClicked("mcp")
+		TelemetryService.instance.captureTitleButtonClicked("debug")
 
-		visibleProvider.postMessageToWebview({ type: "action", action: "mcpButtonClicked" })
+		visibleProvider.postMessageToWebview({ type: "action", action: "debugButtonClicked" })
 	},
-	promptsButtonClicked: () => {
+	orchestrateButtonClicked: () => {
 		const visibleProvider = getVisibleProviderOrLog(outputChannel)
 
 		if (!visibleProvider) {
 			return
 		}
 
-		TelemetryService.instance.captureTitleButtonClicked("prompts")
+		TelemetryService.instance.captureTitleButtonClicked("orchestrate")
 
-		visibleProvider.postMessageToWebview({ type: "action", action: "promptsButtonClicked" })
+		visibleProvider.postMessageToWebview({ type: "action", action: "orchestrateButtonClicked" })
+	},
+	testButtonClicked: () => {
+		const visibleProvider = getVisibleProviderOrLog(outputChannel)
+
+		if (!visibleProvider) {
+			return
+		}
+
+		TelemetryService.instance.captureTitleButtonClicked("test")
+
+		visibleProvider.postMessageToWebview({ type: "action", action: "testButtonClicked" })
 	},
 	popoutButtonClicked: () => {
 		TelemetryService.instance.captureTitleButtonClicked("popout")
@@ -141,22 +147,6 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 		visibleProvider.postMessageToWebview({ type: "action", action: "settingsButtonClicked" })
 		// Also explicitly post the visibility message to trigger scroll reliably
 		visibleProvider.postMessageToWebview({ type: "action", action: "didBecomeVisible" })
-	},
-	historyButtonClicked: () => {
-		const visibleProvider = getVisibleProviderOrLog(outputChannel)
-
-		if (!visibleProvider) {
-			return
-		}
-
-		TelemetryService.instance.captureTitleButtonClicked("history")
-
-		visibleProvider.postMessageToWebview({ type: "action", action: "historyButtonClicked" })
-	},
-	marketplaceButtonClicked: () => {
-		const visibleProvider = getVisibleProviderOrLog(outputChannel)
-		if (!visibleProvider) return
-		visibleProvider.postMessageToWebview({ type: "action", action: "marketplaceButtonClicked" })
 	},
 	showHumanRelayDialog: (params: { requestId: string; promptText: string }) => {
 		const panel = getPanel()
