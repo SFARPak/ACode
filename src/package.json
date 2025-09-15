@@ -3,7 +3,7 @@
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
 	"publisher": "realancerllc",
-	"version": "0.2.0",
+	"version": "0.8.0",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -70,39 +70,29 @@
 		},
 		"commands": [
 			{
-				"command": "acode.plusButtonClicked",
-				"title": "%command.newTask.title%",
-				"icon": "$(add)"
+				"command": "acode.architectButtonClicked",
+				"title": "%command.architect.title%",
+				"icon": "$(layout)"
 			},
 			{
-				"command": "acode.promptsButtonClicked",
-				"title": "%command.prompts.title%",
-				"icon": "$(organization)"
+				"command": "acode.codeButtonClicked",
+				"title": "%command.code.title%",
+				"icon": "$(code)"
 			},
 			{
-				"command": "acode.mcpButtonClicked",
-				"title": "%command.mcpServers.title%",
-				"icon": "$(server)"
+				"command": "acode.debugButtonClicked",
+				"title": "%command.debug.title%",
+				"icon": "$(bug)"
 			},
 			{
-				"command": "acode.historyButtonClicked",
-				"title": "%command.history.title%",
-				"icon": "$(history)"
+				"command": "acode.orchestrateButtonClicked",
+				"title": "%command.orchestrate.title%",
+				"icon": "$(sparkles)"
 			},
 			{
-				"command": "acode.marketplaceButtonClicked",
-				"title": "%command.marketplace.title%",
-				"icon": "$(extensions)"
-			},
-			{
-				"command": "acode.popoutButtonClicked",
-				"title": "%command.openInEditor.title%",
-				"icon": "$(link-external)"
-			},
-			{
-				"command": "acode.cloudButtonClicked",
-				"title": "%command.cloud.title%",
-				"icon": "$(cloud)"
+				"command": "acode.testButtonClicked",
+				"title": "%command.test.title%",
+				"icon": "$(flask)"
 			},
 			{
 				"command": "acode.settingsButtonClicked",
@@ -229,85 +219,65 @@
 			],
 			"view/title": [
 				{
-					"command": "acode.plusButtonClicked",
+					"command": "acode.architectButtonClicked",
 					"group": "navigation@1",
 					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "acode.marketplaceButtonClicked",
+					"command": "acode.codeButtonClicked",
 					"group": "navigation@2",
 					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "acode.settingsButtonClicked",
+					"command": "acode.debugButtonClicked",
 					"group": "navigation@3",
 					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "acode.cloudButtonClicked",
+					"command": "acode.orchestrateButtonClicked",
 					"group": "navigation@4",
 					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "acode.historyButtonClicked",
-					"group": "overflow@1",
+					"command": "acode.testButtonClicked",
+					"group": "navigation@5",
 					"when": "view == acode.SidebarProvider"
 				},
 				{
-					"command": "acode.promptsButtonClicked",
-					"group": "overflow@2",
-					"when": "view == acode.SidebarProvider"
-				},
-				{
-					"command": "acode.mcpButtonClicked",
-					"group": "overflow@3",
-					"when": "view == acode.SidebarProvider"
-				},
-				{
-					"command": "acode.popoutButtonClicked",
-					"group": "overflow@4",
+					"command": "acode.settingsButtonClicked",
+					"group": "navigation@6",
 					"when": "view == acode.SidebarProvider"
 				}
 			],
 			"editor/title": [
 				{
-					"command": "acode.plusButtonClicked",
+					"command": "acode.architectButtonClicked",
 					"group": "navigation@1",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "acode.marketplaceButtonClicked",
+					"command": "acode.codeButtonClicked",
 					"group": "navigation@2",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "acode.settingsButtonClicked",
+					"command": "acode.debugButtonClicked",
 					"group": "navigation@3",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "acode.cloudButtonClicked",
+					"command": "acode.orchestrateButtonClicked",
 					"group": "navigation@4",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "acode.historyButtonClicked",
-					"group": "overflow@1",
+					"command": "acode.testButtonClicked",
+					"group": "navigation@5",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				},
 				{
-					"command": "acode.promptsButtonClicked",
-					"group": "overflow@2",
-					"when": "activeWebviewPanelId == acode.TabPanelProvider"
-				},
-				{
-					"command": "acode.mcpButtonClicked",
-					"group": "overflow@3",
-					"when": "activeWebviewPanelId == acode.TabPanelProvider"
-				},
-				{
-					"command": "acode.popoutButtonClicked",
-					"group": "overflow@4",
+					"command": "acode.settingsButtonClicked",
+					"group": "navigation@6",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				}
 			]
