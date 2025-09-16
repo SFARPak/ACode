@@ -12,7 +12,7 @@ export const Tab = ({ className, children, ...props }: TabProps) => (
 )
 
 export const TabHeader = ({ className, children, ...props }: TabProps) => (
-	<div className={cn("px-5 py-2.5 border-b border-vscode-panel-border", className)} {...props}>
+	<div className={cn("px-5 py-2.5 border-b border-white/10 glass-nav-bar", className)} {...props}>
 		{children}
 	</div>
 )
@@ -40,7 +40,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabProps>(({ className, chi
 	)
 
 	return (
-		<div ref={ref} className={cn("flex-1 overflow-auto p-5", className)} onWheel={onWheel} {...props}>
+		<div ref={ref} className={cn("flex-1 overflow-auto p-5 glass-content", className)} onWheel={onWheel} {...props}>
 			{children}
 		</div>
 	)

@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xs text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer active:opacity-80",
+	"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xs text-base font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer active:opacity-80",
 	{
 		variants: {
 			variant: {
@@ -19,6 +19,8 @@ const buttonVariants = cva(
 				link: "text-primary underline-offset-4 hover:underline",
 				combobox:
 					"border border-vscode-dropdown-border focus-visible:border-vscode-focusBorder bg-vscode-dropdown-background hover:bg-transparent text-vscode-dropdown-foreground font-normal",
+				glass: "glass-button-primary text-white hover:bg-white/20 border-white/20",
+				"glass-secondary": "glass-button-secondary text-white hover:bg-white/15 border-white/15",
 			},
 			size: {
 				default: "h-7 px-3",

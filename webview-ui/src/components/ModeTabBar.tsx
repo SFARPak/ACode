@@ -18,7 +18,7 @@ const modeTabConfig = [
 
 export const ModeTabBar: React.FC<ModeTabBarProps> = ({ activeTab, onTabChange }) => {
 	return (
-		<div className="glass-mode-bar sticky top-14 z-40 w-full border-b border-white/10 bg-white/5 backdrop-blur-xl backdrop-saturate-150">
+		<div className="glass-nav-bar sticky top-14 z-40 w-full border-b border-white/10 bg-white/5 backdrop-blur-xl backdrop-saturate-150">
 			<nav className="flex items-center justify-center space-x-1 px-4 py-2">
 				{modeTabConfig.map(({ id, icon: Icon, label }) => (
 					<Button
@@ -27,15 +27,15 @@ export const ModeTabBar: React.FC<ModeTabBarProps> = ({ activeTab, onTabChange }
 						size="sm"
 						onClick={() => onTabChange(id)}
 						className={`
-							relative flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200
+							relative flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
 							${
 								activeTab === id
 									? "bg-white/30 text-white shadow-lg backdrop-blur-md border border-white/30"
-									: "text-white/70 hover:text-white hover:bg-white/15 hover:backdrop-blur-sm"
+									: "text-white/70 hover:text-white hover:bg-white/15 hover:backdrop-blur-sm hover:shadow-md"
 							}
 							${activeTab === id ? "glass-active-tab" : "glass-tab"}
-						`}
-					>
+							glass-focus
+						`}>
 						<Icon className="h-4 w-4" />
 						<span className="text-sm font-medium">{label}</span>
 						{activeTab === id && (

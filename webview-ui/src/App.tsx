@@ -258,7 +258,7 @@ const App = () => {
 	}
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+		<div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 glass-scrollable">
 			{/* Top Navigation Bar (includes header icons, tabs, and recent tasks) */}
 			<TopNavBar activeTab={tab} onTabChange={switchTab} />
 			<ModeTabBar activeTab={tab} onTabChange={switchTab} />
@@ -318,7 +318,11 @@ const App = () => {
 
 					{tab === "settings" && (
 						<div className="glass-animate-fade-in">
-							<SettingsView ref={settingsRef} onDone={() => setTab("chat")} targetSection={currentSection} />
+							<SettingsView
+								ref={settingsRef}
+								onDone={() => setTab("chat")}
+								targetSection={currentSection}
+							/>
 						</div>
 					)}
 
@@ -408,18 +412,18 @@ const App = () => {
 				/>
 			) : (
 				<MemoizedEditMessageDialog
-				open={editMessageDialogState.isOpen}
-				onOpenChange={(open: boolean) => setEditMessageDialogState((prev) => ({ ...prev, isOpen: open }))}
-				onConfirm={() => {
-					vscode.postMessage({
-						type: "editMessageConfirm",
-						messageTs: editMessageDialogState.messageTs,
-						text: editMessageDialogState.text,
-						images: editMessageDialogState.images,
-					})
-					setEditMessageDialogState((prev) => ({ ...prev, isOpen: false }))
-				}}
-			/>
+					open={editMessageDialogState.isOpen}
+					onOpenChange={(open: boolean) => setEditMessageDialogState((prev) => ({ ...prev, isOpen: open }))}
+					onConfirm={() => {
+						vscode.postMessage({
+							type: "editMessageConfirm",
+							messageTs: editMessageDialogState.messageTs,
+							text: editMessageDialogState.text,
+							images: editMessageDialogState.images,
+						})
+						setEditMessageDialogState((prev) => ({ ...prev, isOpen: false }))
+					}}
+				/>
 			)}
 		</div>
 	)
@@ -439,6 +443,6 @@ const AppWithProviders = () => (
 			</TranslationProvider>
 		</ExtensionStateContextProvider>
 	</ErrorBoundary>
-);
+)
 
 export default AppWithProviders

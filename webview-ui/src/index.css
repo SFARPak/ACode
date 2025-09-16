@@ -494,10 +494,11 @@ input[cmdk-input]:focus {
 /* Modern Glass UI Styles */
 .glass-nav-bar {
 	background: rgba(255, 255, 255, 0.02); /* Slightly less transparent */
-	backdrop-filter: blur(30px) saturate(200%); /* More blur and saturation */
-	-webkit-backdrop-filter: blur(30px) saturate(200%);
+	backdrop-filter: blur(20px) saturate(180%); /* Optimized for performance */
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
 	border: 1px solid rgba(255, 255, 255, 0.1); /* Slightly more visible border */
 	box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+	will-change: transform; /* GPU acceleration hint */
 }
 
 .glass-tab {
@@ -517,11 +518,12 @@ input[cmdk-input]:focus {
 .glass-active-tab {
 	background: rgba(255, 255, 255, 0.1); /* More transparent for active tab */
 	border: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border for active tab */
-	backdrop-filter: blur(18px) saturate(170%); /* Slightly more blur and saturation for active tab */
-	-webkit-backdrop-filter: blur(18px) saturate(170%);
+	backdrop-filter: blur(12px) saturate(150%); /* Optimized for performance */
+	-webkit-backdrop-filter: blur(12px) saturate(150%);
 	box-shadow:
 		0 6px 28px rgba(0, 0, 0, 0.18),
 		inset 0 1px 0 rgba(255, 255, 255, 0.08); /* Softer shadow for active tab */
+	will-change: transform; /* GPU acceleration hint */
 }
 
 /* Content area with glass morphism */
@@ -536,24 +538,34 @@ input[cmdk-input]:focus {
 /* Tab content transitions */
 .tab-content-enter {
 	opacity: 0;
-	transform: translateY(10px);
+	transform: translateY(10px) scale(0.98);
+	filter: blur(1px);
 }
 
 .tab-content-enter-active {
 	opacity: 1;
-	transform: translateY(0);
-	transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+	transform: translateY(0) scale(1);
+	filter: blur(0);
+	transition:
+		opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+		filter 0.4s ease-out;
 }
 
 .tab-content-exit {
 	opacity: 1;
-	transform: translateY(0);
+	transform: translateY(0) scale(1);
+	filter: blur(0);
 }
 
 .tab-content-exit-active {
 	opacity: 0;
-	transform: translateY(-10px);
-	transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+	transform: translateY(-10px) scale(0.98);
+	filter: blur(1px);
+	transition:
+		opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		filter 0.3s ease-in;
 }
 
 /* Enhanced scrollbar for glass theme */
@@ -618,4 +630,134 @@ input[cmdk-input]:focus {
 	);
 	background-size: 200px;
 	animation: glass-shimmer 1.5s infinite linear;
+}
+
+/* Additional Glass Utility Classes */
+
+/* Subtle glass effect for secondary elements */
+.glass-subtle {
+	background: rgba(255, 255, 255, 0.01);
+	backdrop-filter: blur(8px) saturate(120%);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Glass card with enhanced depth */
+.glass-card {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px) saturate(160%);
+	-webkit-backdrop-filter: blur(16px) saturate(160%);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	will-change: transform; /* GPU acceleration hint */
+}
+
+/* Glass input styling */
+.glass-input {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(12px);
+	transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Glass button variants */
+.glass-button-primary {
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(16px);
+	transition: all 0.2s ease-in-out;
+}
+
+.glass-button-primary:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.glass-button-secondary {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(16px);
+	transition: all 0.2s ease-in-out;
+}
+
+.glass-button-secondary:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Glass overlay for modals and dialogs */
+.glass-overlay {
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(16px) saturate(140%);
+	-webkit-backdrop-filter: blur(16px) saturate(140%);
+	will-change: opacity; /* GPU acceleration hint */
+}
+
+/* Glass panel for sidebars and panels */
+.glass-panel {
+	background: rgba(255, 255, 255, 0.02);
+	backdrop-filter: blur(24px) saturate(160%);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Glass tooltip */
+.glass-tooltip {
+	background: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(16px) saturate(140%);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 0.95);
+}
+
+/* Glass accent border */
+.glass-accent {
+	border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Glass highlight for active states */
+.glass-highlight {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced glass scrollbar for better visibility */
+.glass-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+	will-change: scroll-position; /* GPU acceleration hint */
+}
+
+.glass-scrollbar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.glass-scrollbar::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 3px;
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+	transition:
+		background 0.2s ease,
+		transform 0.1s ease;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, 0.3);
+	transform: scale(1.1);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.glass-scrollbar::-webkit-scrollbar-corner {
+	background: transparent;
 }

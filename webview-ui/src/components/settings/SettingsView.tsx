@@ -67,10 +67,10 @@ import PromptsSettings from "./PromptsSettings"
 
 export const settingsTabsContainer = "flex flex-1 overflow-hidden [&.narrow_.tab-label]:hidden"
 export const settingsTabList =
-	"w-48 data-[compact=true]:w-12 flex-shrink-0 flex flex-col overflow-y-auto overflow-x-hidden border-r border-vscode-sideBar-background"
+	"w-48 data-[compact=true]:w-12 flex-shrink-0 flex flex-col overflow-y-auto overflow-x-hidden border-r border-white/10 glass-nav-bar"
 export const settingsTabTrigger =
-	"whitespace-nowrap overflow-hidden min-w-0 h-12 px-4 py-3 box-border flex items-center border-l-2 border-transparent text-vscode-foreground opacity-70 hover:bg-vscode-list-hoverBackground data-[compact=true]:w-12 data-[compact=true]:p-4"
-export const settingsTabTriggerActive = "opacity-100 border-vscode-focusBorder bg-vscode-list-activeSelectionBackground"
+	"whitespace-nowrap overflow-hidden min-w-0 h-12 px-4 py-3 box-border flex items-center border-l-2 border-transparent text-vscode-foreground opacity-70 hover:bg-white/10 hover:backdrop-blur-sm data-[compact=true]:w-12 data-[compact=true]:p-4 glass-tab transition-all duration-200"
+export const settingsTabTriggerActive = "opacity-100 border-white/20 bg-white/15 backdrop-blur-sm glass-active-tab"
 
 export interface SettingsViewRef {
 	checkUnsaveChanges: (then: () => void) => void
