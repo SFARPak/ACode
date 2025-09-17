@@ -47,7 +47,7 @@ const TaskItem = ({
 			key={item.id}
 			data-testid={`task-item-${item.id}`}
 			className={cn(
-				"cursor-pointer group bg-vscode-editor-background rounded relative overflow-hidden border border-transparent hover:bg-vscode-list-hoverBackground transition-colors",
+				"cursor-pointer group glass-card rounded relative overflow-hidden border border-transparent hover:bg-vscode-list-hoverBackground transition-colors",
 				className,
 			)}
 			onClick={handleClick}>

@@ -1,16 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react"
-import {
-	VSCodeCheckbox,
-	VSCodeRadioGroup,
-	VSCodeRadio,
-	VSCodeTextArea,
-	VSCodeLink,
-	VSCodeTextField,
-} from "@vscode/webview-ui-toolkit/react"
+import { VSCodeCheckbox, VSCodeTextArea, VSCodeLink, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 import { Trans } from "react-i18next"
 import { ChevronDown, X, Upload, Download } from "lucide-react"
 
-import { ModeConfig, GroupEntry, PromptComponent, ToolGroup, modeConfigSchema } from "@acode/types"
+import { ModeConfig, GroupEntry, PromptComponent, ToolGroup } from "@acode/types"
 
 import {
 	Mode,
@@ -47,16 +40,13 @@ import {
 	Input,
 	StandardTooltip,
 } from "@src/components/ui"
-import { DeleteModeDialog } from "@src/components/modes/DeleteModeDialog"
 import { useEscapeKey } from "@src/hooks/useEscapeKey"
 
 // Get all available groups that should show in prompts view
 const availableGroups = (Object.keys(TOOL_GROUPS) as ToolGroup[]).filter((group) => !TOOL_GROUPS[group].alwaysAvailable)
 
-type ModeSource = "global" | "project"
-
 type ModesViewProps = {
-	onDone: () => void
+	_onDone?: () => void
 }
 
 // Helper to get group name regardless of format
@@ -64,7 +54,7 @@ function getGroupName(group: GroupEntry): ToolGroup {
 	return Array.isArray(group) ? group[0] : group
 }
 
-const ModesView = ({ onDone }: ModesViewProps) => {
+const ModesView = ({ _onDone }: ModesViewProps) => {
 	const { t } = useAppTranslation()
 
 	const {
@@ -87,18 +77,13 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 	// Memoize modes to preserve array order
 	const modes = useMemo(() => getAllModes(customModes), [customModes])
 
-	const [isDialogOpen, setIsDialogOpen] = useState(false)
-	const [selectedPromptContent, setSelectedPromptContent] = useState("")
-	const [selectedPromptTitle, setSelectedPromptTitle] = useState("")
 	const [isToolsEditMode, setIsToolsEditMode] = useState(false)
 	const [showConfigMenu, setShowConfigMenu] = useState(false)
 	const [isCreateModeDialogOpen, setIsCreateModeDialogOpen] = useState(false)
 	const [isSystemPromptDisclosureOpen, setIsSystemPromptDisclosureOpen] = useState(false)
 	const [isExporting, setIsExporting] = useState(false)
 	const [isImporting, setIsImporting] = useState(false)
-	const [showImportDialog, setShowImportDialog] = useState(false)
 	const [hasRulesToExport, setHasRulesToExport] = useState<Record<string, boolean>>({})
-	const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 	const [modeToDelete, setModeToDelete] = useState<{
 		slug: string
 		name: string
@@ -242,23 +227,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 		return mode?.[property]
 	}
 
-	// State for create mode dialog
-	const [newModeName, setNewModeName] = useState("")
-	const [newModeSlug, setNewModeSlug] = useState("")
-	const [newModeDescription, setNewModeDescription] = useState("")
-	const [newModeRoleDefinition, setNewModeRoleDefinition] = useState("")
-	const [newModeWhenToUse, setNewModeWhenToUse] = useState("")
-	const [newModeCustomInstructions, setNewModeCustomInstructions] = useState("")
-	const [newModeGroups, setNewModeGroups] = useState<GroupEntry[]>(availableGroups)
-	const [newModeSource, setNewModeSource] = useState<ModeSource>("global")
-
-	// Field-specific error states
-	const [nameError, setNameError] = useState<string>("")
-	const [slugError, setSlugError] = useState<string>("")
-	const [descriptionError, setDescriptionError] = useState<string>("")
-	const [roleDefinitionError, setRoleDefinitionError] = useState<string>("")
-	const [groupsError, setGroupsError] = useState<string>("")
-
 	// Helper to reset form state
 	const resetFormState = useCallback(() => {
 		// Reset form fields
@@ -293,82 +261,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 			.replace(/^-+|-+$/g, "")
 		return attempt === 0 ? baseSlug : `${baseSlug}-${attempt}`
 	}, [])
-
-	// Handler for name changes
-	const handleNameChange = useCallback(
-		(name: string) => {
-			setNewModeName(name)
-			setNewModeSlug(generateSlug(name))
-		},
-		[generateSlug],
-	)
-
-	const handleCreateMode = useCallback(() => {
-		// Clear previous errors
-		setNameError("")
-		setSlugError("")
-		setDescriptionError("")
-		setRoleDefinitionError("")
-		setGroupsError("")
-
-		const source = newModeSource
-		const newMode: ModeConfig = {
-			slug: newModeSlug,
-			name: newModeName,
-			description: newModeDescription.trim() || undefined,
-			roleDefinition: newModeRoleDefinition.trim(),
-			whenToUse: newModeWhenToUse.trim() || undefined,
-			customInstructions: newModeCustomInstructions.trim() || undefined,
-			groups: newModeGroups,
-			source,
-		}
-
-		// Validate the mode against the schema
-		const result = modeConfigSchema.safeParse(newMode)
-
-		if (!result.success) {
-			// Map Zod errors to specific fields
-			result.error.errors.forEach((error) => {
-				const field = error.path[0] as string
-				const message = error.message
-
-				switch (field) {
-					case "name":
-						setNameError(message)
-						break
-					case "slug":
-						setSlugError(message)
-						break
-					case "description":
-						setDescriptionError(message)
-						break
-					case "roleDefinition":
-						setRoleDefinitionError(message)
-						break
-					case "groups":
-						setGroupsError(message)
-						break
-				}
-			})
-			return
-		}
-
-		updateCustomMode(newModeSlug, newMode)
-		switchMode(newModeSlug)
-		setIsCreateModeDialogOpen(false)
-		resetFormState()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [
-		newModeName,
-		newModeSlug,
-		newModeDescription,
-		newModeRoleDefinition,
-		newModeWhenToUse, // Add whenToUse dependency
-		newModeCustomInstructions,
-		newModeGroups,
-		newModeSource,
-		updateCustomMode,
-	])
 
 	const isNameOrSlugTaken = useCallback(
 		(name: string, slug: string) => {
@@ -1380,7 +1272,6 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 					</div>
 				</div>
 			</TabContent>
-
 		</Tab>
 	)
 }

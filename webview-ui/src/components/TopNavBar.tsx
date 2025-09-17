@@ -1,7 +1,6 @@
 import React from "react"
-import { Settings, History, Sparkles } from "lucide-react"
+import { Sparkles } from "lucide-react"
 import { Button } from "./ui/button"
-import { vscode } from "../utils/vscode"
 
 import { Tab } from "../types/app"
 
@@ -10,7 +9,7 @@ interface TopNavBarProps {
 	onTabChange: (tab: Tab) => void
 }
 
-const tabConfig = [{ id: "settings" as Tab, icon: Settings, label: "Settings" }]
+const tabConfig = []
 
 export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) => {
 	return (
@@ -37,24 +36,11 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) 
 				</div>
 
 				{/* Right side icons */}
-				<div className="flex items-center space-x-1 sm:space-x-2">
-					<button
-						className="flex items-center justify-center w-8 h-8 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-						onClick={() =>
-							window.postMessage({
-								type: "action",
-								action: "settingsButtonClicked",
-								values: { section: "general" },
-							})
-						}
-						title="Extension Settings">
-						<Settings className="h-4 w-4" />
-					</button>
-				</div>
+				<div className="flex items-center space-x-1 sm:space-x-2">{/* Settings icon removed */}</div>
 			</div>
 
 			{/* Navigation Tabs */}
-			<nav className="flex items-center justify-center space-x-1 px-4 py-2">
+			<nav className="flex items-center justify-center space-x-1 px-2 sm:px-4 py-2 overflow-x-auto">
 				{tabConfig.map(({ id, icon: Icon, label }) => (
 					<Button
 						key={id}

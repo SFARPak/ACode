@@ -19,7 +19,7 @@ const modeTabConfig = [
 export const ModeTabBar: React.FC<ModeTabBarProps> = ({ activeTab, onTabChange }) => {
 	return (
 		<div className="glass-nav-bar sticky top-14 z-40 w-full border-b border-white/10 bg-white/5 backdrop-blur-xl backdrop-saturate-150">
-			<nav className="flex items-center justify-center space-x-1 px-4 py-2">
+			<nav className="flex items-center justify-center space-x-1 px-2 sm:px-4 py-2 overflow-x-auto">
 				{modeTabConfig.map(({ id, icon: Icon, label }) => (
 					<Button
 						key={id}
@@ -27,7 +27,7 @@ export const ModeTabBar: React.FC<ModeTabBarProps> = ({ activeTab, onTabChange }
 						size="sm"
 						onClick={() => onTabChange(id)}
 						className={`
-							relative flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
+							relative flex items-center space-x-2 px-2 sm:px-4 py-2 rounded-lg transition-all duration-300 ease-in-out
 							${
 								activeTab === id
 									? "bg-white/30 text-white shadow-lg backdrop-blur-md border border-white/30"
@@ -37,7 +37,7 @@ export const ModeTabBar: React.FC<ModeTabBarProps> = ({ activeTab, onTabChange }
 							glass-focus
 						`}>
 						<Icon className="h-4 w-4" />
-						<span className="text-sm font-medium">{label}</span>
+						<span className="text-sm font-medium hidden sm:inline">{label}</span>
 						{activeTab === id && (
 							<div className="absolute bottom-0 left-1/2 h-0.5 w-8 -translate-x-1/2 translate-y-1 bg-gradient-to-r from-transparent via-white to-transparent rounded-full" />
 						)}

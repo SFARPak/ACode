@@ -265,7 +265,7 @@ const App = () => {
 
 			{/* Main Content Area */}
 			<div className="glass-content glass-scrollable">
-				<div className="container mx-auto px-4 py-6">
+				<div className="w-full max-w-full px-2 sm:px-4 md:px-6 py-4 sm:py-6">
 					{/* Chat View is always rendered, its visibility is controlled by the isHidden prop */}
 					<ChatView
 						ref={chatViewRef}

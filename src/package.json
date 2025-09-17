@@ -4,7 +4,7 @@
 	"description": "%extension.description%",
 	"publisher": "realancerllc",
 	"version": "0.9.1",
-	"icon": "assets/icons/icon.png",
+	"icon": "assets/icons/ACode.gif",
 	"galleryBanner": {
 		"color": "#617A91",
 		"theme": "dark"
@@ -55,7 +55,7 @@
 				{
 					"id": "acode-ActivityBar",
 					"title": "%views.activitybar.title%",
-					"icon": "assets/icons/icon.svg"
+					"icon": "assets/icons/ACode.gif"
 				}
 			]
 		},
@@ -93,11 +93,6 @@
 				"command": "acode.testButtonClicked",
 				"title": "%command.test.title%",
 				"icon": "$(flask)"
-			},
-			{
-				"command": "acode.settingsButtonClicked",
-				"title": "%command.settings.title%",
-				"icon": "$(settings-gear)"
 			},
 			{
 				"command": "acode.openInNewTab",
@@ -242,11 +237,6 @@
 					"command": "acode.testButtonClicked",
 					"group": "navigation@5",
 					"when": "view == acode.SidebarProvider"
-				},
-				{
-					"command": "acode.settingsButtonClicked",
-					"group": "navigation@6",
-					"when": "view == acode.SidebarProvider"
 				}
 			],
 			"editor/title": [
@@ -273,11 +263,6 @@
 				{
 					"command": "acode.testButtonClicked",
 					"group": "navigation@5",
-					"when": "activeWebviewPanelId == acode.TabPanelProvider"
-				},
-				{
-					"command": "acode.settingsButtonClicked",
-					"group": "navigation@6",
 					"when": "activeWebviewPanelId == acode.TabPanelProvider"
 				}
 			]
