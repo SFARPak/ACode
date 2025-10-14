@@ -38,6 +38,12 @@ export const commandIds = [
 	"cloudButtonClicked",
 	"settingsButtonClicked",
 
+	"architectButtonClicked",
+	"codeButtonClicked",
+	"debugButtonClicked",
+	"orchestrateButtonClicked",
+	"testButtonClicked",
+
 	"openInNewTab",
 
 	"showHumanRelayDialog",

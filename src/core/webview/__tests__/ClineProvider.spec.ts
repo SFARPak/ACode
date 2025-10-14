@@ -642,7 +642,7 @@ describe("ClineProvider", () => {
 			// Set up parent-child relationship by setting the parentTask property
 			// The mock allows us to set properties directly
 			;(childTask as any).parentTask = parentTask
-			;(childTask as any).acodetTask = parentTask
+			;(childTask as any).rootTask = parentTask
 
 			// Mock the provider methods
 			const clearTaskSpy = vi.spyOn(provider, "clearTask").mockResolvedValue(undefined)

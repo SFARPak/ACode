@@ -51,16 +51,16 @@ export async function writeToFileTool(
 		return
 	}
 
-	const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
+	const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
 
 	if (!accessAllowed) {
 		await cline.say("rooignore_error", relPath)
-		pushToolResult(formatResponse.toolError(formatResponse.acodeIgnoreError(relPath)))
+		pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(relPath)))
 		return
 	}
 
 	// Check if file is write-protected
-	const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
+	const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
 
 	// Check if file exists using cached map or fs.access
 	let fileExists: boolean

@@ -24,7 +24,7 @@ vi.mock("../../../utils/fs", () => ({
 }))
 
 describe("parseSourceCodeDefinitionsForFile with Elixir", () => {
-	let parseResult: string = ""
+	let parseResult: string | undefined = ""
 
 	beforeAll(async () => {
 		// Cache parse result for all tests

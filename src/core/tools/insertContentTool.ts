@@ -60,16 +60,16 @@ export async function insertContentTool(
 			return
 		}
 
-		const accessAllowed = cline.acodeIgnoreController?.validateAccess(relPath)
+		const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
 
 		if (!accessAllowed) {
 			await cline.say("rooignore_error", relPath)
-			pushToolResult(formatResponse.toolError(formatResponse.acodeIgnoreError(relPath)))
+			pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(relPath)))
 			return
 		}
 
 		// Check if file is write-protected
-		const isWriteProtected = cline.acodeProtectedController?.isWriteProtected(relPath) || false
+		const isWriteProtected = cline.rooProtectedController?.isWriteProtected(relPath) || false
 
 		const absolutePath = path.resolve(cline.cwd, relPath)
 		const lineNumber = parseInt(line, 10)

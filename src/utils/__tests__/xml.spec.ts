@@ -15,14 +15,14 @@ describe("parseXml", () => {
 			const result = parseXml(xml) as any
 
 			// Ensure these remain as strings and are not converted to numbers
-			expect(typeof result.acodet.numericString).toBe("string")
-			expect(result.acodet.numericString).toBe("123")
+			expect(typeof result.root.numericString).toBe("string")
+			expect(result.root.numericString).toBe("123")
 
-			expect(typeof result.acodet.negativeNumericString).toBe("string")
-			expect(result.acodet.negativeNumericString).toBe("-456")
+			expect(typeof result.root.negativeNumericString).toBe("string")
+			expect(result.root.negativeNumericString).toBe("-456")
 
-			expect(typeof result.acodet.floatNumericString).toBe("string")
-			expect(result.acodet.floatNumericString).toBe("123.456")
+			expect(typeof result.root.floatNumericString).toBe("string")
+			expect(result.root.floatNumericString).toBe("123.456")
 		})
 
 		it("should not convert string booleans to booleans", () => {
@@ -36,11 +36,11 @@ describe("parseXml", () => {
 			const result = parseXml(xml) as any
 
 			// Ensure these remain as strings and are not converted to booleans
-			expect(typeof result.acodet.boolTrue).toBe("string")
-			expect(result.acodet.boolTrue).toBe("true")
+			expect(typeof result.root.boolTrue).toBe("string")
+			expect(result.root.boolTrue).toBe("true")
 
-			expect(typeof result.acodet.boolFalse).toBe("string")
-			expect(result.acodet.boolFalse).toBe("false")
+			expect(typeof result.root.boolFalse).toBe("string")
+			expect(result.root.boolFalse).toBe("false")
 		})
 
 		it("should not convert attribute values to their respective types", () => {
@@ -51,7 +51,7 @@ describe("parseXml", () => {
       `
 
 			const result = parseXml(xml) as any
-			const attributes = result.acodet.node
+			const attributes = result.root.node
 
 			// Check that attributes remain as strings
 			expect(typeof attributes["@_id"]).toBe("string")
@@ -80,8 +80,8 @@ describe("parseXml", () => {
 			const result = parseXml(xml) as any
 
 			expect(result).toHaveProperty("root")
-			expect(result.acodet).toHaveProperty("name", "Test Name")
-			expect(result.acodet).toHaveProperty("description", "Some description")
+			expect(result.root).toHaveProperty("name", "Test Name")
+			expect(result.root).toHaveProperty("description", "Some description")
 		})
 
 		it("should handle attributes correctly", () => {
@@ -93,9 +93,9 @@ describe("parseXml", () => {
 
 			const result = parseXml(xml) as any
 
-			expect(result.acodet.item).toHaveProperty("@_id", "1")
-			expect(result.acodet.item).toHaveProperty("@_category", "test")
-			expect(result.acodet.item).toHaveProperty("#text", "Item content")
+			expect(result.root.item).toHaveProperty("@_id", "1")
+			expect(result.root.item).toHaveProperty("@_category", "test")
+			expect(result.root.item).toHaveProperty("#text", "Item content")
 		})
 
 		it("should support stopNodes parameter", () => {
@@ -110,8 +110,8 @@ describe("parseXml", () => {
 			const result = parseXml(xml, ["nestedXml"]) as any
 
 			// With stopNodes, the parser still parses the structure but stops at the specified node
-			expect(result.acodet.data.nestedXml).toBeTruthy()
-			expect(result.acodet.data.nestedXml).toHaveProperty("item", "Should not parse this")
+			expect(result.root.data.nestedXml).toBeTruthy()
+			expect(result.root.data.nestedXml).toHaveProperty("item", "Should not parse this")
 		})
 	})
 })
@@ -128,7 +128,7 @@ describe("parseXmlForDiff", () => {
 			const result = parseXmlForDiff(xml) as any
 
 			// The &amp; should remain as-is, not be decoded to &
-			expect(result.acodet.content).toBe("Team Identity &amp; Project Positioning")
+			expect(result.root.content).toBe("Team Identity &amp; Project Positioning")
 		})
 
 		it("should preserve & character without encoding", () => {
@@ -141,7 +141,7 @@ describe("parseXmlForDiff", () => {
 			const result = parseXmlForDiff(xml) as any
 
 			// The & should remain as-is
-			expect(result.acodet.content).toBe("Team Identity & Project Positioning")
+			expect(result.root.content).toBe("Team Identity & Project Positioning")
 		})
 
 		it("should NOT decode other HTML entities", () => {
@@ -154,7 +154,7 @@ describe("parseXmlForDiff", () => {
 			const result = parseXmlForDiff(xml) as any
 
 			// All HTML entities should remain as-is
-			expect(result.acodet.content).toBe("&lt;div&gt; &quot;Hello&quot; &apos;World&apos;")
+			expect(result.root.content).toBe("&lt;div&gt; &quot;Hello&quot; &apos;World&apos;")
 		})
 
 		it("should handle mixed content with entities correctly", () => {
@@ -167,7 +167,7 @@ describe("parseXmlForDiff", () => {
 			const result = parseXmlForDiff(xml) as any
 
 			// All entities should remain unchanged
-			expect(result.acodet.code).toBe("if (a &lt; b &amp;&amp; c &gt; d) { return &quot;test&quot;; }")
+			expect(result.root.code).toBe("if (a &lt; b &amp;&amp; c &gt; d) { return &quot;test&quot;; }")
 		})
 	})
 
@@ -183,8 +183,8 @@ describe("parseXmlForDiff", () => {
 			const result = parseXmlForDiff(xml) as any
 
 			expect(result).toHaveProperty("root")
-			expect(result.acodet).toHaveProperty("name", "Test Name")
-			expect(result.acodet).toHaveProperty("description", "Some description")
+			expect(result.root).toHaveProperty("name", "Test Name")
+			expect(result.root).toHaveProperty("description", "Some description")
 		})
 
 		it("should handle attributes correctly", () => {
@@ -196,9 +196,9 @@ describe("parseXmlForDiff", () => {
 
 			const result = parseXmlForDiff(xml) as any
 
-			expect(result.acodet.item).toHaveProperty("@_id", "1")
-			expect(result.acodet.item).toHaveProperty("@_category", "test")
-			expect(result.acodet.item).toHaveProperty("#text", "Item content")
+			expect(result.root.item).toHaveProperty("@_id", "1")
+			expect(result.root.item).toHaveProperty("@_category", "test")
+			expect(result.root.item).toHaveProperty("#text", "Item content")
 		})
 
 		it("should support stopNodes parameter", () => {
@@ -212,8 +212,8 @@ describe("parseXmlForDiff", () => {
 
 			const result = parseXmlForDiff(xml, ["nestedXml"]) as any
 
-			expect(result.acodet.data.nestedXml).toBeTruthy()
-			expect(result.acodet.data.nestedXml).toHaveProperty("item", "Should not parse this")
+			expect(result.root.data.nestedXml).toBeTruthy()
+			expect(result.root.data.nestedXml).toHaveProperty("item", "Should not parse this")
 		})
 	})
 

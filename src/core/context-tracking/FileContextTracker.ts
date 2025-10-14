@@ -179,8 +179,8 @@ export class FileContextTracker {
 
 				// roo_edited: Roo has edited the file
 				case "roo_edited":
-					newEntry.acode_read_date = now
-					newEntry.acode_edit_date = now
+					newEntry.roo_read_date = now
+					newEntry.roo_edit_date = now
 					this.checkpointPossibleFiles.add(filePath)
 					this.markFileAsEditedByRoo(filePath)
 					break
@@ -188,7 +188,7 @@ export class FileContextTracker {
 				// read_tool/file_mentioned: Roo has read the file via a tool or file mention
 				case "read_tool":
 				case "file_mentioned":
-					newEntry.acode_read_date = now
+					newEntry.roo_read_date = now
 					break
 			}
 

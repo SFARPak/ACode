@@ -560,7 +560,7 @@ describe("read_file tool XML output structure", () => {
 		mockProvider.getState.mockResolvedValue({ maxReadFileLine, maxImageFileSize: 20, maxTotalImageSize: 20 })
 		mockedCountFileLines.mockResolvedValue(totalLines)
 		mockedIsBinaryFile.mockResolvedValue(isBinary)
-		mockCline.acodeIgnoreController.validateAccess = vi.fn().mockReturnValue(validateAccess)
+		mockCline.rooIgnoreController.validateAccess = vi.fn().mockReturnValue(validateAccess)
 
 		let argsContent = `<file><path>${testFilePath}</path></file>`
 
@@ -720,7 +720,7 @@ describe("read_file tool XML output structure", () => {
 				mockCline.cwd = "/"
 				mockCline.task = "Test"
 				mockCline.providerRef = mockProvider
-				mockCline.acodeIgnoreController = {
+				mockCline.rooIgnoreController = {
 					validateAccess: vi.fn().mockReturnValue(true),
 				}
 				mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -793,7 +793,7 @@ describe("read_file tool XML output structure", () => {
 				mockCline.cwd = "/"
 				mockCline.task = "Test"
 				mockCline.providerRef = mockProvider
-				mockCline.acodeIgnoreController = {
+				mockCline.rooIgnoreController = {
 					validateAccess: vi.fn().mockReturnValue(true),
 				}
 				mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -879,7 +879,7 @@ describe("read_file tool XML output structure", () => {
 				mockCline.cwd = "/"
 				mockCline.task = "Test"
 				mockCline.providerRef = mockProvider
-				mockCline.acodeIgnoreController = {
+				mockCline.rooIgnoreController = {
 					validateAccess: vi.fn().mockReturnValue(true),
 				}
 				mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -952,7 +952,7 @@ describe("read_file tool XML output structure", () => {
 				mockCline.cwd = "/"
 				mockCline.task = "Test"
 				mockCline.providerRef = mockProvider
-				mockCline.acodeIgnoreController = {
+				mockCline.rooIgnoreController = {
 					validateAccess: vi.fn().mockReturnValue(true),
 				}
 				mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -1077,7 +1077,7 @@ describe("read_file tool XML output structure", () => {
 				mockCline.cwd = "/"
 				mockCline.task = "Test"
 				mockCline.providerRef = mockProvider
-				mockCline.acodeIgnoreController = {
+				mockCline.rooIgnoreController = {
 					validateAccess: vi.fn().mockReturnValue(true),
 				}
 				mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -1124,7 +1124,7 @@ describe("read_file tool XML output structure", () => {
 				mockCline.cwd = "/"
 				mockCline.task = "Test"
 				mockCline.providerRef = mockProvider
-				mockCline.acodeIgnoreController = {
+				mockCline.rooIgnoreController = {
 					validateAccess: vi.fn().mockReturnValue(true),
 				}
 				mockCline.say = vi.fn().mockResolvedValue(undefined)

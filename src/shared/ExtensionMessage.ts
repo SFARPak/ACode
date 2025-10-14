@@ -128,6 +128,7 @@ export interface ExtensionMessage {
 	payload?: any // Add a generic payload for now, can refine later
 	action?:
 		| "chatButtonClicked"
+		| "plusButtonClicked"
 		| "mcpButtonClicked"
 		| "settingsButtonClicked"
 		| "historyButtonClicked"

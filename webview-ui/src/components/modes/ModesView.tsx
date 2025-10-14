@@ -47,6 +47,7 @@ const availableGroups = (Object.keys(TOOL_GROUPS) as ToolGroup[]).filter((group)
 
 type ModesViewProps = {
 	_onDone?: () => void
+	onDone?: () => void
 }
 
 // Helper to get group name regardless of format
