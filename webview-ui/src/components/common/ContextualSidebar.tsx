@@ -5,7 +5,7 @@ import { Button } from "../ui/button"
 import { Separator } from "../ui/separator"
 import { Badge } from "../ui/badge"
 import { useExtensionState } from "../../context/ExtensionStateContext"
-import { Settings, History, Code, Bug, Layout, Sparkles, FlaskConical, ChevronLeft, ChevronRight } from "lucide-react"
+import { Settings, History, Code, Bug, Layout, FlaskConical, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface ContextualSidebarProps {
 	activeTab: Tab

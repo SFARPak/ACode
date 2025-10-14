@@ -649,7 +649,7 @@ export class ClineProvider
 			return
 		}
 
-		await visibleProvider.createTask(prompt, undefined, undefined, undefined, { mode })
+		await visibleProvider.createTask(prompt, undefined, undefined, undefined, { mode: newMode })
 	}
 
 	public static async handleTerminalAction(
