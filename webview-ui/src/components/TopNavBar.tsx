@@ -14,33 +14,23 @@ import {
 } from "./ui"
 
 import { Tab } from "../types/app"
+import { getAllModes } from "@roo/modes"
+import { ModeConfig } from "@acode/types"
 
 interface TopNavBarProps {
 	activeTab: Tab
 	onTabChange: (tab: Tab) => void
 }
 
-interface TabConfigItem {
-	id: Tab
-	icon: React.ComponentType<{ className?: string }>
-	label: string
-}
-
-const tabConfig: TabConfigItem[] = [
-	{ id: "architect", icon: () => <span className="codicon codicon-layout"></span>, label: "Architect" },
-	{ id: "code", icon: () => <span className="codicon codicon-code"></span>, label: "Code" },
-	{ id: "debug", icon: () => <span className="codicon codicon-debug"></span>, label: "Debug" },
-	{ id: "orchestrate", icon: () => <span className="codicon codicon-sparkles"></span>, label: "Orchestrate" },
-	{ id: "test", icon: () => <span className="codicon codicon-flask"></span>, label: "Test" },
-]
+const getAllModesData = (): ModeConfig[] => getAllModes()
 
 export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) => {
 	const [open, setOpen] = useState(false)
 	const [searchValue, setSearchValue] = useState("")
 
 	const getCurrentTabLabel = () => {
-		const currentTab = tabConfig.find((tab) => tab.id === activeTab)
-		return currentTab?.label || "Select Mode"
+		const currentTab = getAllModesData().find((mode) => mode.slug === activeTab)
+		return currentTab?.name || "Select Mode"
 	}
 
 	const onOpenChange = (isOpen: boolean) => {
@@ -116,39 +106,39 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({ activeTab, onTabChange }) 
 									{searchValue && <div className="py-2 px-1 text-sm">No mode found.</div>}
 								</CommandEmpty>
 								<CommandGroup>
-									{tabConfig
-										.filter((tab) =>
+									{getAllModesData()
+										.filter((mode) =>
 											searchValue
-												? tab.label.toLowerCase().includes(searchValue.toLowerCase())
+												? mode.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+													mode.slug.toLowerCase().includes(searchValue.toLowerCase())
 												: true,
 										)
-										.map((tab) => (
+										.map((mode) => (
 											<CommandItem
-												key={tab.id}
-												value={tab.id}
+												key={mode.slug}
+												value={mode.slug}
 												onSelect={() => {
-													onTabChange(tab.id)
+													onTabChange(mode.slug as Tab)
 													setOpen(false)
 												}}
-												data-testid={`tab-option-${tab.id}`}>
+												data-testid={`tab-option-${mode.slug}`}
+												className="navbar-mode-item">
 												<div className="flex items-center justify-between w-full">
-													<div className="flex items-center space-x-2">
-														<tab.icon className="h-4 w-4" />
-														<span className="text-sm">{tab.label}</span>
+													<div className="flex items-center space-x-2 flex-1 min-w-0">
+														<span className="text-sm font-medium truncate">
+															{mode.name}
+														</span>
 													</div>
 													<span
-														className="text-white/60 text-xs"
+														className="text-white/70 text-xs font-mono bg-white/5 px-1.5 py-0.5 rounded"
 														style={{
 															whiteSpace: "nowrap",
 															overflow: "hidden",
 															textOverflow: "ellipsis",
-															direction: "rtl",
-															textAlign: "right",
-															flex: 1,
-															minWidth: 0,
+															flex: 0,
 															marginLeft: "0.5em",
 														}}>
-														{tab.id}
+														{mode.slug}
 													</span>
 												</div>
 											</CommandItem>

@@ -1,3 +1,8 @@
+kilocode/
+kilocode/*
+Roo-Code/
+Roo-Code/*
+
 .pnpm-store
 dist
 out

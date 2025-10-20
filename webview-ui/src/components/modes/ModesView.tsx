@@ -101,6 +101,30 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 	const [localModeName, setLocalModeName] = useState<string>("")
 	const [currentEditingModeSlug, setCurrentEditingModeSlug] = useState<string | null>(null)
 
+	// Form state for creating new modes
+	const [_newModeName, _setNewModeName] = useState<string>("")
+	const [_newModeSlug, _setNewModeSlug] = useState<string>("")
+	const [_newModeDescription, _setNewModeDescription] = useState<string>("")
+	const [_newModeGroups, _setNewModeGroups] = useState<GroupEntry[]>(availableGroups)
+	const [_newModeRoleDefinition, _setNewModeRoleDefinition] = useState<string>("")
+	const [_newModeWhenToUse, _setNewModeWhenToUse] = useState<string>("")
+	const [_newModeCustomInstructions, _setNewModeCustomInstructions] = useState<string>("")
+	const [_newModeSource, _setNewModeSource] = useState<string>("global")
+
+	// Error states for form validation
+	const [_nameError, _setNameError] = useState<string>("")
+	const [_slugError, _setSlugError] = useState<string>("")
+	const [_descriptionError, _setDescriptionError] = useState<string>("")
+	const [_roleDefinitionError, _setRoleDefinitionError] = useState<string>("")
+	const [_groupsError, _setGroupsError] = useState<string>("")
+
+	// Dialog states
+	const [_selectedPromptContent, _setSelectedPromptContent] = useState<string>("")
+	const [_selectedPromptTitle, _setSelectedPromptTitle] = useState<string>("")
+	const [_isDialogOpen, _setIsDialogOpen] = useState<boolean>(false)
+	const [_showImportDialog, _setShowImportDialog] = useState<boolean>(false)
+	const [_showDeleteConfirm, _setShowDeleteConfirm] = useState<boolean>(false)
+
 	// Direct update functions
 	const updateAgentPrompt = useCallback(
 		(mode: Mode, promptData: PromptComponent) => {
@@ -231,20 +255,20 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 	// Helper to reset form state
 	const resetFormState = useCallback(() => {
 		// Reset form fields
-		setNewModeName("")
-		setNewModeSlug("")
-		setNewModeDescription("")
-		setNewModeGroups(availableGroups)
-		setNewModeRoleDefinition("")
-		setNewModeWhenToUse("")
-		setNewModeCustomInstructions("")
-		setNewModeSource("global")
+		_setNewModeName("")
+		_setNewModeSlug("")
+		_setNewModeDescription("")
+		_setNewModeGroups(availableGroups)
+		_setNewModeRoleDefinition("")
+		_setNewModeWhenToUse("")
+		_setNewModeCustomInstructions("")
+		_setNewModeSource("global")
 		// Reset error states
-		setNameError("")
-		setSlugError("")
-		setDescriptionError("")
-		setRoleDefinitionError("")
-		setGroupsError("")
+		_setNameError("")
+		_setSlugError("")
+		_setDescriptionError("")
+		_setRoleDefinitionError("")
+		_setGroupsError("")
 	}, [])
 
 	// Reset form fields when dialog opens
@@ -281,8 +305,8 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 			name = `${baseNamePrefix} ${attempt + 1}`
 			slug = generateSlug(name)
 		}
-		setNewModeName(name)
-		setNewModeSlug(slug)
+		_setNewModeName(name)
+		_setNewModeSlug(slug)
 		setIsCreateModeDialogOpen(true)
 	}, [generateSlug, isNameOrSlugTaken])
 
@@ -338,9 +362,9 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 			const message = event.data
 			if (message.type === "systemPrompt") {
 				if (message.text) {
-					setSelectedPromptContent(message.text)
-					setSelectedPromptTitle(`System Prompt (${message.mode} mode)`)
-					setIsDialogOpen(true)
+					_setSelectedPromptContent(message.text)
+					_setSelectedPromptTitle(`System Prompt (${message.mode} mode)`)
+					_setIsDialogOpen(true)
 				}
 			} else if (message.type === "exportModeResult") {
 				setIsExporting(false)
@@ -351,7 +375,7 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 				}
 			} else if (message.type === "importModeResult") {
 				setIsImporting(false)
-				setShowImportDialog(false)
+				_setShowImportDialog(false)
 
 				if (!message.success) {
 					// Only log error if it's not a cancellation
@@ -373,7 +397,7 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 						...currentModeToDelete,
 						rulesFolderPath: message.rulesFolderPath,
 					})
-					setShowDeleteConfirm(true)
+					_setShowDeleteConfirm(true)
 				}
 			}
 		}
@@ -1137,7 +1161,7 @@ const ModesView = ({ _onDone }: ModesViewProps) => {
 						{/* Import button - always visible */}
 						<Button
 							variant="default"
-							onClick={() => setShowImportDialog(true)}
+							onClick={() => _setShowImportDialog(true)}
 							disabled={isImporting}
 							title={t("prompts:modes.importMode")}
 							data-testid="import-mode-button">
