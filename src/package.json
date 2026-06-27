@@ -549,7 +549,7 @@
 		"@vscode/test-electron": "^2.5.2",
 		"@vscode/vsce": "3.3.2",
 		"esbuild": "^0.25.0",
-		"execa": "^9.5.2",
+		"execa": "^9.6.0",
 		"glob": "^11.0.1",
 		"mkdirp": "^3.0.1",
 		"nock": "^14.0.4",
